@@ -12,10 +12,6 @@ export default function Feed() {
 				<ActivityCard />
 				<ActivityCard />
 			</div>
-
-			{/* <div className='bg-red-500 h-fit w-fit flex flex-col'> */}
-
-			{/* </div> */}
 		</div>
 	);
 }
