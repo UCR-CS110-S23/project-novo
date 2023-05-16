@@ -1,4 +1,4 @@
-import ActivityCard from "../components/ActivityCard.jsx";
+import ActivityCard from "../components/ActivityCards.jsx";
 import UserCard from "../components/UserCard.jsx";
 
 export default function Feed() {
@@ -7,9 +7,7 @@ export default function Feed() {
 			<div className='w-1/3'>
 				<UserCard />
 			</div>
-			<div className='w-[28vw] ml-5 flex flex-col space-y-3'>
-				<ActivityCard />
-				<ActivityCard />
+			<div className='w-[28vw] ml-5'>
 				<ActivityCard />
 			</div>
 		</div>
