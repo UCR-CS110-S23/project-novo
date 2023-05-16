@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import { Outfit } from "@next/font/google";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 /* eslint-disable new-cap */
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
