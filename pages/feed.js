@@ -9,7 +9,10 @@ export default function Feed() {
 				<div className='w-1/3'>
 					<UserCard />
 				</div>
-				<div className='w-[28vw] ml-5'>
+				<div className='w-[26vw] ml-5'>
+					<div className='text-sm my-1.5 font-light'>
+						SELECT AN ACTIVITY:
+					</div>
 					<ActivityCard />
 				</div>
 			</div>
