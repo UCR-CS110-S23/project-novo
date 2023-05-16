@@ -15,7 +15,7 @@ module.exports = {
 			colors: {
 				novo: {
 					purple: "#7231F3",
-					lightgray: "EDEDED",
+					lightgray: "#EDEDED",
 				},
 			},
 		},
