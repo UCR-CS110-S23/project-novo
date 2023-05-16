@@ -29,7 +29,7 @@ const interests = [
 const UserCard = () => {
 	return (
 		<>
-			<div className='grid w-1/3 rows-2'>
+			<div className='grid rows-2'>
 				<Image
 					src={Viviane}
 					alt='Landing'
