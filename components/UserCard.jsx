@@ -41,7 +41,7 @@ const UserCard = () => {
 						<div className='text-4xl font-medium pt-4 pl-4'>
 							Viviane, 22
 						</div>
-						<div className='mt-4 flex items-center text-sm bg-novo-lightgray py-1 px-5 rounded-l-full pr-10'>
+						<div className='mt-4 flex items-center text-sm bg-novo-lightgray py-1 pl-5 rounded-l-full pr-10'>
 							<span className='pr-1.5'>
 								<GrLocation />
 							</span>
@@ -54,7 +54,7 @@ const UserCard = () => {
 								{interests.map(entry => (
 									<Col
 										key={entry}
-										className='bg-novo-lightpurple text-novo-purple text-xs rounded-full px-2 py-1 whitespace-nowrap !max-w-fit'
+										className='bg-novo-lightpurple text-novo-purple text-xs rounded-full px-2 mx-1 py-1 whitespace-nowrap !max-w-fit'
 									>
 										{entry.interest}
 									</Col>
