@@ -13,18 +13,22 @@ const UserCard = () => {
 					layout='responsive'
 					className='rounded-t-3xl'
 				/>
-				<div className='border border-gray-300 p-5'>
+				<div className='border border-gray-300 rounded-b-3xl space-y-4 '>
 					<div className='flex justify-between items-center'>
-						<div className='text-4xl font-medium'>Viviane, 22</div>
-						<div className='flex items-center text-md bg-gray-200 py-2 px-5 rounded-l-full pr-10'>
+						<div className='text-4xl font-medium pt-5 px-5'>
+							Viviane, 22
+						</div>
+						<div className='mt-5 flex items-center text-md bg-gray-200 py-2 px-5 rounded-l-full pr-10'>
 							<span className='pr-1.5'>
 								<GrLocation />
 							</span>
 							Riverside, CA
 						</div>
 					</div>
-					<div>tags tags tags tags tags</div>
-					<div className='font-light'>
+					<div className='text-novo-purple px-5'>
+						tags tags tags tags tags
+					</div>
+					<div className='font-light px-5 pb-5'>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 						sed do eiusmod tempor incididunt ut labore et dolore
 						magna aliqua. Ut enim ad minim veniam,.
