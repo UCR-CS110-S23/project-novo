@@ -3,6 +3,7 @@ import Disney from "../public/disney-banner.png";
 import Review from "../components/Review";
 import NavBar from "../components/NavBar";
 import { AiOutlineStar } from "react-icons/ai";
+import ActivitiesCart from "../components/ActivitiesCart";
 
 export default function ActivityProfile() {
 	return (
@@ -12,8 +13,8 @@ export default function ActivityProfile() {
 					<NavBar />
 				</div>
 
-				<div className='flex flex-col items-center col-start-2 col-span-6'>
-					<div className='flex flex-col items-center justify-center w-7/12'>
+				<div className=' flex flex-col items-center col-start-2 col-end-6'>
+					<div className='flex flex-col items-center justify-center w-9/12'>
 						<div className='relative'>
 							<Image
 								src={Disney}
@@ -106,6 +107,9 @@ export default function ActivityProfile() {
 							</div>
 						</div>
 					</div>
+				</div>
+				<div className='col-start-6 border-l h-screen'>
+					<ActivitiesCart />
 				</div>
 			</div>
 		</>
