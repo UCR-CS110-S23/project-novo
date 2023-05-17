@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Disney from "../public/disney-banner.png";
+import Review from "../components/Review";
 import { AiOutlineStar } from "react-icons/ai";
 
 export default function ActivityProfile() {
@@ -18,7 +19,7 @@ export default function ActivityProfile() {
 							<div className='absolute bottom-6 left-0 bg-white rounded-r-full text-black text-2xl py-1 pr-4 pl-[5%]'>
 								DISNEYLAND
 							</div>
-							<div className='absolute bottom-6 right-[3%] bg-novo-lightpurple border-2 border-novo-purple text-novo-purple rounded-full px-3 py-0.5'>
+							<div className='absolute hover:bg-novo-purple hover:text-white bottom-6 right-[3%] bg-novo-lightpurple border-2 border-novo-purple text-novo-purple rounded-full px-3 py-0.5'>
 								ADD ACTIVITY
 							</div>
 						</div>
@@ -63,8 +64,11 @@ export default function ActivityProfile() {
 							</div>
 						</div>
 					</div>
-					<div className='flex items-start w-full mt-4 text-2xl border-b'>
-						<div>Reviews</div>
+					<div className='flex flex-col items-start w-full mt-4'>
+						<div className='text-2xl pb-2 w-full border-b'>
+							Reviews
+						</div>
+						<Review />
 					</div>
 				</div>
 			</div>

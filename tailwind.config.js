@@ -16,7 +16,8 @@ module.exports = {
 				outfit: ["var(--font-outfit)", "sans-serif"],
 			},
 			fontSize: {
-				sm: "0.8rem",
+				sm: "0.75rem",
+				md: "1.1rem",
 			},
 			colors: {
 				novo: {
