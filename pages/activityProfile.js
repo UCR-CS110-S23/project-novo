@@ -5,7 +5,7 @@ import { AiOutlineStar } from "react-icons/ai";
 export default function ActivityProfile() {
 	return (
 		<>
-			<div className='flex justify-center'>
+			<div className='flex flex-col items-center'>
 				<div className='flex flex-col items-center justify-center  w-7/12'>
 					<div className='relative'>
 						<Image
@@ -51,7 +51,7 @@ export default function ActivityProfile() {
 									dolore eu fugiat nulla pariatur.
 								</div>
 							</div>
-							<div className='flex justify-center flex-col items-center space-y-2 border-l-2'>
+							<div className='flex justify-center flex-col items-center space-y-2 border-l'>
 								<div className='text-6xl font-medium'>4.6</div>
 								<div className='flex text-xl'>
 									<AiOutlineStar />
@@ -62,6 +62,9 @@ export default function ActivityProfile() {
 								</div>
 							</div>
 						</div>
+					</div>
+					<div className='flex items-start w-full mt-4 text-2xl border-b'>
+						<div>Reviews</div>
 					</div>
 				</div>
 			</div>
