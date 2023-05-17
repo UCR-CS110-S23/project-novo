@@ -91,7 +91,7 @@ export default function ActivityProfile() {
 								<AiOutlineStar />
 								<AiOutlineStar />
 							</div>
-							<button className='bg-novo-purple rounded-full text-white px-3 py-0.5 font-light text-base right-0'>
+							<button className='bg-novo-purple hover:bg-novo-darkpurple rounded-full text-white px-3 py-0.5 font-light text-base right-0'>
 								SUBMIT REVIEW
 							</button>
 						</div>
