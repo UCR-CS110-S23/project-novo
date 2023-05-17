@@ -68,7 +68,33 @@ export default function ActivityProfile() {
 						<div className='text-2xl pb-2 w-full border-b'>
 							Reviews
 						</div>
-						<Review />
+						<div className='space-y-10 mt-3'>
+							<Review />
+							<Review />
+							<Review />
+							<Review />
+						</div>
+					</div>
+					<div className='w-full mt-5 space-y-5 mb-10'>
+						<div className='text-2xl pb-2 w-full border-b'>
+							Write a Review
+						</div>
+						<textarea
+							className='w-full rounded-lg p-3 text-base font-light border'
+							placeholder='Leave your review here'
+						/>
+						<div className='flex justify-between'>
+							<div className='flex text-2xl'>
+								<AiOutlineStar />
+								<AiOutlineStar />
+								<AiOutlineStar />
+								<AiOutlineStar />
+								<AiOutlineStar />
+							</div>
+							<button className='bg-novo-purple rounded-full text-white px-3 py-0.5 font-light text-base right-0'>
+								SUBMIT REVIEW
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>

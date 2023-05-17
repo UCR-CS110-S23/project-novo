@@ -6,7 +6,7 @@ import { AiOutlineStar } from "react-icons/ai";
 const Review = () => {
 	return (
 		<>
-			<div className='grid grid-cols-6 mt-3'>
+			<div className='grid grid-cols-6'>
 				<div className='col-start-1'>
 					<div className='flex flex-col justify-center items-center h-full w-full'>
 						<div className='w-6/12'>
