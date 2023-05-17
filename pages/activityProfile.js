@@ -7,9 +7,12 @@ import { AiOutlineStar } from "react-icons/ai";
 export default function ActivityProfile() {
 	return (
 		<>
-			<div className='flex'>
-				<NavBar />
-				<div className='flex flex-col items-center'>
+			<div className='grid grid-cols-6'>
+				<div className='col-span-1'>
+					<NavBar />
+				</div>
+
+				<div className='flex flex-col items-center col-start-2 col-span-6'>
 					<div className='flex flex-col items-center justify-center w-7/12'>
 						<div className='relative'>
 							<Image
