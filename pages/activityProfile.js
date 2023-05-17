@@ -1,23 +1,66 @@
 import Image from "next/image";
 import Disney from "../public/disney-banner.png";
+import { AiOutlineStar } from "react-icons/ai";
 
 export default function ActivityProfile() {
 	return (
 		<>
 			<div className='flex justify-center'>
-				<div className='relative w-7/12'>
-					<Image
-						src={Disney}
-						alt='Landing'
-						layout='responsive'
-						className='rounded-b-xl'
-					/>
-					<div>
-						<div className='absolute bottom-6 left-0 bg-white rounded-r-full text-black text-2xl py-1 pr-4 pl-[5%]'>
-							DISNEYLAND
+				<div className='flex flex-col items-center justify-center  w-7/12'>
+					<div className='relative'>
+						<Image
+							src={Disney}
+							alt='Landing'
+							layout='responsive'
+							className='rounded-b-xl'
+						/>
+						<div>
+							<div className='absolute bottom-6 left-0 bg-white rounded-r-full text-black text-2xl py-1 pr-4 pl-[5%]'>
+								DISNEYLAND
+							</div>
+							<div className='absolute bottom-6 right-[3%] bg-novo-lightpurple border-2 border-novo-purple text-novo-purple rounded-full px-3 py-0.5'>
+								ADD ACTIVITY
+							</div>
 						</div>
-						<div className='absolute bottom-6 right-[3%] bg-novo-lightpurple border-2 border-novo-purple text-novo-purple rounded-full px-3 py-1'>
-							ADD ACTIVITY
+					</div>
+					<div className='flex flex-col justify-start pt-3 pl-5'>
+						<div className='grid grid-cols-4 w-full '>
+							<div className='col-start-1 col-span-3'>
+								<div className=' text-base mt-2'>
+									1313 Disneyland Dr, Anaheim, CA 92802
+								</div>
+								<a
+									className='text-sm font-light text-gray-500'
+									href='https://disneyland.disney.go.com'
+								>
+									disneyland.disney.go.com
+								</a>
+								<div className='text-sm font-light text-gray-500 mt-4 mr-8'>
+									Lorem ipsum dolor sit amet, consectetur
+									adipiscing elit, sed do eiusmod tempor
+									incididunt ut labore et dolore magna aliqua.
+									Ut enim ad minim veniam, quis nostrud
+									exercitation ullamco laboris nisi ut aliquip
+									ex ea commodo consequat. Duis aute irure
+									dolor in reprehenderit in voluptate velit
+									esse cillum dolore eu fugiat nulla pariatur.
+									Duis aute irure dolor in reprehenderit in
+									voluptate velit esse cillum dolore eu fugiat
+									nulla pariatur. Duis aute irure dolor in
+									reprehenderit in voluptate velit esse cillum
+									dolore eu fugiat nulla pariatur.
+								</div>
+							</div>
+							<div className='flex justify-center flex-col items-center space-y-2 border-l-2'>
+								<div className='text-6xl font-medium'>4.6</div>
+								<div className='flex text-xl'>
+									<AiOutlineStar />
+									<AiOutlineStar />
+									<AiOutlineStar />
+									<AiOutlineStar />
+									<AiOutlineStar />
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

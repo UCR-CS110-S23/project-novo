@@ -15,6 +15,9 @@ module.exports = {
 			fontFamily: {
 				outfit: ["var(--font-outfit)", "sans-serif"],
 			},
+			fontSize: {
+				sm: "0.8rem",
+			},
 			colors: {
 				novo: {
 					purple: "#7231F3",
