@@ -4,7 +4,7 @@ import UserCard from "../components/UserCard.jsx";
 
 export default function Feed() {
 	return (
-		<div className='grid rows-2'>
+		<div className='grid rows-2 mt-12'>
 			<div className='flex justify-center'>
 				<div className='w-1/3'>
 					<UserCard />
