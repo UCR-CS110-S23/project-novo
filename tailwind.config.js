@@ -17,7 +17,7 @@ module.exports = {
 			},
 			fontSize: {
 				sm: "0.75rem",
-				md: "1.1rem",
+				md: "0.9rem",
 			},
 			colors: {
 				novo: {

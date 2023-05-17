@@ -19,7 +19,7 @@ export default function ActivityProfile() {
 							<div className='absolute bottom-6 left-0 bg-white rounded-r-full text-black text-2xl py-1 pr-4 pl-[5%]'>
 								DISNEYLAND
 							</div>
-							<div className='absolute hover:bg-novo-purple hover:text-white bottom-6 right-[3%] bg-novo-lightpurple border-2 border-novo-purple text-novo-purple rounded-full px-3 py-0.5'>
+							<div className='absolute hover:bg-novo-purple hover:text-white bottom-6 right-[3%] bg-novo-lightpurple border-2 border-novo-purple text-novo-purple rounded-full px-3 py-0.5 text-md'>
 								ADD ACTIVITY
 							</div>
 						</div>
@@ -80,7 +80,7 @@ export default function ActivityProfile() {
 							Write a Review
 						</div>
 						<textarea
-							className='w-full rounded-lg p-3 text-base font-light border'
+							className='w-full rounded-lg p-3 text-md font-light border'
 							placeholder='Leave your review here'
 						/>
 						<div className='flex justify-between'>
@@ -91,7 +91,7 @@ export default function ActivityProfile() {
 								<AiOutlineStar />
 								<AiOutlineStar />
 							</div>
-							<button className='bg-novo-purple hover:bg-novo-darkpurple rounded-full text-white px-3 py-0.5 font-light text-base right-0'>
+							<button className='bg-novo-purple hover:bg-novo-darkpurple rounded-full text-white px-3 py-0.5 font-light text-md right-0'>
 								SUBMIT REVIEW
 							</button>
 						</div>
