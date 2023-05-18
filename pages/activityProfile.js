@@ -13,8 +13,8 @@ export default function ActivityProfile() {
 					<NavBar />
 				</div>
 
-				<div className=' flex flex-col items-center col-start-2 col-end-6'>
-					<div className='flex flex-col items-center justify-center w-9/12'>
+				<div className=' flex flex-col items-center col-start-2 col-end-6 '>
+					<div className='flex flex-col items-center justify-center w-10/12'>
 						<div className='relative'>
 							<Image
 								src={Disney}
