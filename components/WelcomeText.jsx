@@ -16,9 +16,14 @@ const WelcomeText = () => {
 				<h2 className='text-2xl text-white font-light'>
 					meet your <b>new</b> adventure
 				</h2>
-				<button className='mt-4 px-4 py-2 bg-transparent text-black rounded-lg border border-black'>
-					Sign Up
-				</button>
+
+				<div className='group'>
+					<button className='text-white mt-5 px-4 py-2 w-60 rounded-full border border-white transition-colors duration-300 group-hover:bg-white'>
+						<span className='group-hover:text-purple-500'>
+							SIGN UP
+						</span>
+					</button>
+				</div>
 			</div>
 		</>
 	);
