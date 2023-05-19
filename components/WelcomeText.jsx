@@ -7,10 +7,14 @@ const WelcomeText = () => {
 		<>
 			<div className='flex flex-col items-center justify-center h-screen'>
 				<div className='flex justify-center items-center'>
-					<Image src={NOVO} alt='site-logo' className='max-w-md' />
+					<Image
+						src={NOVO}
+						alt='site-logo'
+						className='max-w-md pb-4'
+					/>
 				</div>
-				<h2 className='text-lg'>
-					Meet your <b>new</b> adventure
+				<h2 className='text-2xl text-white font-light'>
+					meet your <b>new</b> adventure
 				</h2>
 				<button className='mt-4 px-4 py-2 bg-transparent text-black rounded-lg border border-black'>
 					Sign Up
