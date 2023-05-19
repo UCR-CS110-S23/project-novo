@@ -1,10 +1,14 @@
 import React from "react";
+import NOVO from "../public/NOVO.png";
+import Image from "next/image";
 
 const WelcomeText = () => {
 	return (
 		<>
 			<div className='flex flex-col items-center justify-center h-screen'>
-				<h1 className='text-4xl font-bold'>NOVO</h1>
+				<div className='flex justify-center items-center'>
+					<Image src={NOVO} alt='site-logo' className='max-w-md' />
+				</div>
 				<h2 className='text-lg'>
 					Meet your <b>new</b> adventure
 				</h2>
