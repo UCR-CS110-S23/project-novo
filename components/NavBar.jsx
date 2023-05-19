@@ -11,7 +11,7 @@ import Link from "next/link";
 function NavBar() {
 	return (
 		<>
-			<div className='flex flex-col justify-between h-screen static bg-novo-purple rounded-r-xl'>
+			<div className='flex flex-col justify-between w-full bg-novo-purple h-screen rounded-r-xl'>
 				<div className='flex flex-col items-center justify-start'>
 					<div className='w-5/12 m-[20%]'>
 						<Image
