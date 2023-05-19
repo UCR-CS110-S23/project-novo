@@ -9,11 +9,13 @@ export default function ActivityProfile() {
 	return (
 		<>
 			<div className='grid grid-cols-6'>
-				<div className='col-span-1'>
-					<NavBar />
+				<div className='col-span-1 w-1/6 fixed'>
+					<div className='absolute '>
+						<NavBar />
+					</div>
 				</div>
 
-				<div className=' flex flex-col items-center col-start-2 col-end-6 '>
+				<div className=' flex flex-col items-center col-start-2 col-end-6'>
 					<div className='flex flex-col items-center justify-center w-10/12'>
 						<div className='relative'>
 							<Image
@@ -108,7 +110,7 @@ export default function ActivityProfile() {
 						</div>
 					</div>
 				</div>
-				<div className='col-start-6 border-l h-screen'>
+				<div className='col-start-6 border-l h-full'>
 					<ActivitiesCart />
 				</div>
 			</div>

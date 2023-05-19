@@ -1,31 +1,16 @@
 import React from "react";
-import Image from "next/image";
 import Beach from "../public/beach.png";
+import ActivityCartCard from "../components/ActivityCartCard";
 
 const ActivitiesCart = () => {
 	return (
 		<div>
-			<div className='flex flex-col items-center justify-center'>
+			<div className='fixed flex flex-col items-center justify-center'>
 				<div className='my-[15%]'>Your Selected Activities</div>
 				<div className='w-10/12 space-y-6'>
-					<Image
-						src={Beach}
-						alt='Landing'
-						layout='responsive'
-						className='rounded-xl'
-					/>
-					<Image
-						src={Beach}
-						alt='Landing'
-						layout='responsive'
-						className='rounded-xl'
-					/>
-					<Image
-						src={Beach}
-						alt='Landing'
-						layout='responsive'
-						className='rounded-xl'
-					/>
+					<ActivityCartCard image={Beach} />
+					<ActivityCartCard image={Beach} />
+					<ActivityCartCard image={Beach} />
 				</div>
 			</div>
 		</div>
