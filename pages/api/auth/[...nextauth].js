@@ -4,16 +4,17 @@ import clientPromise from "/lib/mongodb.js";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 
 export default async function auth(req, res) {
+	const adapter = await MongoDBAdapter({
+		db: await clientPromise,
+	});
 	return await NextAuth(req, res, {
-		adapter: MongoDBAdapter({
-			db: (await clientPromise).db(process.env.MONGODB_DB),
-		}),
 		providers: [
 			GoogleProvider({
 				clientId: process.env.GOOGLE_CLIENT_ID,
 				clientSecret: process.env.GOOGLE_CLIENT_SECRET,
 			}),
 		],
+		adapter: adapter,
 		callbacks: {
 			async signIn({ user, account, profile }) {
 				if (account.provider === "google") {
@@ -25,17 +26,21 @@ export default async function auth(req, res) {
 				return true;
 			},
 			async session({ session, user }) {
-				session.user.uid = user.uid;
-				session.user.name = user.name;
-				session.user.photoURL = user.photoURL;
-				session.user.bio = user.bio;
-				session.user.age = user.age;
-
-				return session;
+				return {
+					...session,
+					user: {
+						...session.user,
+						uid: user.uid,
+						name: user.name,
+						photoURL: user.photoURL,
+						bio: user.bio,
+						age: user.age,
+					},
+				};
 			},
 		},
 		pages: {
-			returningUser: "/feed",
+			signIn: "/feed",
 		},
 		secret: process.env.JWT_SECRET,
 	});
