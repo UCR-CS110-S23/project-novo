@@ -1,7 +1,7 @@
 import React from "react";
 import NOVO from "../public/NOVO.png";
 import Image from "next/image";
-
+import { signIn } from "next-auth/react";
 const WelcomeText = () => {
 	return (
 		<>
@@ -18,7 +18,10 @@ const WelcomeText = () => {
 				</h2>
 
 				<div className='group'>
-					<button className='text-white mt-5 px-4 py-2 w-60 rounded-full border border-white transition-colors duration-300 group-hover:bg-white'>
+					<button
+						className='text-white mt-5 px-4 py-2 w-60 rounded-full border border-white transition-colors duration-300 group-hover:bg-white'
+						onClick={() => signIn("google")}
+					>
 						<span className='group-hover:text-purple-500'>
 							SIGN UP
 						</span>

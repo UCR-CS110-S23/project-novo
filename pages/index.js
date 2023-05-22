@@ -1,4 +1,4 @@
-import WelcomeText from "../components/WelcomeText.jsx";
+import WelcomeText from "../components/WelcomeLanding.jsx";
 
 export default function Home() {
 	return (
