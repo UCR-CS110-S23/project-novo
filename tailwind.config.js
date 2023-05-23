@@ -26,6 +26,8 @@ module.exports = {
 					lightpurple: "#F3EFFF",
 					darkpurple: "#5F1FDE",
 					lightgray: "#EDEDED",
+					gray: "#F5F5F5",
+					darkgray: "#777777",
 				},
 			},
 		},
