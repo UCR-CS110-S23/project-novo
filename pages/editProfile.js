@@ -1,6 +1,6 @@
 import NavBar from "../components/NavBar";
 import ProfilePicture from "../components/ProfilePicture.jsx";
-// import AddPicture from "../components/AddPicture.jsx";
+import AddPicture from "../components/AddPicture.jsx";
 
 export default function EditProfile() {
 	return (
@@ -20,8 +20,9 @@ export default function EditProfile() {
 					</div>
 
 					{/* Adding Photos Part */}
-					<div className='ml-40 mt-14'>
+					<div className='ml-40 mt-14 flex flex-row space-x-6'>
 						<ProfilePicture />
+						<AddPicture />
 					</div>
 				</div>
 			</div>
