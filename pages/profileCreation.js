@@ -8,10 +8,14 @@ export default function ProfileCreation() {
 	const [counter, setCounter] = useState(0);
 
 	const increase = () => {
-		setCounter(count => count + 1);
+		if (counter < 5) {
+			setCounter(count => count + 1);
+		}
 	};
 	const decrease = () => {
-		setCounter(count => count - 1);
+		if (counter > 0) {
+			setCounter(count => count - 1);
+		}
 	};
 
 	return (
@@ -38,13 +42,37 @@ export default function ProfileCreation() {
 			<div className='relative flex justify-center flex-col items-center w-full space-y-4'>
 				<Questions state={counter} />
 				<div className='flex space-x-5 text-lg bottom-[35%] fixed -z-1'>
-					<button onClick={decrease} className='text-gray-300'>
-						<ImArrowLeft2 />
-					</button>
+					{counter === 0 ? (
+						<button
+							onClick={decrease}
+							className='text-gray-300 duration-300 hover:-translate-y-1 p-1'
+						>
+							<ImArrowLeft2 />
+						</button>
+					) : (
+						<button
+							onClick={decrease}
+							className=' text-novo-darkgray duration-300 hover:-translate-y-1 p-1'
+						>
+							<ImArrowLeft2 />
+						</button>
+					)}
 
-					<button onClick={increase} className=' text-novo-darkgray'>
-						<ImArrowRight2 />
-					</button>
+					{counter === 5 ? (
+						<button
+							onClick={increase}
+							className='text-gray-300 duration-300 hover:-translate-y-1 p-1'
+						>
+							<ImArrowRight2 />
+						</button>
+					) : (
+						<button
+							onClick={increase}
+							className=' text-novo-darkgray duration-300 hover:-translate-y-1 p-1'
+						>
+							<ImArrowRight2 />
+						</button>
+					)}
 				</div>
 			</div>
 		</div>

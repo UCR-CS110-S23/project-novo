@@ -42,7 +42,7 @@ const Questions = ({ state }) => {
 							<div className='space-x-4 text-md w-full flex justify-between py-4'>
 								<button
 									onClick={() => setToggle(1)}
-									className={` text-novo-darkgray font-outfit text-center border rounded-full border-novo-darkgray py-3   w-1/3 ${
+									className={` text-novo-darkgray duration-300 hover:-translate-y-1 font-outfit text-center border rounded-full border-novo-darkgray py-3   w-1/3 ${
 										toggle === 1
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
@@ -52,7 +52,7 @@ const Questions = ({ state }) => {
 								</button>
 								<button
 									onClick={() => setToggle(2)}
-									className={`text-novo-darkgray font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
+									className={`text-novo-darkgray duration-300 hover:-translate-y-1 font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
 										toggle === 2
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
@@ -62,7 +62,7 @@ const Questions = ({ state }) => {
 								</button>
 								<button
 									onClick={() => setToggle(3)}
-									className={` text-novo-darkgray font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
+									className={` text-novo-darkgray duration-300 hover:-translate-y-1 font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
 										toggle === 3
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
@@ -83,7 +83,7 @@ const Questions = ({ state }) => {
 							<div className='space-x-4 text-md w-full flex justify-between py-4'>
 								<button
 									onClick={() => setToggle(1)}
-									className={` text-novo-darkgray font-outfit text-center border rounded-full border-novo-darkgray py-3   w-1/3 ${
+									className={` text-novo-darkgray duration-300 hover:-translate-y-1 font-outfit text-center border rounded-full border-novo-darkgray py-3   w-1/3 ${
 										toggle === 1
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
@@ -93,7 +93,7 @@ const Questions = ({ state }) => {
 								</button>
 								<button
 									onClick={() => setToggle(2)}
-									className={`text-novo-darkgray font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
+									className={`duration-300 hover:-translate-y-1 text-novo-darkgray font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
 										toggle === 2
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
@@ -103,7 +103,7 @@ const Questions = ({ state }) => {
 								</button>
 								<button
 									onClick={() => setToggle(3)}
-									className={` text-novo-darkgray font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
+									className={`duration-300 hover:-translate-y-1 text-novo-darkgray font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
 										toggle === 3
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
