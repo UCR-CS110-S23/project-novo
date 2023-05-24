@@ -7,13 +7,13 @@ const ActivityCard = () => {
 	return (
 		<>
 			<div className='flex flex-col space-y-3'>
-				<label className='checked:border-novo-purple relative grid rows-2 h-fit hover:border-gray-300 hover:border rounded-3xl'>
-					<div className='relative'>
+				<label className='checked:border-novo-purple relative grid rows-2 h-fit rounded-3xl hover:-translate-y-1 duration-300'>
+					<div className='relative w-11/12'>
 						<Image
 							src={Disney}
 							alt='Landing'
 							layout='responsive'
-							className='z-0 rounded-t-3xl'
+							className='z-0 rounded-3xl'
 						/>
 						<div className='absolute rounded-full text-white left-4 top-3'>
 							<input
@@ -30,19 +30,15 @@ const ActivityCard = () => {
 							ANAHEIM, CA
 						</div>
 					</div>
-
-					<div className='border border-novo-lightgray rounded-b-3xl bg-white text-sm text-center px-3.5 py-1'>
-						So cute. So nostalgic. Take me.
-					</div>
 				</label>
 
-				<label className='checked:border-novo-purple relative grid rows-2 h-fit hover:border-gray-300 hover:border rounded-3xl'>
-					<div className='relative'>
+				<label className='checked:border-novo-purple relative grid rows-2 h-fit rounded-3xl  hover:-translate-y-1 duration-300'>
+					<div className='relative w-11/12'>
 						<Image
 							src={Disney}
 							alt='Landing'
 							layout='responsive'
-							className='z-0 rounded-t-3xl'
+							className='z-0 rounded-3xl'
 						/>
 						<div className='absolute rounded-full text-white left-4 top-3'>
 							<input
@@ -59,19 +55,15 @@ const ActivityCard = () => {
 							ANAHEIM, CA
 						</div>
 					</div>
-
-					<div className='border border-novo-lightgray rounded-b-3xl bg-white text-sm text-center px-3.5 py-1'>
-						So cute. So nostalgic. Take me.
-					</div>
 				</label>
 
-				<label className='checked:border-novo-purple relative grid rows-2 h-fit hover:border-gray-300 hover:border rounded-3xl'>
-					<div className='relative'>
+				<label className='checked:border-novo-purple relative grid rows-2 h-fit rounded-3xl  hover:-translate-y-1 duration-300'>
+					<div className='relative w-11/12 '>
 						<Image
 							src={Disney}
 							alt='Landing'
 							layout='responsive'
-							className='z-0 rounded-t-3xl'
+							className='z-0 rounded-3xl'
 						/>
 						<div className='absolute rounded-full text-white left-4 top-3'>
 							<input
@@ -87,10 +79,6 @@ const ActivityCard = () => {
 						<div className='absolute bg-white right-3 top-3 text-sm px-3 py-1 text-black rounded-full'>
 							ANAHEIM, CA
 						</div>
-					</div>
-
-					<div className='border border-novo-lightgray rounded-b-3xl bg-white text-sm text-center px-3.5 py-1'>
-						So cute. So nostalgic. Take me.
 					</div>
 				</label>
 			</div>

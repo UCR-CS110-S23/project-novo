@@ -1,6 +1,7 @@
 import React from "react";
 import NOVO from "../public/NOVO.png";
 import Image from "next/image";
+import Link from "next/link";
 
 const WelcomeText = () => {
 	return (
@@ -17,12 +18,17 @@ const WelcomeText = () => {
 					meet your <b>new</b> adventure
 				</h2>
 
-				<div className='group'>
-					<button className='text-white mt-5 px-4 py-2 w-60 rounded-full border border-white transition-colors duration-300 group-hover:bg-white'>
-						<span className='group-hover:text-purple-500'>
-							SIGN UP
-						</span>
-					</button>
+				<div className='group  w-1/2'>
+					<div className='flex justify-center'>
+						<Link
+							href='/profileCreation'
+							className='text-white mt-5 px-4 py-2 w-1/2 text-center no-underline rounded-full border border-white transition-colors duration-300 group-hover:bg-white'
+						>
+							<span className='group-hover:text-purple-500'>
+								SIGN UP
+							</span>
+						</Link>
+					</div>
 				</div>
 			</div>
 		</>
