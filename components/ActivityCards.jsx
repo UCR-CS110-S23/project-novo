@@ -7,7 +7,7 @@ const ActivityCard = () => {
 	return (
 		<>
 			<div className='flex flex-col space-y-3'>
-				<label className='checked:border-novo-purple relative grid rows-2 h-fit rounded-3xl'>
+				<label className='checked:border-novo-purple relative grid rows-2 h-fit rounded-3xl hover:-translate-y-1 duration-300'>
 					<div className='relative w-11/12'>
 						<Image
 							src={Disney}
@@ -32,7 +32,7 @@ const ActivityCard = () => {
 					</div>
 				</label>
 
-				<label className='checked:border-novo-purple relative grid rows-2 h-fit rounded-3xl'>
+				<label className='checked:border-novo-purple relative grid rows-2 h-fit rounded-3xl  hover:-translate-y-1 duration-300'>
 					<div className='relative w-11/12'>
 						<Image
 							src={Disney}
@@ -57,7 +57,7 @@ const ActivityCard = () => {
 					</div>
 				</label>
 
-				<label className='checked:border-novo-purple relative grid rows-2 h-fit rounded-3xl'>
+				<label className='checked:border-novo-purple relative grid rows-2 h-fit rounded-3xl  hover:-translate-y-1 duration-300'>
 					<div className='relative w-11/12 '>
 						<Image
 							src={Disney}
