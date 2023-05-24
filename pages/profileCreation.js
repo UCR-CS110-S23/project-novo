@@ -1,3 +1,4 @@
+import ProgressBar from "../components/ProgressBar";
 import Questions from "../components/Questions";
 import Logo from "../public/purpleLogo.svg";
 import Image from "next/image";
@@ -8,7 +9,7 @@ export default function ProfileCreation() {
 	const [counter, setCounter] = useState(0);
 
 	const increase = () => {
-		if (counter < 5) {
+		if (counter < 6) {
 			setCounter(count => count + 1);
 		}
 	};
@@ -29,15 +30,7 @@ export default function ProfileCreation() {
 						className=''
 					/>
 				</div>
-				<div className='flex justify-center bg-novo-gray items-center w-full rounded-full'>
-					<div className='flex justify-start w-full'>
-						<div className='w-1/3'>
-							<div className="bg-[url('../public/progress.svg')] bg-no-repeat text-xs bg-cover w-full rounded-full text-transparent">
-								aa
-							</div>
-						</div>
-					</div>
-				</div>
+				<ProgressBar width={counter} />
 			</div>
 			<div className='relative flex justify-center flex-col items-center w-full space-y-4'>
 				<Questions state={counter} />
@@ -57,8 +50,7 @@ export default function ProfileCreation() {
 							<ImArrowLeft2 />
 						</button>
 					)}
-
-					{counter === 5 ? (
+					{counter === 6 ? (
 						<button
 							onClick={increase}
 							className='text-gray-300 duration-300 hover:-translate-y-1 p-1'

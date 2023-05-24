@@ -1,7 +1,9 @@
 import { React, useState } from "react";
+import Link from "next/link";
 
 const Questions = ({ state }) => {
-	const [toggle, setToggle] = useState(0);
+	const [identity, setIdentity] = useState(0);
+	const [pronoun, setPronoun] = useState(0);
 	return (
 		<>
 			<div className='w-full flex justify-center'>
@@ -26,7 +28,7 @@ const Questions = ({ state }) => {
 								ENTER YOUR AGE
 							</div>
 							<input
-								type='text'
+								type='number'
 								className='bg-novo-gray w-full text-4xl py-4 px-3 text-center text-black focus:outline-none rounded-xl'
 							/>
 						</div>
@@ -41,9 +43,9 @@ const Questions = ({ state }) => {
 							</div>
 							<div className='space-x-4 text-md w-full flex justify-between py-4'>
 								<button
-									onClick={() => setToggle(1)}
+									onClick={() => setIdentity(1)}
 									className={` text-novo-darkgray duration-300 hover:-translate-y-1 font-outfit text-center border rounded-full border-novo-darkgray py-3   w-1/3 ${
-										toggle === 1
+										identity === 1
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
@@ -51,9 +53,9 @@ const Questions = ({ state }) => {
 									MAN
 								</button>
 								<button
-									onClick={() => setToggle(2)}
+									onClick={() => setIdentity(2)}
 									className={`text-novo-darkgray duration-300 hover:-translate-y-1 font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
-										toggle === 2
+										identity === 2
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
@@ -61,9 +63,9 @@ const Questions = ({ state }) => {
 									WOMAN
 								</button>
 								<button
-									onClick={() => setToggle(3)}
+									onClick={() => setIdentity(3)}
 									className={` text-novo-darkgray duration-300 hover:-translate-y-1 font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
-										toggle === 3
+										identity === 3
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
@@ -82,9 +84,9 @@ const Questions = ({ state }) => {
 							</div>
 							<div className='space-x-4 text-md w-full flex justify-between py-4'>
 								<button
-									onClick={() => setToggle(1)}
+									onClick={() => setPronoun(1)}
 									className={` text-novo-darkgray duration-300 hover:-translate-y-1 font-outfit text-center border rounded-full border-novo-darkgray py-3   w-1/3 ${
-										toggle === 1
+										pronoun === 1
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
@@ -92,9 +94,9 @@ const Questions = ({ state }) => {
 									HE/HIM
 								</button>
 								<button
-									onClick={() => setToggle(2)}
+									onClick={() => setPronoun(2)}
 									className={`duration-300 hover:-translate-y-1 text-novo-darkgray font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
-										toggle === 2
+										pronoun === 2
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
@@ -102,9 +104,9 @@ const Questions = ({ state }) => {
 									SHE/HER
 								</button>
 								<button
-									onClick={() => setToggle(3)}
+									onClick={() => setPronoun(3)}
 									className={`duration-300 hover:-translate-y-1 text-novo-darkgray font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
-										toggle === 3
+										pronoun === 3
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
@@ -134,10 +136,27 @@ const Questions = ({ state }) => {
 							<div className='text-novo-darkgray'>
 								ADD A PHOTO
 							</div>
-							<input
+							<button
 								type='text'
-								className='bg-novo-gray w-full text-4xl py-4 px-3 text-center text-black focus:outline-none rounded-xl'
-							/>
+								className='border border-novo-gray w-full h-full text-4xl py-4 px-3 text-center text-novo-darkgray focus:outline-none rounded-xl'
+							>
+								UPLOAD FROM COMPUTER
+							</button>
+						</div>
+					</>
+				)}
+				{state === 6 && (
+					<>
+						<div className='flex justify-center flex-col items-center space-y-3 w-5/12 '>
+							<div className='text-novo-darkgray'>
+								ADD ACTIVITIES
+							</div>
+							<Link
+								href='/activityFeed'
+								className='border no-underline text-novo-darkgray  hover:bg-novo-purple hover:text-white border-novo-gray w-full h-full text-4xl py-4 px-3 text-center focus:outline-none rounded-xl'
+							>
+								CHOOSE 3 ACTIVITIES
+							</Link>
 						</div>
 					</>
 				)}
