@@ -54,7 +54,7 @@ export default function Messaging() {
 							</div>
 						</div>
 						<div className='mt-4 mr-4 mb-4 items-start h-20 w-40'>
-							<Image src={Disney} />
+							<Image src={Disney} alt='Landing' />
 						</div>
 					</div>
 					<div className='text-novo-dategray mt-2 text-center text-sm'>
