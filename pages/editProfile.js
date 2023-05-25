@@ -1,6 +1,10 @@
 import NavBar from "../components/NavBar";
 import ProfilePicture from "../components/ProfilePicture.jsx";
 import AddPicture from "../components/AddPicture.jsx";
+import AddActivityCard from "../components/AddActivityCard";
+import AddActivityPopUp from "../components/AddActivityPopUp.jsx";
+
+import Beach from "../public/beach.png";
 
 import { useState } from "react";
 
@@ -18,7 +22,7 @@ export default function EditProfile() {
 					</div>
 				</div>
 
-				{/* Page Title */}
+				{/* Content of Page */}
 				<div className='col-start-2 col-end-6'>
 					<div className='mt-8 text-left'>
 						<div className='text-2xl ml-40 mt-14'>Edit Profile</div>
@@ -32,11 +36,11 @@ export default function EditProfile() {
 
 					{/* About Me section */}
 					<div>
-						<div className='text-xl font-outfit font-medium mt-4 mb-2 ml-40'>
+						<div className='text-xl font-medium mt-4 mb-2 ml-40'>
 							About Me
 						</div>
 						<textarea
-							className='ml-40 focus:outline-none w-full h-[15vh] border rounded-2xl px-4 py-3 resize-none placeholder:font-light placeholder-[#858585] placeholder:font-outfit placeholder:font-regular'
+							className='ml-40 focus:outline-none w-full h-[15vh] border rounded-2xl px-4 py-3 resize-none placeholder:font-light placeholder-[#858585] placeholder:font-regular'
 							placeholder='Tell us about yourself'
 						/>
 					</div>
@@ -46,14 +50,14 @@ export default function EditProfile() {
 						{/* Age section */}
 						<div className='w-1/2'>
 							<div className='flex space-x-3'>
-								<div className='text-xl font-outfit font-medium mb-2'>
+								<div className='text-xl font-medium mb-2'>
 									Age
 								</div>
 							</div>
 							<div className='flex border rounded-2xl px-2 py-2 '>
 								<input
 									type='text'
-									className='focus:outline-none w-full placeholder:font-light placeholder-[#858585] placeholder:font-outfit placeholder:font-regular pl-[5px]'
+									className='focus:outline-none w-full placeholder:font-light placeholder-[#858585] placeholder:font-regular pl-[5px]'
 									placeholder='Enter your age'
 								/>
 							</div>
@@ -61,14 +65,14 @@ export default function EditProfile() {
 							{/* Location */}
 							<div className='w-full mt-4'>
 								<div className='flex space-x-3'>
-									<div className='text-xl font-outfit font-medium mb-2'>
+									<div className='text-xl font-medium mb-2'>
 										Location
 									</div>
 								</div>
 								<div className='flex border rounded-2xl px-2 py-2 '>
 									<input
 										type='text'
-										className='focus:outline-none w-full placeholder:font-light placeholder-[#858585] placeholder:font-outfit placeholder:font-regular pl-[5px]'
+										className='focus:outline-none w-full placeholder:font-light placeholder-[#858585] placeholder:font-regular pl-[5px]'
 										placeholder='Enter your location'
 									/>
 								</div>
@@ -77,7 +81,7 @@ export default function EditProfile() {
 							{/* Interests */}
 							<div className='w-full mt-4 items-center'>
 								<div className='flex space-x-3 items-baseline'>
-									<div className='text-xl font-outfit font-medium mb-2'>
+									<div className='text-xl font-medium mb-2'>
 										Interests
 									</div>
 
@@ -88,7 +92,7 @@ export default function EditProfile() {
 								<div className='flex border rounded-2xl px-2 py-2 '>
 									<input
 										type='text'
-										className='focus:outline-none w-full placeholder:font-light placeholder-[#858585] placeholder:font-outfit placeholder:font-regular pl-[5px]'
+										className='focus:outline-none w-full placeholder:font-light placeholder-[#858585] placeholder:font-regular pl-[5px]'
 										placeholder='Enter your interests (movies, running, etc.)'
 									/>
 								</div>
@@ -171,6 +175,40 @@ export default function EditProfile() {
 								</button>
 							</div>
 						</div>
+					</div>
+
+					{/* Interests --> user types in any interest --> populates in this box */}
+					<textarea
+						className='mt-4 ml-40 focus:outline-none w-full h-[13vh] border rounded-2xl px-4 py-3 resize-none placeholder:font-light placeholder-[#858585] placeholder:font-regular'
+						placeholder=''
+					/>
+
+					{/* Current Activities section */}
+					<div className='mt-8 ml-40 flex space-x-3 items-baseline'>
+						<div className='text-xl font-medium mb-2'>
+							Current Activities
+						</div>
+
+						<div className='font-light text-[#858585] text-base'>
+							Go to Activities Tab to add activities. Choose up to
+							3.
+						</div>
+					</div>
+
+					{/* Current activities pictures */}
+					<div className='ml-40 mt-3 items-baseline'>
+						<div className='w-10/12 space-x-4 flex flex-row'>
+							<AddActivityCard image={Beach} />
+							<AddActivityCard image={Beach} />
+							<AddActivityPopUp />
+						</div>
+					</div>
+
+					{/* Submit Button */}
+					<div className='ml-72 flex justify-center py-7'>
+						<button className='w-1/2 bg-[#7231F3] text-white rounded-full py-2'>
+							SAVE CHANGES
+						</button>
 					</div>
 				</div>
 			</div>

@@ -1,0 +1,29 @@
+import React from "react";
+import Image from "next/image";
+import AddSymbol from "../public/addSymbol.png";
+
+const AddActivityPopUp = () => {
+	return (
+		<>
+			<div className='relative flex justify-center items-center'>
+				<button className='border border-[#858585] rounded-3xl aspect-square w-80 h-40 relative flex flex-col items-center'>
+					<div>
+						<div className='w-3/12'>
+							<Image
+								src={AddSymbol}
+								alt='Landing'
+								layout='responsive'
+								className='mb-2'
+							/>
+						</div>
+						<span className='items-center text-[#858585] text-base'>
+							Go to Activities Page to Add Activity
+						</span>
+					</div>
+				</button>
+			</div>
+		</>
+	);
+};
+
+export default AddActivityPopUp;
