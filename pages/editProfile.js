@@ -95,8 +95,9 @@ export default function EditProfile() {
 							</div>
 						</div>
 
-						{/* Pronouns toggle */}
+						{/* Toggle Items */}
 						<div className='w-1/2'>
+							{/* Pronouns toggle */}
 							<div className='text-xl font-medium mb-2'>
 								Pronouns
 							</div>
@@ -132,11 +133,9 @@ export default function EditProfile() {
 									THEY/THEM
 								</button>
 							</div>
-						</div>
 
-						{/* Show me toggle */}
-						<div className='w-1/2'>
-							<div className='text-xl font-medium mb-2'>
+							{/* Show me toggle */}
+							<div className='text-xl font-medium mb-2 mt-4'>
 								Show Me
 							</div>
 							<div className='flex space-x-4'>
