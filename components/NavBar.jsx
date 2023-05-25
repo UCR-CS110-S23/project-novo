@@ -29,10 +29,12 @@ function NavBar() {
 							<RiCompassDiscoverLine />
 							<div>Feed</div>
 						</Link>
-						<button className='text-white flex w-full items-center no-underline py-2 px-4    space-x-2 font-light'>
-							<FiMessageSquare />
-							<div>Messages</div>
-						</button>
+						<Link href='/messaging'>
+							<button className='text-white flex w-full items-center no-underline py-2 px-4    space-x-2 font-light'>
+								<FiMessageSquare />
+								<div>Messages</div>
+							</button>
+						</Link>
 						<Link
 							href='/activityFeed'
 							className='text-white flex w-full items-center  no-underline py-2 px-4    space-x-2 font-light'
