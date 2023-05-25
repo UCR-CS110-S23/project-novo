@@ -2,10 +2,11 @@ import NavBar from "../components/NavBar";
 import ProfilePicture from "../components/ProfilePicture.jsx";
 import AddPicture from "../components/AddPicture.jsx";
 
-// import { useState } from "react";
+import { useState } from "react";
 
 export default function EditProfile() {
-	// const [toggle, setToggle] = useState(0);
+	const [pronounsToggle, setPronounsToggle] = useState(0);
+	const [showMeToggle, setShowMeToggle] = useState(0);
 
 	return (
 		<>
@@ -73,7 +74,7 @@ export default function EditProfile() {
 								</div>
 							</div>
 
-							{/* Interests - line 76 debug*/}
+							{/* Interests */}
 							<div className='w-full mt-4 items-center'>
 								<div className='flex space-x-3 items-baseline'>
 									<div className='text-xl font-outfit font-medium mb-2'>
@@ -91,6 +92,84 @@ export default function EditProfile() {
 										placeholder='Enter your interests (movies, running, etc.)'
 									/>
 								</div>
+							</div>
+						</div>
+
+						{/* Pronouns toggle */}
+						<div className='w-1/2'>
+							<div className='text-xl font-medium mb-2'>
+								Pronouns
+							</div>
+							<div className='flex space-x-4'>
+								<button
+									onClick={() => setPronounsToggle(1)}
+									className={`text-sm w-1/2 text-[#858585] text-center border rounded-full border-[#D9D9D9] py-2.5 px-3 ${
+										pronounsToggle === 1
+											? "bg-[#7231F3] text-white border rounded-full border-[#7231F3]"
+											: "bg-transparent"
+									}`}
+								>
+									HE/HIM
+								</button>
+								<button
+									onClick={() => setPronounsToggle(2)}
+									className={`text-sm w-1/2 text-[#858585] text-center border rounded-full border-[#D9D9D9] py-2.5 px-3 ${
+										pronounsToggle === 2
+											? "bg-[#7231F3] text-white border rounded-full border-[#7231F3]"
+											: "bg-transparent"
+									}`}
+								>
+									SHE/HER
+								</button>
+								<button
+									onClick={() => setPronounsToggle(3)}
+									className={`text-sm w-1/2 text-[#858585] text-center border rounded-full border-[#D9D9D9] py-2.5 px-3 ${
+										pronounsToggle === 3
+											? "bg-[#7231F3] text-white border rounded-full border-[#7231F3]"
+											: "bg-transparent"
+									}`}
+								>
+									THEY/THEM
+								</button>
+							</div>
+						</div>
+
+						{/* Show me toggle */}
+						<div className='w-1/2'>
+							<div className='text-xl font-medium mb-2'>
+								Show Me
+							</div>
+							<div className='flex space-x-4'>
+								<button
+									onClick={() => setShowMeToggle(1)}
+									className={`text-sm w-1/2 text-[#858585] text-center border rounded-full border-[#D9D9D9] py-2.5 px-3 ${
+										showMeToggle === 1
+											? "bg-[#7231F3] text-white border rounded-full border-[#7231F3]"
+											: "bg-transparent"
+									}`}
+								>
+									MEN
+								</button>
+								<button
+									onClick={() => setShowMeToggle(2)}
+									className={`text-sm w-1/2 text-[#858585] text-center border rounded-full border-[#D9D9D9] py-2.5 px-3 ${
+										showMeToggle === 2
+											? "bg-[#7231F3] text-white border rounded-full border-[#7231F3]"
+											: "bg-transparent"
+									}`}
+								>
+									WOMEN
+								</button>
+								<button
+									onClick={() => setShowMeToggle(3)}
+									className={`text-sm w-1/2 text-[#858585] text-center border rounded-full border-[#D9D9D9] py-2.5 px-3 ${
+										showMeToggle === 3
+											? "bg-[#7231F3] text-white border rounded-full border-[#7231F3]"
+											: "bg-transparent"
+									}`}
+								>
+									BOTH
+								</button>
 							</div>
 						</div>
 					</div>
