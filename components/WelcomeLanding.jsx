@@ -46,10 +46,11 @@ const WelcomeText = () => {
 				>
 					SIGN UP
 				</button>
+
 				<div className='flex items-center my-4'>
-					<hr className='flex-grow border-gray-300 border-t-2' />
-					<div className='mx-4 text-gray-500'>or</div>
-					<hr className='flex-grow border-gray-300 border-t-2' />
+					<hr className='flex-grow border-white border-t-2' />
+					<div className='mx-4 text-white'>OR</div>
+					<hr className='flex-grow border-white border-t-2' />
 				</div>
 			</div>
 		</div>
