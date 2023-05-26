@@ -46,20 +46,21 @@ const WelcomeText = () => {
 					value={password}
 					onChange={e => setPassword(e.target.value)}
 				/>
-				<div className='group'>
-					<button
-						className={`mt-3 text-white px-4 py-2 w-80 rounded-full border-2 border-white transition-colors duration-300 hover:bg-white ${
-							isButtonDisabled ? "cursor-not-allowed" : ""
-						}`}
-						onClick={infoSubmit}
-						disabled={isButtonDisabled}
-					>
+				<button
+					className={`${
+						isButtonDisabled
+							? "opacity-50 disabled:pointer-events-none"
+							: ""
+					}`}
+					onClick={infoSubmit}
+					disabled={isButtonDisabled}
+				>
+					<div className='group hover:bg-white mt-3 text-white px-4 py-2 w-80 rounded-full border-2 border-white transition-colors duration-300'>
 						<span className='group-hover:text-purple-500'>
 							SIGN UP
 						</span>
-					</button>
-				</div>
-
+					</div>
+				</button>
 				<div className='flex items-center my-3'>
 					<hr className='flex-grow border-white border-t-2' />
 					<div className='mx-4 text-white'>OR</div>
