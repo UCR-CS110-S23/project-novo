@@ -9,6 +9,7 @@ const WelcomeText = () => {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const isButtonDisabled = name === "" || email === "" || password === "";
 
 	return (
 		<div className='flex flex-row items-center justify-between mx-80 h-screen'>
@@ -43,8 +44,11 @@ const WelcomeText = () => {
 				/>
 				<div className='group'>
 					<button
-						className='mt-3 text-white px-4 py-2 w-80 rounded-full border-2 border-white transition-colors duration-300 hover:bg-white'
+						className={`mt-3 text-white px-4 py-2 w-80 rounded-full border-2 border-white transition-colors duration-300 hover:bg-white ${
+							isButtonDisabled ? "cursor-not-allowed" : ""
+						}`}
 						onClick={() => signIn("google")}
+						disabled={isButtonDisabled}
 					>
 						<span className='group-hover:text-purple-500'>
 							SIGN UP
