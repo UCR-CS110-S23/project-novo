@@ -3,6 +3,7 @@ import NOVO from "../public/NOVO.png";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
+import { FcGoogle } from "react-icons/fc";
 
 const WelcomeText = () => {
 	const [name, setName] = useState("");
@@ -52,12 +53,12 @@ const WelcomeText = () => {
 					<div className='mx-4 text-white'>OR</div>
 					<hr className='flex-grow border-white border-t-2' />
 				</div>
-				<button
-					className='mt-3 text-white px-4 py-2 w-60 rounded-full border border-white transition-colors duration-300 hover:bg-white hover:text-black'
-					onClick={() => signIn("google")}
-				>
-					SIGN IN WITH GOOGLE
-				</button>
+				<div className='flex mt-3 text-white px-4 py-2 w-60 rounded-full border border-white transition-colors duration-300 hover:bg-white hover:text-black'>
+					<FcGoogle size={30} />
+					<button className='' onClick={() => signIn("google")}>
+						SIGN IN WITH GOOGLE
+					</button>
+				</div>
 			</div>
 		</div>
 	);
