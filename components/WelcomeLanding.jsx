@@ -41,24 +41,32 @@ const WelcomeText = () => {
 					value={password}
 					onChange={e => setPassword(e.target.value)}
 				/>
-				<button
-					className='mt-3 text-white px-4 py-2 w-60 rounded-full border border-white transition-colors duration-300 hover:bg-white hover:text-black'
-					onClick={() => signIn("google")}
-				>
-					SIGN UP
-				</button>
+				<div className='group'>
+					<button
+						className='mt-3 text-white px-4 py-2 w-80 rounded-full border-2 border-white transition-colors duration-300 hover:bg-white'
+						onClick={() => signIn("google")}
+					>
+						<span className='group-hover:text-purple-500'>
+							SIGN UP
+						</span>
+					</button>
+				</div>
 
-				<div className='flex items-center my-4'>
+				<div className='flex items-center my-3'>
 					<hr className='flex-grow border-white border-t-2' />
 					<div className='mx-4 text-white'>OR</div>
 					<hr className='flex-grow border-white border-t-2' />
 				</div>
-				<div className='flex mt-3 text-white px-4 py-2 w-60 rounded-full border border-white transition-colors duration-300 hover:bg-white hover:text-black'>
-					<FcGoogle size={30} />
-					<button className='' onClick={() => signIn("google")}>
-						SIGN IN WITH GOOGLE
-					</button>
-				</div>
+
+				<button onClick={() => signIn("google")}>
+					<div className='flex flex-row justify-center items-center text-white px-4 py-2 w-80 rounded-full border-2 border-white transition-colors duration-300 hover:bg-white group'>
+						<FcGoogle size={30} />
+
+						<span className='ml-2 group-hover:text-purple-500'>
+							SIGN IN WITH GOOGLE
+						</span>
+					</div>
+				</button>
 			</div>
 		</div>
 	);
