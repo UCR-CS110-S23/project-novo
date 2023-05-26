@@ -21,21 +21,21 @@ const WelcomeText = () => {
 
 			<div className='flex flex-col'>
 				<input
-					className='rounded-full bg-white bg-opacity-10 text-white placeholder-white py-3 pl-4 pr-10 w-80 focus:outline-none my-1'
+					className='rounded-full bg-white/20 text-white placeholder-white py-3 pl-8 pr-10 w-80 focus:outline-none my-1'
 					type='text'
 					placeholder='NAME'
 					value={name}
 					onChange={e => setName(e.target.value)}
 				/>
 				<input
-					className='rounded-full bg-white bg-opacity-10 text-white placeholder-white py-3 pl-4 pr-10 w-80 focus:outline-none my-1'
+					className='rounded-full bg-white/20 text-white placeholder-white py-3 pl-8 pr-10 w-80 focus:outline-none my-1'
 					type='text'
 					placeholder='EMAIL'
 					value={email}
 					onChange={e => setEmail(e.target.value)}
 				/>
 				<input
-					className='rounded-full bg-white bg-opacity-10 text-white placeholder-white py-3 pl-4 pr-10 w-80 focus:outline-none my-1'
+					className='rounded-full bg-white/20 text-white placeholder-white py-3 pl-8 w-80 focus:outline-none my-1'
 					type='text'
 					placeholder='PASSWORD'
 					value={password}
