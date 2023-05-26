@@ -7,6 +7,7 @@ import Image from "next/image";
 import { FiCamera } from "react-icons/fi";
 import { FiPaperclip } from "react-icons/fi";
 import { BsPlusSquare } from "react-icons/bs";
+import { FiSend } from "react-icons/fi";
 import Disney from "../public/disneyland.png";
 
 export default function Messaging() {
@@ -39,7 +40,7 @@ export default function Messaging() {
 						/>
 					</div>
 				</div>
-				<div className='col-start-6 border-t col-end-13 h-screen relative bg-blue-500'>
+				<div className='col-start-6 border-t col-end-13 h-screen relative'>
 					<div className='flex justify-between w-full border-b'>
 						<div className='flex mt-4'>
 							<div className='pl-3'>
@@ -72,47 +73,50 @@ export default function Messaging() {
 						<MessageResponse
 							image={MessageGuy}
 							name='Ricky Smith'
-							message='Hi, How are you aojaijwd adiwjiad adija odiwjiaowjd awdijawiod awdoijawidj awidojawoijd aiowjd awdhioadw ajkdnhaw awdijaiowjd awdjioajwd?'
+							message='Hi, How are you?'
 							time='11:00AM'
 						/>
 						<MyMessageResponse
 							image={Disney}
 							message="Hey Ricky, I'm doing great!"
-							time='11:00AM'
+							time='11:05AM'
 						/>
 						<MessageResponse
 							image={MessageGuy}
 							name='Ricky Smith'
-							message='Hi, How are you aojaijwd adiwjiad adija odiwjiaowjd awdijawiod awdoijawidj awidojawoijd aiowjd awdhioadw ajkdnhaw awdijaiowjd awdjioajwd?'
-							time='11:00AM'
+							message="I'm down to go DisneyLand next Monday"
+							time='11:15AM'
 						/>
 						<MyMessageResponse
 							image={Disney}
-							message="Hey Ricky, I'm doing great!"
-							time='11:00AM'
+							message="That would be fun, let's do it!"
+							time='11:25AM'
 						/>
 					</div>
-					<div className='absolute flex inset-x-0 bottom-0 h-16 bg-red-500'>
-						<div className='bg-green-500'>
-							<button className='text-novo-darkgray text-2xl'>
+					<div className='absolute flex items-center inset-x-0 bottom-0 h-16'>
+						<div className='ml-10'>
+							<button className='text-novo-darkgray text-xl'>
 								<FiCamera />
 							</button>
 						</div>
-						<div className='bg-blue-500'>
-							<button className='text-novo-darkgray text-2xl'>
+						<div className=' ml-10'>
+							<button className='text-novo-darkgray text-xl'>
 								<FiPaperclip />
 							</button>
 						</div>
-						<div className='justify-start bg-green-500'>
+						<div className='flex w-3/4 ml-10'>
 							<input
-								class='border border-gray-200 mt-4 bg-white h-10 w-48 rounded-lg text-sm focus:outline-none'
+								class='bg-novo-gray pl-3 h-10 w-full rounded-lg text-sm focus:outline-none'
 								type='search'
 								name='search'
-								placeholder='Search activites...'
+								placeholder='Write something...'
 							></input>
+							<button className='bg-novo-gray text-novo-darkgray text-xl rounded-r-lg -ml-3 pr-3'>
+								<FiSend />
+							</button>
 						</div>
-						<div className='bg-blue-500'>
-							<button className='text-novo-darkgray text-2xl'>
+						<div className='ml-8 mt-1'>
+							<button className='text-novo-darkgray text-xl'>
 								<BsPlusSquare />
 							</button>
 						</div>
