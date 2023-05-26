@@ -4,6 +4,9 @@ import MessageChat from "@/components/MessageChat";
 import MessageResponse from "@/components/MessageResponse";
 import MyMessageResponse from "@/components/MyMessage";
 import Image from "next/image";
+import { FiCamera } from "react-icons/fi";
+import { FiPaperclip } from "react-icons/fi";
+import { BsPlusSquare } from "react-icons/bs";
 import Disney from "../public/disneyland.png";
 
 export default function Messaging() {
@@ -36,7 +39,7 @@ export default function Messaging() {
 						/>
 					</div>
 				</div>
-				<div className='col-start-6 border-t col-end-13 h-screen'>
+				<div className='col-start-6 border-t col-end-13 h-screen relative bg-blue-500'>
 					<div className='flex justify-between w-full border-b'>
 						<div className='flex mt-4'>
 							<div className='pl-3'>
@@ -65,11 +68,22 @@ export default function Messaging() {
 							You’re interested in going to Disneyland with Ricky!
 						</div>
 					</div>
-					<div>
+					<div className=' max-h-max'>
 						<MessageResponse
 							image={MessageGuy}
 							name='Ricky Smith'
-							message='Hi, How are you?'
+							message='Hi, How are you aojaijwd adiwjiad adija odiwjiaowjd awdijawiod awdoijawidj awidojawoijd aiowjd awdhioadw ajkdnhaw awdijaiowjd awdjioajwd?'
+							time='11:00AM'
+						/>
+						<MyMessageResponse
+							image={Disney}
+							message="Hey Ricky, I'm doing great!"
+							time='11:00AM'
+						/>
+						<MessageResponse
+							image={MessageGuy}
+							name='Ricky Smith'
+							message='Hi, How are you aojaijwd adiwjiad adija odiwjiaowjd awdijawiod awdoijawidj awidojawoijd aiowjd awdhioadw ajkdnhaw awdijaiowjd awdjioajwd?'
 							time='11:00AM'
 						/>
 						<MyMessageResponse
@@ -78,7 +92,31 @@ export default function Messaging() {
 							time='11:00AM'
 						/>
 					</div>
-					<div className='h-max bg-red-500'>Hi</div>
+					<div className='absolute flex inset-x-0 bottom-0 h-16 bg-red-500'>
+						<div className='bg-green-500'>
+							<button className='text-novo-darkgray text-2xl'>
+								<FiCamera />
+							</button>
+						</div>
+						<div className='bg-blue-500'>
+							<button className='text-novo-darkgray text-2xl'>
+								<FiPaperclip />
+							</button>
+						</div>
+						<div className='justify-start bg-green-500'>
+							<input
+								class='border border-gray-200 mt-4 bg-white h-10 w-48 rounded-lg text-sm focus:outline-none'
+								type='search'
+								name='search'
+								placeholder='Search activites...'
+							></input>
+						</div>
+						<div className='bg-blue-500'>
+							<button className='text-novo-darkgray text-2xl'>
+								<BsPlusSquare />
+							</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</>

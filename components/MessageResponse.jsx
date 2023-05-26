@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const MessageResponse = ({ image, name, message, time }) => {
 	return (
-		<div className='flex relative mt-4 m-2'>
+		<div className='flex relative mt-4 mr-4'>
 			<div className='pl-3'>
 				<Image
 					src={image}

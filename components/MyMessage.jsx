@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const MyMessageResponse = ({ image, message, time }) => {
 	return (
-		<div className='flex  relative mt-4 m-2 pr-4'>
+		<div className='flex  relative mt-4 ml-4 pr-4'>
 			<div className='flex justify-end w-full'>
 				<div className='mr-3'>
 					<div className='flex justify-between'>
