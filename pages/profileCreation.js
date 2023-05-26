@@ -9,7 +9,7 @@ export default function ProfileCreation() {
 	const [counter, setCounter] = useState(0);
 
 	const increase = () => {
-		if (counter < 6) {
+		if (counter < 8) {
 			setCounter(count => count + 1);
 		}
 	};
@@ -50,7 +50,8 @@ export default function ProfileCreation() {
 							<ImArrowLeft2 />
 						</button>
 					)}
-					{counter === 6 ? (
+
+					{counter === 8 ? (
 						<button
 							onClick={increase}
 							className='text-gray-300 duration-300 hover:-translate-y-1 p-1'
