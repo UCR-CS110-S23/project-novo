@@ -17,7 +17,7 @@ export default function Feed() {
 							<UserCard />
 						</div>
 						<div className='w-[26vw] ml-5'>
-							<div className='text-sm my-1.5 font-light'>
+							<div className='text-sm my-2.5 font-light'>
 								SELECT AN ACTIVITY:
 							</div>
 							<ActivityCard />
