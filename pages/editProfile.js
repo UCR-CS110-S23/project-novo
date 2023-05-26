@@ -3,6 +3,9 @@ import ProfilePicture from "../components/ProfilePicture.jsx";
 import AddPicture from "../components/AddPicture.jsx";
 import AddActivityCard from "../components/AddActivityCard";
 import AddActivityPopUp from "../components/AddActivityPopUp.jsx";
+import { FaTimes } from "react-icons/fa";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 import Beach from "../public/beach.png";
 
@@ -11,6 +14,25 @@ import { useState } from "react";
 export default function EditProfile() {
 	const [pronounsToggle, setPronounsToggle] = useState(0);
 	const [showMeToggle, setShowMeToggle] = useState(0);
+	const [tag, setTag] = useState("");
+
+	const [data, setData] = useState({
+		interests: new Set(),
+	});
+
+	const handleTagSubmit = e => {
+		e.preventDefault();
+		if (data.interests.size < 6) {
+			setData({ ...data, interests: new Set([...data.interests, tag]) });
+			setTag("");
+		}
+	};
+
+	const handleTagRemove = interest => {
+		const interests = data.interests;
+		interests.delete(interest);
+		setData({ ...data, interests: interests });
+	};
 
 	return (
 		<>
@@ -209,6 +231,59 @@ export default function EditProfile() {
 						<button className='w-1/2 bg-[#7231F3] text-white rounded-full py-2'>
 							SAVE CHANGES
 						</button>
+					</div>
+
+					{/* text inputty thingy */}
+					<div className='flex justify-center flex-col items-center w-5/12 '>
+						<div className='text-novo-darkgray -translate-y-3.5 mb-[2%]'>
+							ENTER 6 INTERESTS
+						</div>
+						<div className='w-full'>
+							<div className='flex flex-col items-center w-full'>
+								<div className='w-1/4 '>
+									<form onSubmit={handleTagSubmit}>
+										<input
+											className='text-black pl-3 py-1 text-sm font-light  rounded-lg border-solid border border-beatdrop-grey bg-beatdrop-lightgrey w-fit'
+											type='text'
+											value={tag}
+											onChange={e =>
+												setTag(e.target.value)
+											}
+											placeholder='ADD TAG'
+											name='first'
+											autoComplete='off'
+											maxLength={20}
+										/>
+									</form>
+								</div>
+								<div className=' w-full flex justify-center'>
+									<Row className=' w-fit m-0 py-3'>
+										{[...data.interests].map(
+											(interest, index) => (
+												<Col
+													key={index}
+													className='!max-w-fit p-1'
+												>
+													<div className=''>
+														<button className='text-novo-purple border-novo-purple px-3 bg-novo-lightpurple py-1 rounded-full flex justify-center items-center'>
+															{interest}
+															<FaTimes
+																className='hover:text-red-500 ml-2'
+																onClick={() =>
+																	handleTagRemove(
+																		interest
+																	)
+																}
+															/>
+														</button>
+													</div>
+												</Col>
+											)
+										)}
+									</Row>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

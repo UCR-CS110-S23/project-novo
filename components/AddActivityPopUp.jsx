@@ -13,7 +13,6 @@ const AddActivityPopUp = () => {
 								src={AddSymbol}
 								alt='Landing'
 								layout='responsive'
-								className='mb-2'
 							/>
 						</div>
 						<span className='items-center text-[#858585] text-base'>
