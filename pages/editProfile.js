@@ -197,7 +197,7 @@ export default function EditProfile() {
 
 					{/* Current activities pictures */}
 					<div className='ml-40 mt-3 items-baseline'>
-						<div className='w-10/12 space-x-4 flex flex-row'>
+						<div className='w-10/12 space-x-4 flex justify-center'>
 							<AddActivityCard image={Beach} />
 							<AddActivityCard image={Beach} />
 							<AddActivityPopUp />
