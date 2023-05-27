@@ -5,6 +5,10 @@ import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 
 export default async function auth(req, res) {
 	return await NextAuth(req, res, {
+		pages: {
+			signIn: "/",
+			newUser: "/profileCreation",
+		},
 		providers: [
 			GoogleProvider({
 				clientId: process.env.GOOGLE_CLIENT_ID,
