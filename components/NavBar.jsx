@@ -7,8 +7,12 @@ import { MdPersonOutline } from "react-icons/md";
 import { TbCircles } from "react-icons/tb";
 import { RxExit } from "react-icons/rx";
 import Link from "next/link";
+import { getSession, signOut, useSession } from "next-auth/react";
 
 function NavBar() {
+	const { data: session, status } = useSession();
+
+	console.log(session, status);
 	return (
 		<>
 			<div className='flex flex-col justify-between w-full bg-novo-purple h-screen rounded-r-xl'>
@@ -46,7 +50,14 @@ function NavBar() {
 					<button className='text-white text-2xl'>
 						<MdPersonOutline />
 					</button>
-					<button className='text-white text-2xl'>
+					<button
+						className='text-white text-2xl'
+						onClick={() =>
+							signOut({
+								callbackUrl: "/",
+							})
+						}
+					>
 						<RxExit />
 					</button>
 				</div>
@@ -54,5 +65,22 @@ function NavBar() {
 		</>
 	);
 }
+
+export const getServerSideProps = async context => {
+	const session = await getSession({ req: context.req });
+
+	if (!session) {
+		return {
+			redirect: {
+				destination: "/",
+				permanent: false,
+			},
+		};
+	}
+
+	return {
+		props: { session },
+	};
+};
 
 export default NavBar;

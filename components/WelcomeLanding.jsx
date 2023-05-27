@@ -15,6 +15,13 @@ const WelcomeText = () => {
 		// this will be handled later lol
 	};
 
+	const handleGoogle = async () => {
+		await signIn("google", {
+			redirect: true,
+			callbackUrl: "/feed",
+		});
+	};
+
 	return (
 		<div className='flex flex-row items-center justify-between mx-80 h-screen'>
 			<div className='flex flex-col'>
@@ -67,7 +74,7 @@ const WelcomeText = () => {
 					<hr className='flex-grow border-white border-t-2' />
 				</div>
 
-				<button onClick={() => signIn("google")}>
+				<button onClick={handleGoogle}>
 					<div className='flex flex-row justify-center items-center text-white px-4 py-2 w-80 rounded-full border-2 border-white transition-colors duration-300 hover:bg-white group'>
 						<FcGoogle size={30} />
 

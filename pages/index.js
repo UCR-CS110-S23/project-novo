@@ -1,5 +1,5 @@
 import WelcomeText from "../components/WelcomeLanding.jsx";
-import { getSession } from "next-auth/react";
+// import { getSession } from "next-auth/react";
 
 const Home = () => {
 	return (
@@ -11,21 +11,21 @@ const Home = () => {
 	);
 };
 
-export const getServerSideProps = async context => {
-	const session = await getSession({ req: context.req });
+// export const getServerSideProps = async context => {
+// 	const session = await getSession({ req: context.req });
 
-	if (session) {
-		return {
-			redirect: {
-				destination: "/feed",
-				permanent: false,
-			},
-		};
-	}
+// 	if (session) {
+// 		return {
+// 			redirect: {
+// 				destination: "/feed",
+// 				permanent: false,
+// 			},
+// 		};
+// 	}
 
-	return {
-		props: { session },
-	};
-};
+// 	return {
+// 		props: { session },
+// 	};
+// };
 
 export default Home;
