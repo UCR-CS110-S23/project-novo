@@ -132,18 +132,20 @@ export default function EditProfile() {
 									</div>
 								</div>
 
-								<div className='w-full'>
+								{/* text input */}
+								<div>
 									<div className='flex flex-col items-center w-full'>
 										<div className='w-1/4 '>
 											<form onSubmit={handleTagSubmit}>
+												{/* textbox styling */}
 												<input
-													className='text-black pl-3 py-1 text-sm font-light  rounded-lg border-solid border border-beatdrop-grey bg-beatdrop-lightgrey w-fit'
+													className='flex border rounded-2xl px-2 py-2 '
 													type='text'
 													value={tag}
 													onChange={e =>
 														setTag(e.target.value)
 													}
-													placeholder='ADD TAG'
+													placeholder='Enter your interests (movies, running, etc.)'
 													name='first'
 													autoComplete='off'
 													maxLength={20}
