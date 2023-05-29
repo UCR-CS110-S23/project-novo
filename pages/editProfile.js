@@ -101,7 +101,7 @@ export default function EditProfile() {
 							</div>
 
 							{/* Interests */}
-							<div className='w-full mt-4 items-center'>
+							{/* <div className='w-full mt-4 items-center'>
 								<div className='flex space-x-3 items-baseline'>
 									<div className='text-xl font-medium mb-2'>
 										Interests
@@ -117,6 +117,66 @@ export default function EditProfile() {
 										className='focus:outline-none w-full placeholder:font-light placeholder-[#858585] placeholder:font-regular pl-[5px]'
 										placeholder='Enter your interests (movies, running, etc.)'
 									/>
+								</div>
+							</div> */}
+
+							{/* text inputty thingy */}
+							<div className='w-full mt-4 items-center'>
+								{/* Interests title part */}
+								<div className='flex space-x-3 items-baseline'>
+									<div className='text-xl font-medium mb-2'>
+										Interests
+									</div>
+									<div className='font-light text-[#858585] text-base'>
+										Choose up to 6 interests
+									</div>
+								</div>
+
+								<div className='w-full'>
+									<div className='flex flex-col items-center w-full'>
+										<div className='w-1/4 '>
+											<form onSubmit={handleTagSubmit}>
+												<input
+													className='text-black pl-3 py-1 text-sm font-light  rounded-lg border-solid border border-beatdrop-grey bg-beatdrop-lightgrey w-fit'
+													type='text'
+													value={tag}
+													onChange={e =>
+														setTag(e.target.value)
+													}
+													placeholder='ADD TAG'
+													name='first'
+													autoComplete='off'
+													maxLength={20}
+												/>
+											</form>
+										</div>
+										<div className=' w-full flex justify-center'>
+											<Row className=' w-fit m-0 py-3'>
+												{[...data.interests].map(
+													(interest, index) => (
+														<Col
+															key={index}
+															className='!max-w-fit p-1'
+														>
+															<div className=''>
+																<button className='text-novo-purple border-novo-purple px-3 bg-novo-lightpurple py-1 rounded-full flex justify-center items-center'>
+																	{interest}
+																	<FaTimes
+																		className='hover:text-red-500 ml-2'
+																		onClick={() =>
+																			handleTagRemove(
+																				interest
+																			)
+																		}
+																	/>
+																</button>
+															</div>
+														</Col>
+													)
+												)}
+											</Row>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -200,10 +260,10 @@ export default function EditProfile() {
 					</div>
 
 					{/* Interests --> user types in any interest --> populates in this box */}
-					<textarea
+					{/* <textarea
 						className='mt-4 ml-40 focus:outline-none w-full h-[13vh] border rounded-2xl px-4 py-3 resize-none placeholder:font-light placeholder-[#858585] placeholder:font-regular'
 						placeholder=''
-					/>
+					/> */}
 
 					{/* Current Activities section */}
 					<div className='mt-8 ml-40 flex space-x-3 items-baseline'>
@@ -231,59 +291,6 @@ export default function EditProfile() {
 						<button className='w-1/2 bg-[#7231F3] text-white rounded-full py-2'>
 							SAVE CHANGES
 						</button>
-					</div>
-
-					{/* text inputty thingy */}
-					<div className='flex justify-center flex-col items-center w-5/12 '>
-						<div className='text-novo-darkgray -translate-y-3.5 mb-[2%]'>
-							ENTER 6 INTERESTS
-						</div>
-						<div className='w-full'>
-							<div className='flex flex-col items-center w-full'>
-								<div className='w-1/4 '>
-									<form onSubmit={handleTagSubmit}>
-										<input
-											className='text-black pl-3 py-1 text-sm font-light  rounded-lg border-solid border border-beatdrop-grey bg-beatdrop-lightgrey w-fit'
-											type='text'
-											value={tag}
-											onChange={e =>
-												setTag(e.target.value)
-											}
-											placeholder='ADD TAG'
-											name='first'
-											autoComplete='off'
-											maxLength={20}
-										/>
-									</form>
-								</div>
-								<div className=' w-full flex justify-center'>
-									<Row className=' w-fit m-0 py-3'>
-										{[...data.interests].map(
-											(interest, index) => (
-												<Col
-													key={index}
-													className='!max-w-fit p-1'
-												>
-													<div className=''>
-														<button className='text-novo-purple border-novo-purple px-3 bg-novo-lightpurple py-1 rounded-full flex justify-center items-center'>
-															{interest}
-															<FaTimes
-																className='hover:text-red-500 ml-2'
-																onClick={() =>
-																	handleTagRemove(
-																		interest
-																	)
-																}
-															/>
-														</button>
-													</div>
-												</Col>
-											)
-										)}
-									</Row>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
