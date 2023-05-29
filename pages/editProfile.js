@@ -152,8 +152,10 @@ export default function EditProfile() {
 												/>
 											</form>
 										</div>
+
+										{/* where the tags go */}
 										<div className=' w-full flex justify-center'>
-											<Row className=' w-fit m-0 py-3'>
+											<Row className='mt-4 ml-40 focus:outline-none w-full h-[13vh] border rounded-2xl px-4 py-3 resize-none placeholder:font-light placeholder-[#858585] placeholder:font-regular'>
 												{[...data.interests].map(
 													(interest, index) => (
 														<Col
