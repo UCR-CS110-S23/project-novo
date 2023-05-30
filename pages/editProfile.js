@@ -135,11 +135,12 @@ export default function EditProfile() {
 								{/* text input */}
 								<div>
 									<div className='flex flex-col items-center w-full'>
-										<div className='w-1/4 '>
+										{/* w-1/4 */}
+										<div className='flex border rounded-2xl px-2 py-2'>
 											<form onSubmit={handleTagSubmit}>
 												{/* textbox styling */}
 												<input
-													className='flex border rounded-2xl px-2 py-2 '
+													className='focus:outline-none w-full placeholder:font-light placeholder-[#858585] placeholder:font-regular pl-[5px]'
 													type='text'
 													value={tag}
 													onChange={e =>
@@ -154,32 +155,6 @@ export default function EditProfile() {
 										</div>
 
 										{/* where the tags go */}
-										<div className=' w-full flex justify-center'>
-											<Row className='mt-4 ml-40 focus:outline-none w-full h-[13vh] border rounded-2xl px-4 py-3 resize-none placeholder:font-light placeholder-[#858585] placeholder:font-regular'>
-												{[...data.interests].map(
-													(interest, index) => (
-														<Col
-															key={index}
-															className='!max-w-fit p-1'
-														>
-															<div className=''>
-																<button className='text-novo-purple border-novo-purple px-3 bg-novo-lightpurple py-1 rounded-full flex justify-center items-center'>
-																	{interest}
-																	<FaTimes
-																		className='hover:text-red-500 ml-2'
-																		onClick={() =>
-																			handleTagRemove(
-																				interest
-																			)
-																		}
-																	/>
-																</button>
-															</div>
-														</Col>
-													)
-												)}
-											</Row>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -268,6 +243,25 @@ export default function EditProfile() {
 						className='mt-4 ml-40 focus:outline-none w-full h-[13vh] border rounded-2xl px-4 py-3 resize-none placeholder:font-light placeholder-[#858585] placeholder:font-regular'
 						placeholder=''
 					/> */}
+					<div className='mt-4 ml-40 w-full'>
+						<Row className='mt-4 ml-40 focus:outline-none w-full h-[13vh] border rounded-2xl px-4 py-3 resize-none placeholder:font-light placeholder-[#858585] placeholder:font-regular'>
+							{[...data.interests].map((interest, index) => (
+								<Col key={index} className='!max-w-fit p-1'>
+									<div className=''>
+										<button className='text-novo-purple border-novo-purple px-3 bg-novo-lightpurple py-1 rounded-full flex justify-center items-center'>
+											{interest}
+											<FaTimes
+												className='hover:text-red-500 ml-2'
+												onClick={() =>
+													handleTagRemove(interest)
+												}
+											/>
+										</button>
+									</div>
+								</Col>
+							))}
+						</Row>
+					</div>
 
 					{/* Current Activities section */}
 					<div className='mt-8 ml-40 flex space-x-3 items-baseline'>
