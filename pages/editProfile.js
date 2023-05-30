@@ -236,12 +236,12 @@ export default function EditProfile() {
 					</div>
 
 					{/* Interests --> user types in any interest --> populates in this box */}
-					<div className='mt-4 ml-40 w-full'>
+					<div className='ml-40 w-full'>
 						<Row className='mt-4 ml-40 focus:outline-none w-full h-[13vh] border rounded-2xl px-4 py-3 resize-none placeholder:font-light placeholder-[#858585] placeholder:font-regular'>
 							{[...data.interests].map((interest, index) => (
 								<Col key={index} className='!max-w-fit p-1'>
 									<div className=''>
-										<button className='text-novo-purple border-novo-purple px-3 bg-novo-lightpurple py-1 rounded-full flex justify-center items-center'>
+										<button className='text-white border-[#7231F3] px-3 bg-[#7231F3] py-1 rounded-full flex justify-center items-center'>
 											{interest}
 											<FaTimes
 												className='hover:text-red-500 ml-2'
