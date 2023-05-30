@@ -111,6 +111,8 @@ export default function EditProfile() {
 										Choose up to 6 interests
 									</div>
 								</div>
+
+
 								<div className='flex border rounded-2xl px-2 py-2 '>
 									<input
 										type='text'
@@ -134,27 +136,22 @@ export default function EditProfile() {
 
 								{/* text input */}
 								<div>
-									<div className='flex flex-col items-center w-full'>
-										{/* w-1/4 */}
-										<div className='flex border rounded-2xl px-2 py-2'>
-											<form onSubmit={handleTagSubmit}>
-												{/* textbox styling */}
-												<input
-													className='focus:outline-none w-full placeholder:font-light placeholder-[#858585] placeholder:font-regular pl-[5px]'
-													type='text'
-													value={tag}
-													onChange={e =>
-														setTag(e.target.value)
-													}
-													placeholder='Enter your interests (movies, running, etc.)'
-													name='first'
-													autoComplete='off'
-													maxLength={20}
-												/>
-											</form>
-										</div>
-
-										{/* where the tags go */}
+									<div className='border rounded-2xl px-2 py-2'>
+										<form onSubmit={handleTagSubmit}>
+											{/* textbox styling */}
+											<input
+												className='focus:outline-none w-full placeholder:font-light placeholder-[#858585] placeholder:font-regular pl-[5px]'
+												type='text'
+												value={tag}
+												onChange={e =>
+													setTag(e.target.value)
+												}
+												placeholder='Enter your interests (movies, running, etc.)'
+												name='first'
+												autoComplete='off'
+												maxLength={20}
+											/>
+										</form>
 									</div>
 								</div>
 							</div>
@@ -239,10 +236,6 @@ export default function EditProfile() {
 					</div>
 
 					{/* Interests --> user types in any interest --> populates in this box */}
-					{/* <textarea
-						className='mt-4 ml-40 focus:outline-none w-full h-[13vh] border rounded-2xl px-4 py-3 resize-none placeholder:font-light placeholder-[#858585] placeholder:font-regular'
-						placeholder=''
-					/> */}
 					<div className='mt-4 ml-40 w-full'>
 						<Row className='mt-4 ml-40 focus:outline-none w-full h-[13vh] border rounded-2xl px-4 py-3 resize-none placeholder:font-light placeholder-[#858585] placeholder:font-regular'>
 							{[...data.interests].map((interest, index) => (
