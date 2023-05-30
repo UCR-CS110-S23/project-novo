@@ -21,6 +21,7 @@ function NavBar() {
 							className=''
 						/>
 					</div>
+
 					<div className='flex flex-col justify-start w-full space-y-2 '>
 						<Link
 							href='/feed'
@@ -29,10 +30,12 @@ function NavBar() {
 							<RiCompassDiscoverLine />
 							<div>Feed</div>
 						</Link>
+
 						<button className='text-white flex w-full items-center no-underline py-2 px-4    space-x-2 font-light'>
 							<FiMessageSquare />
 							<div>Messages</div>
 						</button>
+
 						<Link
 							href='/activityFeed'
 							className='text-white flex w-full items-center  no-underline py-2 px-4    space-x-2 font-light'
@@ -43,9 +46,10 @@ function NavBar() {
 					</div>
 				</div>
 				<div className='flex justify-between m-4'>
-					<button className='text-white text-2xl'>
+					<Link href='/editProfile' className='text-white text-2xl'>
 						<MdPersonOutline />
-					</button>
+					</Link>
+
 					<button className='text-white text-2xl'>
 						<RxExit />
 					</button>
