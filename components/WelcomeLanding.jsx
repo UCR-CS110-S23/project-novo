@@ -2,7 +2,7 @@ import React from "react";
 import NOVO from "../public/NOVO.png";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
-import { Link } from "next/link";
+import Link from "next/link";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 // import { useRouter } from "next/router";
