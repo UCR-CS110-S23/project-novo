@@ -2,8 +2,10 @@ import React from "react";
 import NOVO from "../public/NOVO.png";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
+import { Link } from "next/link";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
+// import { useRouter } from "next/router";
 
 const WelcomeText = () => {
 	const [name, setName] = useState("");
@@ -11,8 +13,18 @@ const WelcomeText = () => {
 	const [password, setPassword] = useState("");
 	const isButtonDisabled = name === "" || email === "" || password === "";
 
-	const infoSubmit = () => {
-		// this will be handled later lol
+	// const router = useRouter();
+
+	const handleSignIn = async e => {
+		e.preventDefault();
+
+		console.log("Email: ", email);
+		await signIn("credentials", {
+			redirect: true,
+			email,
+			password,
+			callbackUrl: "/feed",
+		});
 	};
 
 	const handleGoogle = async () => {
@@ -28,6 +40,10 @@ const WelcomeText = () => {
 				<Image src={NOVO} alt='site-logo' className='max-w-md pb-4' />
 				<p className='text-2xl text-white font-light'>
 					meet your <b>new</b> adventure
+				</p>
+				<p className='text-white font-thin text-lg mt-4'>
+					Noun. novo m (uncountable) new ideas or <br />
+					things; novelties synonym
 				</p>
 			</div>
 
@@ -59,12 +75,12 @@ const WelcomeText = () => {
 							? "opacity-50 disabled:pointer-events-none"
 							: ""
 					}`}
-					onClick={infoSubmit}
+					onClick={handleSignIn}
 					disabled={isButtonDisabled}
 				>
 					<div className='group hover:bg-white mt-3 text-white px-4 py-2 w-80 rounded-full border-2 border-white transition-colors duration-300'>
 						<span className='group-hover:text-purple-500'>
-							SIGN UP
+							LOG IN
 						</span>
 					</div>
 				</button>
@@ -83,6 +99,15 @@ const WelcomeText = () => {
 						</span>
 					</div>
 				</button>
+
+				<div>
+					<p className='text-white mt-4 text-sm'>
+						DON&apos;T HAVE AN ACCOUNT?{" "}
+						<Link href='/profileCreation' className='text-white'>
+							SIGN UP HERE
+						</Link>
+					</p>
+				</div>
 			</div>
 		</div>
 	);

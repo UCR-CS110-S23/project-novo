@@ -13,6 +13,7 @@ function NavBar() {
 	const { data: session, status } = useSession();
 
 	console.log(session, status);
+
 	return (
 		<>
 			<div className='flex flex-col justify-between w-full bg-novo-purple h-screen rounded-r-xl'>
