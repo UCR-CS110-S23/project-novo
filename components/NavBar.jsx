@@ -37,7 +37,7 @@ function NavBar() {
 						</button>
 
 						<Link
-							href='/activityProfile'
+							href='/activityFeed'
 							className='text-white flex w-full items-center  no-underline py-2 px-4    space-x-2 font-light'
 						>
 							<TbCircles />

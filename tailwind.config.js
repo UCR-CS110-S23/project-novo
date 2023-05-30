@@ -19,6 +19,9 @@ module.exports = {
 				sm: "0.75rem",
 				md: "0.9rem",
 			},
+			transitionProperty: {
+				width: "width",
+			},
 			colors: {
 				novo: {
 					purple: "#7231F3",
@@ -26,6 +29,8 @@ module.exports = {
 					lightpurple: "#F3EFFF",
 					darkpurple: "#5F1FDE",
 					lightgray: "#EDEDED",
+					gray: "#F5F5F5",
+					darkgray: "#777777",
 				},
 			},
 		},

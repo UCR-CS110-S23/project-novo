@@ -28,7 +28,7 @@ export default function ActivityProfile() {
 								<div className='absolute bottom-6 left-0 bg-white rounded-r-full text-black text-2xl py-1 pr-4 pl-[5%]'>
 									DISNEYLAND
 								</div>
-								<div className='absolute hover:bg-novo-purple hover:text-white bottom-6 right-[3%] bg-novo-lightpurple border-2 border-novo-purple text-novo-purple rounded-full px-3 py-0.5 text-md'>
+								<div className='absolute hover:bg-novo-purple hover:text-white bottom-6 right-[3%] bg-novo-lightpurple border-2 border-novo-purple text-novo-purple rounded-full px-3 py-0.5 text-xl'>
 									ADD ACTIVITY
 								</div>
 							</div>

@@ -17,5 +17,6 @@ module.exports = {
 	plugins: ["react"],
 	rules: {
 		"require-jsdoc": "off",
+		"new-cap": 0,
 	},
 };
