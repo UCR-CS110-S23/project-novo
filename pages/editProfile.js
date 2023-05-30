@@ -100,10 +100,9 @@ export default function EditProfile() {
 								</div>
 							</div>
 
-							{/* Interests */}
-							{/* text inputty thingy */}
+							{/* Interests - text input*/}
 							<div className='w-full mt-4 items-center'>
-								{/* Interests title part */}
+								{/* title section */}
 								<div className='flex space-x-3 items-baseline'>
 									<div className='text-xl font-medium mb-2'>
 										Interests
@@ -113,11 +112,10 @@ export default function EditProfile() {
 									</div>
 								</div>
 
-								{/* text input */}
+								{/* interests text input --> will populate tag in other text box */}
 								<div>
 									<div className='border rounded-2xl px-2 py-2'>
 										<form onSubmit={handleTagSubmit}>
-											{/* textbox styling */}
 											<input
 												className='focus:outline-none w-full placeholder:font-light placeholder-[#858585] placeholder:font-regular pl-[5px]'
 												type='text'

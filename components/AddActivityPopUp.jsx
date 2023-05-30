@@ -15,7 +15,7 @@ const AddActivityPopUp = () => {
 								layout='responsive'
 							/>
 						</div>
-						<span className='items-center text-[#858585] text-base'>
+						<span className='items-center text-[#858585] text-sm font-light mt-2'>
 							Go to Activities Page to Add Activity
 						</span>
 					</div>
