@@ -57,8 +57,15 @@ export default function Messaging() {
 								</div>
 							</div>
 						</div>
-						<div className='mt-4 mr-4 mb-4 items-start h-20 w-40'>
-							<Image src={Disney} alt='Landing' />
+						<div className='relative flex mt-4 mr-4 mb-4 items-start h-20 w-40'>
+							<Image
+								src={Disney}
+								alt='Landing'
+								className='rounded-md'
+							/>
+							<div className='absolute bg-novo-lightpurple text-novo-purple text-xs rounded-full whitespace-nowrap !max-w-fit py-1 pr-2 pl-[5%] ml-20 -mt-2'>
+								DISNEYLAND
+							</div>
 						</div>
 					</div>
 					<div className='text-novo-dategray mt-2 text-center text-sm'>
@@ -115,7 +122,7 @@ export default function Messaging() {
 								<FiSend />
 							</button>
 						</div>
-						<div className='ml-8 mt-1'>
+						<div className='ml-3 mt-1'>
 							<button className='text-novo-darkgray text-xl'>
 								<BsPlusSquare />
 							</button>
