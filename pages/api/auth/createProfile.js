@@ -1,5 +1,3 @@
-import User from "../../../models/User";
-import db from "../../../utils/db";
 import { hashPassword } from "../../../utils/hash";
 
 export default async function handler(req, res) {

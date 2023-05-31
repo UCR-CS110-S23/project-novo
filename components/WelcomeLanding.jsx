@@ -1,4 +1,4 @@
-import React from "react";
+import { React } from "react";
 import NOVO from "../public/NOVO.png";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
@@ -10,10 +10,11 @@ const WelcomeText = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const isButtonDisabled = name === "" || email === "" || password === "";
+	// const [isEmailInvalid, setEmailInvalid] = useState(false);
 
-	const infoSubmit = () => {
-		// this will be handled later lol
-	};
+	// const validateInputs = () => setEmailInvalid(true);
+
+	const handleSignup = async e => {};
 
 	return (
 		<div className='flex flex-row items-center justify-between mx-80 h-screen'>
@@ -47,15 +48,16 @@ const WelcomeText = () => {
 					onChange={e => setPassword(e.target.value)}
 				/>
 				<button
+					href='/profileCreation'
 					className={`${
 						isButtonDisabled
-							? "opacity-50 disabled:pointer-events-none"
+							? "opacity-50 disabled:pointer-events-none no-underline"
 							: ""
 					}`}
-					onClick={infoSubmit}
+					onClick={handleSignup}
 					disabled={isButtonDisabled}
 				>
-					<div className='group hover:bg-white mt-3 text-white px-4 py-2 w-80 rounded-full border-2 border-white transition-colors duration-300'>
+					<div className='flex justify-center group hover:bg-white mt-3 text-white px-4 py-2 w-80 rounded-full border-2 border-white transition-colors duration-300'>
 						<span className='group-hover:text-purple-500'>
 							SIGN UP
 						</span>

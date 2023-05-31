@@ -1,10 +1,11 @@
 import { React, useState } from "react";
-import Link from "next/link";
 import { FaTimes } from "react-icons/fa";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { useRouter } from "next/router";
 
 const Questions = ({ counter }) => {
+	const router = useRouter();
 	const [identityT, setIdentityT] = useState(0);
 	const [pronounT, setPronounT] = useState(0);
 	const [genderT, setGenderT] = useState(0);
@@ -41,6 +42,47 @@ const Questions = ({ counter }) => {
 		const interests = data.interests;
 		interests.delete(interest);
 		setData({ ...data, interests: interests });
+	};
+
+	const createProfile = async e => {
+		e.preventDefault();
+
+		const newUser = {
+			name,
+			email,
+			password,
+			age,
+			pronoun,
+			gender,
+			preference,
+			location,
+		};
+
+		const response = await fetch("/api/auth/createProfile", {
+			method: "POST",
+			body: JSON.stringify(newUser),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+
+		const data = await response.json();
+		if (data.userExists) {
+			// validateInputs();
+			// console.log("user exists");
+		} else {
+			setName("");
+			setEmail("");
+			setPassword("");
+			setAge(0);
+			setPronoun("");
+			setGender("");
+			setPreference("");
+			setLocation("");
+
+			console.log("user made successfully");
+			router.push("/feed");
+		}
 	};
 
 	return (
@@ -346,12 +388,12 @@ const Questions = ({ counter }) => {
 							<div className='text-novo-darkgray'>
 								ADD ACTIVITIES
 							</div>
-							<Link
-								href='/activityFeed'
+							<button
+								onClick={createProfile}
 								className='border no-underline text-novo-darkgray  hover:bg-novo-purple hover:text-white border-novo-gray w-full h-full text-4xl py-4 px-3 text-center focus:outline-none rounded-xl'
 							>
 								CHOOSE 3 ACTIVITIES
-							</Link>
+							</button>
 						</div>{" "}
 					</>
 				)}
