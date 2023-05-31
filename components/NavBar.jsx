@@ -21,6 +21,7 @@ function NavBar() {
 							className=''
 						/>
 					</div>
+
 					<div className='flex flex-col justify-start w-full space-y-2 '>
 						<Link
 							href='/feed'
@@ -46,9 +47,10 @@ function NavBar() {
 					</div>
 				</div>
 				<div className='flex justify-between m-4'>
-					<button className='text-white text-2xl'>
+					<Link href='/editProfile' className='text-white text-2xl'>
 						<MdPersonOutline />
-					</button>
+					</Link>
+
 					<button className='text-white text-2xl'>
 						<RxExit />
 					</button>
