@@ -1,6 +1,6 @@
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
-// import CredentialsProvider from "next-auth/providers/credentials";
+import CredentialsProvider from "next-auth/providers/credentials";
 import clientPromise from "/lib/mongodb.js";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 
@@ -16,31 +16,31 @@ export const authOptions = {
 			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
 		}),
 
-		// CredentialsProvider({
-		// 	name: "Credentials",
-		// 	async authorize(credentials) {
-		// 		const db = (await clientPromise).db(process.env.MONGODB_DB);
-		// 		const existingUser = await db
-		// 			.collection("users")
-		// 			.findOne({ email: credentials.email });
+		CredentialsProvider({
+			name: "Credentials",
+			async authorize(credentials) {
+				const db = (await clientPromise).db(process.env.MONGODB_DB);
+				const existingUser = await db
+					.collection("users")
+					.findOne({ email: credentials.email });
 
-		// 		// Checks if email exists
-		// 		if (!existingUser) {
-		// 			console.log("Authentication: Email not found");
-		// 			return null;
-		// 		}
+				// Checks if email exists
+				if (!existingUser) {
+					console.log("Authentication: Email not found");
+					return null;
+				}
 
-		// 		if (credentials.password != existingUser.password) {
-		// 			console.log("Authentication: The password is wrong");
-		// 			return null;
-		// 		}
+				if (credentials.password != existingUser.password) {
+					console.log("Authentication: The password is wrong");
+					return null;
+				}
 
-		// 		return {
-		// 			name: existingUser.name,
-		// 			email: existingUser.email,
-		// 		};
-		// 	},
-		// }),
+				return {
+					name: existingUser.name,
+					email: existingUser.email,
+				};
+			},
+		}),
 	],
 	// callbacks: {
 	// 	async signIn({ user, account, profile }) {
