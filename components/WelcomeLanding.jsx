@@ -8,10 +8,9 @@ import { FcGoogle } from "react-icons/fc";
 // import { useRouter } from "next/router";
 
 const WelcomeText = () => {
-	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const isButtonDisabled = name === "" || email === "" || password === "";
+	const isButtonDisabled = email === "" || password === "";
 
 	// const router = useRouter();
 
@@ -51,20 +50,13 @@ const WelcomeText = () => {
 				<input
 					className='rounded-full bg-white/20 text-white placeholder-white py-3 pl-8 pr-10 w-80 focus:outline-none my-1'
 					type='text'
-					placeholder='NAME'
-					value={name}
-					onChange={e => setName(e.target.value)}
-				/>
-				<input
-					className='rounded-full bg-white/20 text-white placeholder-white py-3 pl-8 pr-10 w-80 focus:outline-none my-1'
-					type='text'
 					placeholder='EMAIL'
 					value={email}
 					onChange={e => setEmail(e.target.value)}
 				/>
 				<input
 					className='rounded-full bg-white/20 text-white placeholder-white py-3 pl-8 w-80 focus:outline-none my-1'
-					type='text'
+					type='password'
 					placeholder='PASSWORD'
 					value={password}
 					onChange={e => setPassword(e.target.value)}
