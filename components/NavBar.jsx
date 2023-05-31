@@ -7,7 +7,7 @@ import { MdPersonOutline } from "react-icons/md";
 import { TbCircles } from "react-icons/tb";
 import { RxExit } from "react-icons/rx";
 import Link from "next/link";
-import { getSession, signOut, useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 function NavBar() {
 	const { data: session, status } = useSession();
@@ -69,22 +69,5 @@ function NavBar() {
 		</>
 	);
 }
-
-export const getServerSideProps = async context => {
-	const session = await getSession({ req: context.req });
-
-	if (!session) {
-		return {
-			redirect: {
-				destination: "/",
-				permanent: false,
-			},
-		};
-	}
-
-	return {
-		props: { session },
-	};
-};
 
 export default NavBar;

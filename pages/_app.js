@@ -7,12 +7,12 @@ const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
 export default function App({ Component, pageProps, session }) {
 	return (
-		<SessionProvider session={session}>
-			<main className={`${outfit.className}`}>
+		<main className={`${outfit.className}`}>
+			<SessionProvider session={pageProps.session}>
 				{/* <Layout> */}
 				<Component {...pageProps} />
 				{/* </Layout> */}
-			</main>
-		</SessionProvider>
+			</SessionProvider>
+		</main>
 	);
 }
