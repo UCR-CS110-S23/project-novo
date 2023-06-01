@@ -7,12 +7,12 @@ const MyMessageResponse = ({ image, message, time }) => {
 			<div className='flex justify-end w-full'>
 				<div className='mr-3'>
 					<div className='flex justify-between'>
-						<div className=' text-novo-dategray pt-1 text-xs'>
+						<div className='mr-3 text-novo-dategray pt-1 text-xs'>
 							{time}
 						</div>
 						You
 					</div>
-					<div className='text-base p-3 mt-1 bg-novo-lightpurple text-novo-purple rounded-l-md rounded-br-md text-novo-messagegray'>
+					<div className='text-sm text-center p-3 mt-1 bg-novo-lightpurple text-novo-purple rounded-l-md rounded-br-md text-novo-messagegray'>
 						{message}
 					</div>
 				</div>
