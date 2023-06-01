@@ -12,7 +12,7 @@ const MyMessageResponse = ({ image, message, time }) => {
 						</div>
 						You
 					</div>
-					<div className='text-sm p-3 mt-1 bg-novo-lightpurple text-novo-purple rounded-l-md rounded-br-md text-novo-messagegray'>
+					<div className='text-sm text-center p-3 mt-1 bg-novo-lightpurple text-novo-purple rounded-l-md rounded-br-md text-novo-messagegray'>
 						{message}
 					</div>
 				</div>
