@@ -13,13 +13,13 @@ const MessageResponse = ({ image, name, message, time }) => {
 			</div>
 			<div className='flex w-full'>
 				<div className='ml-3'>
-					<div className='flex justify-between'>
+					<div className='flex text-base justify-between items-center'>
 						{name}
-						<div className=' text-novo-dategray pt-1 text-xs'>
+						<div className=' text-sm ml-3 text-novo-dategray pt-1'>
 							{time}
 						</div>
 					</div>
-					<div className='text-base p-3 mt-1 bg-novo-gray text-black rounded-r-md rounded-bl-md text-novo-messagegray'>
+					<div className='text-sm p-3 mt-1 bg-novo-gray text-center text-black rounded-r-md rounded-bl-md text-novo-messagegray'>
 						{message}
 					</div>
 				</div>
