@@ -2,6 +2,8 @@ import { useState } from "react";
 import React from "react";
 import { BsCheckLg } from "react-icons/bs";
 import { RxCross2 } from "react-icons/rx";
+import Image from "next/image";
+import Disney from "../public/disneyland.png";
 
 const MatchButtons = () => {
 	const [showModal, setShowModal] = useState(false);
@@ -17,14 +19,35 @@ const MatchButtons = () => {
 			</button>
 			{showModal ? (
 				<>
-					<div className='justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50'>
+					<div
+						className='justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50'
+						onClick={() => setShowModal(false)}
+					>
 						<div className='relative w-auto my-6 mx-auto max-w-3xl'>
 							<div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
-								<div className='flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t'>
-									<h3 className='text-3xl font-semibold'>
-										Modal Title
-									</h3>
-									<button></button>
+								<div className='grid grid-rows-3 place-items-center justify-center p-10'>
+									<div>
+										<h3 className='text-3xl text-center font-semibold '>
+											Activity Selected
+										</h3>
+
+										<div className='text-sm text-novo-messagegray'>
+											GO TO MESSAGES TO START CONVERSATION
+											WITH VIVIANE
+										</div>
+									</div>
+									<div className='bg-red-500 h-20 w-64 border'>
+										<Image
+											src={Disney}
+											alt='Landing'
+											layout='responsive'
+											className='rounded-xl'
+										/>
+									</div>
+
+									<button className='bg-novo-purple hover:bg-novo-darkpurple w-40 rounded-full text-white px-3 py-0.5 font-light text-md right-0'>
+										Message
+									</button>
 								</div>
 							</div>
 						</div>
