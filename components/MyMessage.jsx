@@ -7,7 +7,7 @@ const MyMessageResponse = ({ image, message, time }) => {
 			<div className='flex justify-end w-full'>
 				<div className='mr-3'>
 					<div className='flex justify-between'>
-						<div className=' text-novo-dategray pt-1 text-xs'>
+						<div className='mr-3 text-novo-dategray pt-1 text-xs'>
 							{time}
 						</div>
 						You
