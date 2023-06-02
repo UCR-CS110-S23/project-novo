@@ -1,9 +1,10 @@
 import { useState } from "react";
 import React from "react";
 import { BsCheckLg } from "react-icons/bs";
+import { GrClose } from "react-icons/gr";
 import { RxCross2 } from "react-icons/rx";
 import Image from "next/image";
-import Disney from "../public/disneyland.png";
+import ActivitySelected from "../public/ActivitySelected.png";
 
 const MatchButtons = () => {
 	const [showModal, setShowModal] = useState(false);
@@ -12,7 +13,12 @@ const MatchButtons = () => {
 			<div className='hover:bg-novo-lightpurple rounded-full text-5xl border-4 border-novo-purple text-novo-purple text-center p-2 pr-3  hover:-translate-y-1 duration-300'>
 				<RxCross2 />
 			</div>
-			<button type='button' onClick={() => setShowModal(true)}>
+			<button
+				type='button'
+				onClick={() => {
+					setShowModal(true);
+				}}
+			>
 				<div className='hover:bg-novo-darkpurple  hover:border-novo-darkpurple rounded-full text-5xl  border-4 border-novo-purple bg-novo-purple text-center text-white p-2 pr-3 hover:-translate-y-1 duration-300'>
 					<BsCheckLg />
 				</div>
@@ -26,8 +32,13 @@ const MatchButtons = () => {
 						<div className=' w-auto my-6  mx-auto max-w-3xl'>
 							<div className='border-0  rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
 								<div className='flex flex-col place-items-center p-10'>
-									<div className='text-4xl font-medium'>
-										Activity Selected
+									<div className='text-2xl w-full flex justify-end'>
+										<GrClose />
+									</div>
+									<div className='flex flex-row'>
+										<div className='text-4xl font-medium'>
+											Activity Selected
+										</div>
 									</div>
 									<div className='text-sm text-novo-messagegray mb-4 font-light'>
 										GO TO MESSAGES TO START CONVERSATION
@@ -36,7 +47,7 @@ const MatchButtons = () => {
 									<div className='bg-red-500'>
 										<div className='relative flex justify-center items-center'>
 											<Image
-												src={Disney}
+												src={ActivitySelected}
 												alt='Landing'
 												layout='responsive'
 												className='rounded-xl'
