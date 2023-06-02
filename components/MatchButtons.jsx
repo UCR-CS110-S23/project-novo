@@ -10,9 +10,11 @@ const MatchButtons = () => {
 	const [showModal, setShowModal] = useState(false);
 	return (
 		<div className='flex space-x-3'>
-			<div className='hover:bg-novo-lightpurple rounded-full text-5xl border-4 border-novo-purple text-novo-purple text-center p-2 pr-3  hover:-translate-y-1 duration-300'>
-				<RxCross2 />
-			</div>
+			<button>
+				<div className='hover:bg-novo-lightpurple rounded-full text-5xl border-4 border-novo-purple text-novo-purple text-center p-2 pr-3  hover:-translate-y-1 duration-300'>
+					<RxCross2 />
+				</div>
+			</button>
 			<button
 				type='button'
 				onClick={() => {
@@ -25,27 +27,28 @@ const MatchButtons = () => {
 			</button>
 			{showModal ? (
 				<>
-					<div
-						className='justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50'
-						onClick={() => setShowModal(false)}
-					>
+					<div className='justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50'>
 						<div className=' w-auto my-6  mx-auto max-w-3xl'>
 							<div className='border-0  rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
-								<div className='flex flex-col place-items-center p-10'>
+								<div className='flex flex-col place-items-center p-6'>
 									<div className='text-2xl w-full flex justify-end'>
-										<GrClose />
+										<button
+											onClick={() => setShowModal(false)}
+										>
+											<GrClose />
+										</button>
 									</div>
 									<div className='flex flex-row'>
 										<div className='text-4xl font-medium'>
 											Activity Selected
 										</div>
 									</div>
-									<div className='text-sm text-novo-messagegray mb-4 font-light'>
+									<div className='text-sm text-novo-messagegray mb-4 mt-1 font-light'>
 										GO TO MESSAGES TO START CONVERSATION
 										WITH VIVIANE
 									</div>
-									<div className='bg-red-500'>
-										<div className='relative flex justify-center items-center'>
+									<div className='mx-40'>
+										<div className='relative w-96 flex justify-center items-center'>
 											<Image
 												src={ActivitySelected}
 												alt='Landing'
@@ -58,7 +61,7 @@ const MatchButtons = () => {
 										</div>
 									</div>
 									<div>
-										<button className='bg-novo-purple hover:bg-novo-darkpurple w-48 rounded-full text-white mt-8 px-3 py-0.5 font-light text-l'>
+										<button className='bg-novo-purple hover:bg-novo-darkpurple w-60 rounded-full text-white mt-8 px-3 py-0.5 mb-4 font-light text-l'>
 											Message
 										</button>
 									</div>
