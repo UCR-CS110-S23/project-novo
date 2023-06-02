@@ -36,7 +36,7 @@ const MatchButtons = () => {
 											WITH VIVIANE
 										</div>
 									</div>
-									<div className='bg-red-500 h-20 w-64 border'>
+									<div className='h-20 w-64'>
 										<Image
 											src={Disney}
 											alt='Landing'
@@ -44,8 +44,7 @@ const MatchButtons = () => {
 											className='rounded-xl'
 										/>
 									</div>
-
-									<button className='bg-novo-purple hover:bg-novo-darkpurple w-40 rounded-full text-white px-3 py-0.5 font-light text-md right-0'>
+									<button className='bg-novo-purple hover:bg-novo-darkpurple w-40 mt-16 rounded-full text-white px-3 py-0.5 font-light text-md right-0'>
 										Message
 									</button>
 								</div>
