@@ -23,30 +23,34 @@ const MatchButtons = () => {
 						className='justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50'
 						onClick={() => setShowModal(false)}
 					>
-						<div className='relative w-auto my-6 mx-auto max-w-3xl'>
-							<div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
-								<div className='grid grid-rows-3 place-items-center justify-center p-10'>
-									<div>
-										<h3 className='text-3xl text-center font-semibold '>
-											Activity Selected
-										</h3>
-
-										<div className='text-sm text-novo-messagegray'>
-											GO TO MESSAGES TO START CONVERSATION
-											WITH VIVIANE
+						<div className=' w-auto my-6  mx-auto max-w-3xl'>
+							<div className='border-0  rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
+								<div className='flex flex-col place-items-center p-10'>
+									<div className='text-4xl font-medium'>
+										Activity Selected
+									</div>
+									<div className='text-sm text-novo-messagegray mb-4 font-light'>
+										GO TO MESSAGES TO START CONVERSATION
+										WITH VIVIANE
+									</div>
+									<div className='bg-red-500'>
+										<div className='relative flex justify-center items-center'>
+											<Image
+												src={Disney}
+												alt='Landing'
+												layout='responsive'
+												className='rounded-xl'
+											/>
+											<div className='absolute bg-white rounded-full text-black text-md px-4 py-2'>
+												DISNEYLAND
+											</div>
 										</div>
 									</div>
-									<div className='h-20 w-64'>
-										<Image
-											src={Disney}
-											alt='Landing'
-											layout='responsive'
-											className='rounded-xl'
-										/>
+									<div>
+										<button className='bg-novo-purple hover:bg-novo-darkpurple w-48 rounded-full text-white mt-8 px-3 py-0.5 font-light text-l'>
+											Message
+										</button>
 									</div>
-									<button className='bg-novo-purple hover:bg-novo-darkpurple w-40 mt-16 rounded-full text-white px-3 py-0.5 font-light text-md right-0'>
-										Message
-									</button>
 								</div>
 							</div>
 						</div>
