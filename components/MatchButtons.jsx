@@ -5,6 +5,7 @@ import { GrClose } from "react-icons/gr";
 import { RxCross2 } from "react-icons/rx";
 import Image from "next/image";
 import ActivitySelected from "../public/ActivitySelected.png";
+import Link from "next/link";
 
 const MatchButtons = () => {
 	const [showModal, setShowModal] = useState(false);
@@ -47,7 +48,7 @@ const MatchButtons = () => {
 										GO TO MESSAGES TO START CONVERSATION
 										WITH VIVIANE
 									</div>
-									<div className='mx-40'>
+									<div className='mx-24'>
 										<div className='relative w-96 flex justify-center items-center'>
 											<Image
 												src={ActivitySelected}
@@ -61,9 +62,11 @@ const MatchButtons = () => {
 										</div>
 									</div>
 									<div>
-										<button className='bg-novo-purple hover:bg-novo-darkpurple w-60 rounded-full text-white mt-8 px-3 py-0.5 mb-4 font-light text-l'>
-											Message
-										</button>
+										<Link href='/messaging'>
+											<button className='bg-novo-purple hover:bg-novo-darkpurple w-48 rounded-full text-white mt-8 px-3 py-0.5 mb-4 font-light text-l'>
+												Message
+											</button>
+										</Link>
 									</div>
 								</div>
 							</div>
