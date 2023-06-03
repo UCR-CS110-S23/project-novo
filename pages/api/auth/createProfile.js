@@ -1,13 +1,16 @@
-import { hashPassword } from "../../../utils/hash";
+import { hashPassword } from "@/lib/hash";
+import clientPromise from "@/lib/mongodb";
 
 export default async function handler(req, res) {
 	if (req.method === "POST") {
 		const newUser = req.body;
 
-		await db.connect();
+		const db = (await clientPromise).db(process.env.MONGODB_DB);
 
 		// Check if user exists
-		const userExists = await User.findOne({ email: newUser.email });
+		const userExists = await db
+			.collection("users")
+			.findOne({ email: newUser.email });
 		if (userExists) {
 			res.status(422).json({
 				success: false,
@@ -21,8 +24,7 @@ export default async function handler(req, res) {
 		newUser.password = await hashPassword(newUser.password);
 
 		// Store new user
-		const storeUser = new User(newUser);
-		await storeUser.save();
+		await db.collection("users").insertOne(newUser);
 
 		res.status(201).json({
 			success: true,

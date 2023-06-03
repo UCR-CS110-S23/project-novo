@@ -3,15 +3,44 @@ import { FaTimes } from "react-icons/fa";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useRouter } from "next/router";
+import CreateActivity from "./CreateActivity";
+
+const activites1 = [
+	{
+		name: "DISNEYLAND_1",
+		location: "ANAHEIM, CA",
+	},
+	{
+		name: "DISNEYLAND_2",
+		location: "ANAHEIM, CA",
+	},
+	{
+		name: "DISNEYLAND_3",
+		location: "ANAHEIM, CA",
+	},
+];
+
+const activites2 = [
+	{
+		name: "DISNEYLAND_4",
+		location: "ANAHEIM, CA",
+	},
+	{
+		name: "DISNEYLAND_5",
+		location: "ANAHEIM, CA",
+	},
+	{
+		name: "DISNEYLAND_6",
+		location: "ANAHEIM, CA",
+	},
+];
 
 const Questions = ({ counter }) => {
 	const router = useRouter();
-	const [identityT, setIdentityT] = useState(0);
-	const [pronounT, setPronounT] = useState(0);
-	const [genderT, setGenderT] = useState(0);
 
 	const [tag, setTag] = useState("");
 	const [name, setName] = useState("");
+	const [bio, setBio] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [age, setAge] = useState("");
@@ -20,11 +49,16 @@ const Questions = ({ counter }) => {
 	const [preference, setPreference] = useState("");
 	const [location, setLocation] = useState("");
 
+	const [activities, setActivities] = useState([]);
+
+	const [interests, setInterests] = useState(new Set());
+
 	const [data, setData] = useState({
 		name: "",
 		age: 0.0,
 		pronoun: "",
 		gender: "",
+		bio: "",
 		preference: "",
 		location: "",
 		interests: new Set(),
@@ -35,6 +69,7 @@ const Questions = ({ counter }) => {
 		if (data.interests.size < 6) {
 			setData({ ...data, interests: new Set([...data.interests, tag]) });
 			setTag("");
+			setInterests(new Set([...data.interests, tag]));
 		}
 	};
 
@@ -56,37 +91,46 @@ const Questions = ({ counter }) => {
 			gender,
 			preference,
 			location,
+			bio,
+			interests,
 		};
 
-		const response = await fetch("/api/auth/createProfile", {
-			method: "POST",
-			body: JSON.stringify(newUser),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
+		try {
+			const response = await fetch("/api/auth/createProfile", {
+				method: "POST",
+				body: JSON.stringify(newUser),
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
 
-		const data = await response.json();
-		if (data.userExists) {
-			// validateInputs();
-			// console.log("user exists");
-		} else {
-			setName("");
-			setEmail("");
-			setPassword("");
-			setAge(0);
-			setPronoun("");
-			setGender("");
-			setPreference("");
-			setLocation("");
+			const data = await response.json();
+			if (data.userExists) {
+				// validateInputs();
+				console.log("user exists");
+			} else {
+				setName("");
+				setEmail("");
+				setPassword("");
+				setAge(0.0);
+				setPronoun("");
+				setGender("");
+				setPreference("");
+				setLocation("");
+				setBio("");
+				setInterests(new Set());
 
-			console.log("user made successfully");
-			router.push("/feed");
+				console.log("user made successfully");
+				router.push("/feed");
+			}
+		} catch (e) {
+			console.log(e);
 		}
 	};
 
 	return (
 		<>
+			<button onClick={createProfile}>fasdfa</button>
 			<div className='w-full flex justify-center'>
 				{counter === 0 && (
 					<>
@@ -125,7 +169,7 @@ const Questions = ({ counter }) => {
 								ENTER YOUR PASSWORD
 							</div>
 							<input
-								type='text'
+								type='password'
 								className='bg-novo-gray w-full text-4xl py-4 px-3 text-center text-black focus:outline-none rounded-xl'
 								value={password}
 								onChange={e => setPassword(e.target.value)}
@@ -158,38 +202,38 @@ const Questions = ({ counter }) => {
 							</div>
 							<div className='space-x-4 text-md w-full flex justify-between py-4'>
 								<button
-									onClick={() => setIdentityT(1)}
+									onClick={() => {
+										setGender("man");
+									}}
 									className={` text-novo-darkgray duration-300 hover:-translate-y-1 font-outfit text-center border rounded-full border-novo-darkgray py-3   w-1/3 ${
-										identityT === 1
+										gender === "man"
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
-									value={gender}
-									onChange={e => setGender(e.target.value)}
 								>
 									MAN
 								</button>
 								<button
-									onClick={() => setIdentityT(2)}
+									onClick={() => {
+										setGender("woman");
+									}}
 									className={`text-novo-darkgray duration-300 hover:-translate-y-1 font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
-										identityT === 2
+										gender === "woman"
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
-									value={gender}
-									onChange={e => setGender(e.target.value)}
 								>
 									WOMAN
 								</button>
 								<button
-									onClick={() => setIdentityT(3)}
+									onClick={() => {
+										setGender("non-binary");
+									}}
 									className={` text-novo-darkgray duration-300 hover:-translate-y-1 font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
-										identityT === 3
+										gender === "non-binary"
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
-									value={gender}
-									onChange={e => setGender(e.target.value)}
 								>
 									NON-BINARY
 								</button>
@@ -205,38 +249,32 @@ const Questions = ({ counter }) => {
 							</div>
 							<div className='space-x-4 text-md w-full flex justify-between py-4'>
 								<button
-									onClick={() => setPronounT(1)}
+									onClick={() => setPronoun("he/him")}
 									className={` text-novo-darkgray duration-300 hover:-translate-y-1 font-outfit text-center border rounded-full border-novo-darkgray py-3   w-1/3 ${
-										pronounT === 1
+										pronoun === "he/him"
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
-									value={pronoun}
-									onChange={e => setPronoun(e.target.value)}
 								>
 									HE/HIM
 								</button>
 								<button
-									onClick={() => setPronounT(2)}
+									onClick={() => setPronoun("she/her")}
 									className={`duration-300 hover:-translate-y-1 text-novo-darkgray font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
-										pronounT === 2
+										pronoun === "she/her"
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
-									value={pronoun}
-									onChange={e => setPronoun(e.target.value)}
 								>
 									SHE/HER
 								</button>
 								<button
-									onClick={() => setPronounT(3)}
+									onClick={() => setPronoun("they/them")}
 									className={`duration-300 hover:-translate-y-1 text-novo-darkgray font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
-										pronounT === 3
+										pronoun === "they/them"
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
-									value={pronoun}
-									onChange={e => setPronoun(e.target.value)}
 								>
 									THEY/THEM
 								</button>
@@ -267,44 +305,32 @@ const Questions = ({ counter }) => {
 							</div>
 							<div className='space-x-4 text-md w-full flex justify-between py-4'>
 								<button
-									onClick={() => setGenderT(1)}
+									onClick={() => setPreference("men")}
 									className={` text-novo-darkgray duration-300 hover:-translate-y-1 font-outfit text-center border rounded-full border-novo-darkgray py-3   w-1/3 ${
-										genderT === 1
+										preference === "men"
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
-									value={preference}
-									onChange={e =>
-										setPreference(e.target.value)
-									}
 								>
 									MEN
 								</button>
 								<button
-									onClick={() => setGenderT(2)}
+									onClick={() => setPreference("women")}
 									className={`duration-300 hover:-translate-y-1 text-novo-darkgray font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
-										genderT === 2
+										preference === "women"
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
-									value={preference}
-									onChange={e =>
-										setPreference(e.target.value)
-									}
 								>
 									WOMEN
 								</button>
 								<button
-									onClick={() => setGenderT(3)}
+									onClick={() => setPreference("both")}
 									className={`duration-300 hover:-translate-y-1 text-novo-darkgray font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
-										genderT === 3
+										preference === "both"
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
-									value={preference}
-									onChange={e =>
-										setPreference(e.target.value)
-									}
 								>
 									BOTH
 								</button>
@@ -386,15 +412,48 @@ const Questions = ({ counter }) => {
 					<>
 						<div className='flex justify-center flex-col items-center space-y-3 w-5/12 '>
 							<div className='text-novo-darkgray'>
-								ADD ACTIVITIES
+								ENTER YOUR BIO
 							</div>
-							<button
-								onClick={createProfile}
-								className='border no-underline text-novo-darkgray  hover:bg-novo-purple hover:text-white border-novo-gray w-full h-full text-4xl py-4 px-3 text-center focus:outline-none rounded-xl'
-							>
-								CHOOSE 3 ACTIVITIES
-							</button>
-						</div>{" "}
+							<textarea
+								type='text'
+								className='bg-novo-gray w-full text-4xl py-4 px-3 text-center text-black focus:outline-none rounded-xl'
+								value={bio}
+								onChange={e => setBio(e.target.value)}
+							/>
+						</div>
+					</>
+				)}
+				{counter === 11 && (
+					<>
+						<div className='flex justify-center flex-col items-center space-y-3 w-5/12 '>
+							<div className='text-novo-darkgray'>
+								SELECT 3 ACTIVITIES
+							</div>
+							<div className='grid cols-2 space-x-4'>
+								<div className='col-span-1 space-y-3 '>
+									{activites1.map((activity, index) => (
+										<CreateActivity
+											key={index}
+											activity={activity.name}
+											location={activity.location}
+											activities={activities}
+											setActivities={setActivities}
+										/>
+									))}
+								</div>
+								<div className='col-start-2 space-y-3'>
+									{activites2.map((activity, index) => (
+										<CreateActivity
+											key={index}
+											activity={activity.name}
+											location={activity.location}
+											activities={activities}
+											setActivities={setActivities}
+										/>
+									))}
+								</div>
+							</div>
+						</div>
 					</>
 				)}
 			</div>

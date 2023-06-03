@@ -51,9 +51,9 @@ const UserCard = () => {
 					<div className='text-novo-purple text-sm px-4'>
 						<div className=''>
 							<Row className='flex items-start'>
-								{interests.map(entry => (
+								{interests.map((entry, index) => (
 									<Col
-										key={entry}
+										key={index}
 										className='bg-novo-lightpurple text-novo-purple text-xs rounded-full px-2 mx-1 py-1 whitespace-nowrap !max-w-fit'
 									>
 										{entry.interest}

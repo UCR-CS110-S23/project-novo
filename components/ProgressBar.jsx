@@ -6,7 +6,7 @@ const ProgressBar = ({ width }) => {
 			{width === 0 && (
 				<div className='flex justify-center bg-novo-gray items-center w-full rounded-full'>
 					<div className='flex justify-start w-full'>
-						<div className='w-[9%]'>
+						<div className='w-[8%]'>
 							<div className="bg-[url('../public/progress.svg')] bg-no-repeat text-xs bg-cover w-full rounded-full text-transparent">
 								aa
 							</div>
@@ -17,7 +17,7 @@ const ProgressBar = ({ width }) => {
 			{width === 1 && (
 				<div className=' flex justify-center bg-novo-gray items-center w-full rounded-full'>
 					<div className='flex justify-start w-full'>
-						<div className='duration-300 w-[18%]'>
+						<div className='duration-300 w-[16%]'>
 							<div className="bg-[url('../public/progress.svg')] bg-no-repeat text-xs bg-cover w-full rounded-full text-transparent">
 								aa
 							</div>
@@ -28,7 +28,7 @@ const ProgressBar = ({ width }) => {
 			{width === 2 && (
 				<div className='flex justify-center bg-novo-gray items-center w-full rounded-full'>
 					<div className='flex justify-start w-full'>
-						<div className='w-[27%]'>
+						<div className='w-[24%]'>
 							<div className="bg-[url('../public/progress.svg')] bg-no-repeat text-xs bg-cover w-full rounded-full text-transparent">
 								aa
 							</div>
@@ -39,7 +39,7 @@ const ProgressBar = ({ width }) => {
 			{width === 3 && (
 				<div className='flex justify-center bg-novo-gray items-center w-full rounded-full'>
 					<div className='flex justify-start w-full'>
-						<div className='w-[36%]'>
+						<div className='w-[32%]'>
 							<div className="bg-[url('../public/progress.svg')] bg-no-repeat text-xs bg-cover w-full rounded-full text-transparent">
 								aa
 							</div>
@@ -50,7 +50,7 @@ const ProgressBar = ({ width }) => {
 			{width === 4 && (
 				<div className='flex justify-center bg-novo-gray items-center w-full rounded-full'>
 					<div className='flex justify-start w-full'>
-						<div className='w-[45%]'>
+						<div className='w-[40%]'>
 							<div className="bg-[url('../public/progress.svg')] bg-no-repeat text-xs bg-cover w-full rounded-full text-transparent">
 								aa
 							</div>
@@ -61,7 +61,7 @@ const ProgressBar = ({ width }) => {
 			{width === 5 && (
 				<div className='flex justify-center bg-novo-gray items-center w-full rounded-full'>
 					<div className='flex justify-start w-full'>
-						<div className='w-[54%]'>
+						<div className='w-[48%]'>
 							<div className="bg-[url('../public/progress.svg')] bg-no-repeat text-xs bg-cover w-full rounded-full text-transparent">
 								aa
 							</div>
@@ -72,7 +72,7 @@ const ProgressBar = ({ width }) => {
 			{width === 6 && (
 				<div className='flex justify-center bg-novo-gray items-center w-full rounded-full'>
 					<div className='flex justify-start w-full'>
-						<div className='w-[63%]'>
+						<div className='w-[58%]'>
 							<div className="bg-[url('../public/progress.svg')] bg-no-repeat text-xs bg-cover w-full rounded-full text-transparent">
 								aa
 							</div>
@@ -83,7 +83,7 @@ const ProgressBar = ({ width }) => {
 			{width === 7 && (
 				<div className='flex justify-center bg-novo-gray items-center w-full rounded-full'>
 					<div className='flex justify-start w-full'>
-						<div className='w-[72%]'>
+						<div className='w-[64%]'>
 							<div className="bg-[url('../public/progress.svg')] bg-no-repeat text-xs bg-cover w-full rounded-full text-transparent">
 								aa
 							</div>
@@ -94,7 +94,7 @@ const ProgressBar = ({ width }) => {
 			{width === 8 && (
 				<div className='flex justify-center bg-novo-gray items-center w-full rounded-full'>
 					<div className='flex justify-start w-full'>
-						<div className='w-[81%]'>
+						<div className='w-[75%]'>
 							<div className="bg-[url('../public/progress.svg')] bg-no-repeat text-xs bg-cover w-full rounded-full text-transparent">
 								aa
 							</div>
@@ -105,7 +105,7 @@ const ProgressBar = ({ width }) => {
 			{width === 9 && (
 				<div className='flex justify-center bg-novo-gray items-center w-full rounded-full'>
 					<div className='flex justify-start w-full'>
-						<div className='w-[90%]'>
+						<div className='w-[83%]'>
 							<div className="bg-[url('../public/progress.svg')] bg-no-repeat text-xs bg-cover w-full rounded-full text-transparent">
 								aa
 							</div>
@@ -114,6 +114,17 @@ const ProgressBar = ({ width }) => {
 				</div>
 			)}
 			{width === 10 && (
+				<div className='flex justify-center bg-novo-gray items-center w-full rounded-full'>
+					<div className='flex justify-start w-full'>
+						<div className='w-[91%]'>
+							<div className="bg-[url('../public/progress.svg')] bg-no-repeat text-xs bg-cover w-full rounded-full text-transparent">
+								aa
+							</div>
+						</div>
+					</div>
+				</div>
+			)}
+			{width === 11 && (
 				<div className='flex justify-center bg-novo-gray items-center w-full rounded-full'>
 					<div className='flex justify-start w-full'>
 						<div className='w-[100%]'>
