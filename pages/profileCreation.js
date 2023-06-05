@@ -19,6 +19,8 @@ export default function ProfileCreation() {
 		}
 	};
 
+	console.log("COUNTER" + counter);
+
 	return (
 		<div className='z-1 flex flex-col justify-center items-center w-screen h-screen'>
 			<div className='absolute pb-[25%] w-1/4 flex justify-center items-center flex-col space-y-6'>
@@ -35,14 +37,15 @@ export default function ProfileCreation() {
 			<div className='relative flex justify-center flex-col items-center w-full space-y-4'>
 				<Questions counter={counter} />
 				<div className='flex space-x-5 text-lg bottom-[35%] fixed -z-1'>
-					{counter === 0 ? (
+					{counter === 0 && (
 						<button
 							onClick={decrease}
 							className='text-gray-300 duration-300 hover:-translate-y-1 p-1'
 						>
 							<ImArrowLeft2 />
 						</button>
-					) : (
+					)}
+					{counter < 11 && counter !== 0 && (
 						<button
 							onClick={decrease}
 							className=' text-novo-darkgray duration-300 hover:-translate-y-1 p-1'
@@ -51,14 +54,7 @@ export default function ProfileCreation() {
 						</button>
 					)}
 
-					{counter === 11 ? (
-						<button
-							onClick={increase}
-							className='text-gray-300 duration-300 hover:-translate-y-1 p-1'
-						>
-							<ImArrowRight2 />
-						</button>
-					) : (
+					{counter < 11 && (
 						<button
 							onClick={increase}
 							className=' text-novo-darkgray duration-300 hover:-translate-y-1 p-1'

@@ -7,31 +7,31 @@ import CreateActivity from "./CreateActivity";
 
 const activites1 = [
 	{
-		name: "DISNEYLAND_1",
+		name: "DISNEYLAND",
 		location: "ANAHEIM, CA",
 	},
 	{
-		name: "DISNEYLAND_2",
-		location: "ANAHEIM, CA",
+		name: "LEGOLAND",
+		location: "CARLSBAD, CA",
 	},
 	{
-		name: "DISNEYLAND_3",
-		location: "ANAHEIM, CA",
+		name: "THE BROAD",
+		location: "LOS ANGELES, CA",
 	},
 ];
 
 const activites2 = [
 	{
-		name: "DISNEYLAND_4",
-		location: "ANAHEIM, CA",
+		name: "LITTLE ITALY",
+		location: "SAN DIEGO, CA",
 	},
 	{
-		name: "DISNEYLAND_5",
-		location: "ANAHEIM, CA",
+		name: "OC FAIR",
+		location: "ORANGE COUNTY, CA",
 	},
 	{
-		name: "DISNEYLAND_6",
-		location: "ANAHEIM, CA",
+		name: "OLVERA STREET",
+		location: "LOS ANGELES, CA",
 	},
 ];
 
@@ -93,6 +93,7 @@ const Questions = ({ counter }) => {
 			location,
 			bio,
 			interests,
+			activities,
 		};
 
 		try {
@@ -119,6 +120,7 @@ const Questions = ({ counter }) => {
 				setLocation("");
 				setBio("");
 				setInterests(new Set());
+				setActivities([]);
 
 				console.log("user made successfully");
 				router.push("/feed");
@@ -130,7 +132,6 @@ const Questions = ({ counter }) => {
 
 	return (
 		<>
-			<button onClick={createProfile}>fasdfa</button>
 			<div className='w-full flex justify-center'>
 				{counter === 0 && (
 					<>
@@ -425,7 +426,7 @@ const Questions = ({ counter }) => {
 				)}
 				{counter === 11 && (
 					<>
-						<div className='flex justify-center flex-col items-center space-y-3 w-5/12 '>
+						<div className='flex justify-center flex-col items-center space-y-10 w-5/12 '>
 							<div className='text-novo-darkgray'>
 								SELECT 3 ACTIVITIES
 							</div>
@@ -453,6 +454,19 @@ const Questions = ({ counter }) => {
 									))}
 								</div>
 							</div>
+
+							{activities.length < 3 ? (
+								<button className='text-base mt-10 text-novo-lightgray border-2 border-novo-lightgray rounded-full px-5 py-1  duration-300p-1'>
+									CREATE PROFILE
+								</button>
+							) : (
+								<button
+									onClick={createProfile}
+									className='text-base mt-10 text-novo-purple bg-novo-lightpurple border-2 border-novo-purple rounded-full px-5 py-1  duration-300 hover:bg-novo-purple hover:text-white p-1'
+								>
+									CREATE PROFILE
+								</button>
+							)}
 						</div>
 					</>
 				)}
