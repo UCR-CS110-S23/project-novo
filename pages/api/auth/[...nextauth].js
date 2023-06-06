@@ -3,6 +3,7 @@ import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import clientPromise from "/lib/mongodb.js";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
+import { isPasswordValid } from "@/lib/hash";
 
 export const authOptions = {
 	adapter: MongoDBAdapter(clientPromise),
@@ -30,8 +31,13 @@ export const authOptions = {
 					return null;
 				}
 
-				if (credentials.password != existingUser.password) {
-					console.log("Authentication: The password is wrong");
+				const validPassword = await isPasswordValid(
+					credentials.password,
+					existingUser.password
+				);
+
+				if (!validPassword) {
+					console.log("Password not found!");
 					return null;
 				}
 
