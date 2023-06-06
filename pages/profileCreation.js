@@ -1,7 +1,7 @@
 import ProgressBar from "../components/ProgressBar";
-import Questions from "../components/Questions";
 import Logo from "../public/purpleLogo.svg";
 import Image from "next/image";
+import Questions from "../components/Questions";
 import { React, useState } from "react";
 import { ImArrowRight2, ImArrowLeft2 } from "react-icons/im";
 
@@ -9,7 +9,7 @@ export default function ProfileCreation() {
 	const [counter, setCounter] = useState(0);
 
 	const increase = () => {
-		if (counter < 8) {
+		if (counter < 11) {
 			setCounter(count => count + 1);
 		}
 	};
@@ -33,16 +33,17 @@ export default function ProfileCreation() {
 				<ProgressBar width={counter} />
 			</div>
 			<div className='relative flex justify-center flex-col items-center w-full space-y-4'>
-				<Questions state={counter} />
+				<Questions counter={counter} />
 				<div className='flex space-x-5 text-lg bottom-[35%] fixed -z-1'>
-					{counter === 0 ? (
+					{counter === 0 && (
 						<button
 							onClick={decrease}
 							className='text-gray-300 duration-300 hover:-translate-y-1 p-1'
 						>
 							<ImArrowLeft2 />
 						</button>
-					) : (
+					)}
+					{counter < 11 && counter !== 0 && (
 						<button
 							onClick={decrease}
 							className=' text-novo-darkgray duration-300 hover:-translate-y-1 p-1'
@@ -51,14 +52,7 @@ export default function ProfileCreation() {
 						</button>
 					)}
 
-					{counter === 8 ? (
-						<button
-							onClick={increase}
-							className='text-gray-300 duration-300 hover:-translate-y-1 p-1'
-						>
-							<ImArrowRight2 />
-						</button>
-					) : (
+					{counter < 11 && (
 						<button
 							onClick={increase}
 							className=' text-novo-darkgray duration-300 hover:-translate-y-1 p-1'

@@ -1,4 +1,4 @@
-import React from "react";
+import { React } from "react";
 import NOVO from "../public/NOVO.png";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
@@ -62,15 +62,16 @@ const WelcomeText = () => {
 					onChange={e => setPassword(e.target.value)}
 				/>
 				<button
+					href='/profileCreation'
 					className={`${
 						isButtonDisabled
-							? "opacity-50 disabled:pointer-events-none"
+							? "opacity-50 disabled:pointer-events-none no-underline"
 							: ""
 					}`}
 					onClick={handleSignIn}
 					disabled={isButtonDisabled}
 				>
-					<div className='group hover:bg-white mt-3 text-white px-4 py-2 w-80 rounded-full border-2 border-white transition-colors duration-300'>
+					<div className='flex justify-center group hover:bg-white mt-3 text-white px-4 py-2 w-80 rounded-full border-2 border-white transition-colors duration-300'>
 						<span className='group-hover:text-purple-500'>
 							LOG IN
 						</span>

@@ -19,7 +19,7 @@ const ActivityCard = () => {
 							<input
 								type='radio'
 								onClick={() => setToggle(1)}
-								class={`h-5 w-5 rounded-full appearance-none border border-white  ${
+								className={`h-5 w-5 rounded-full appearance-none border border-white  ${
 									toggle === 1
 										? "bg-novo-purple text-white border rounded-full border-novo-purple"
 										: "bg-transparent"
@@ -44,7 +44,7 @@ const ActivityCard = () => {
 							<input
 								type='radio'
 								onClick={() => setToggle(2)}
-								class={`h-5 w-5 rounded-full appearance-none border border-white  ${
+								className={`h-5 w-5 rounded-full appearance-none border border-white  ${
 									toggle === 2
 										? "bg-novo-purple text-white border rounded-full border-novo-purple"
 										: "bg-transparent"
@@ -69,7 +69,7 @@ const ActivityCard = () => {
 							<input
 								type='radio'
 								onClick={() => setToggle(3)}
-								class={`h-5 w-5 rounded-full appearance-none border border-white  ${
+								className={`h-5 w-5 rounded-full appearance-none border border-white  ${
 									toggle === 3
 										? "bg-novo-purple text-white border rounded-full border-novo-purple"
 										: "bg-transparent"
