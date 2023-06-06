@@ -31,6 +31,8 @@ module.exports = {
 					lightgray: "#EDEDED",
 					gray: "#F5F5F5",
 					darkgray: "#777777",
+					messagegray: "#858585",
+					dategray: "#CBCBCB",
 				},
 			},
 		},
