@@ -19,8 +19,6 @@ export default function ProfileCreation() {
 		}
 	};
 
-	console.log("COUNTER" + counter);
-
 	return (
 		<div className='z-1 flex flex-col justify-center items-center w-screen h-screen'>
 			<div className='absolute pb-[25%] w-1/4 flex justify-center items-center flex-col space-y-6'>

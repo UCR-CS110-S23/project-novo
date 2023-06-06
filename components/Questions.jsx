@@ -48,6 +48,7 @@ const Questions = ({ counter }) => {
 	const [gender, setGender] = useState("");
 	const [preference, setPreference] = useState("");
 	const [location, setLocation] = useState("");
+	const [file, setFile] = useState(null);
 
 	const [activities, setActivities] = useState([]);
 
@@ -81,6 +82,7 @@ const Questions = ({ counter }) => {
 
 	const createProfile = async e => {
 		e.preventDefault();
+		const base64File = await readFileAsBase64(file);
 
 		const newUser = {
 			name,
@@ -94,6 +96,7 @@ const Questions = ({ counter }) => {
 			bio,
 			interests,
 			activities,
+			base64File,
 		};
 
 		try {
@@ -121,6 +124,7 @@ const Questions = ({ counter }) => {
 				setBio("");
 				setInterests(new Set());
 				setActivities([]);
+				setFile(null);
 
 				console.log("user made successfully");
 				router.push("/feed");
@@ -128,6 +132,15 @@ const Questions = ({ counter }) => {
 		} catch (e) {
 			console.log(e);
 		}
+	};
+
+	const readFileAsBase64 = file => {
+		return new Promise((resolve, reject) => {
+			const reader = new FileReader();
+			reader.readAsDataURL(file);
+			reader.onload = () => resolve(reader.result);
+			reader.onerror = error => reject(error);
+		});
 	};
 
 	return (
@@ -400,12 +413,11 @@ const Questions = ({ counter }) => {
 							<div className='text-novo-darkgray'>
 								ADD A PHOTO
 							</div>
-							<button
-								type='text'
+							<input
+								onChange={e => setFile(e.target.files[0])}
+								type='file'
 								className='border-dashed border-2 border-novo-lightgray w-full h-full text-xl font-light py-7 px-3 text-center text-[#B9B9B9] focus:outline-none rounded-xl'
-							>
-								UPLOAD FROM COMPUTER
-							</button>
+							/>
 						</div>
 					</>
 				)}
