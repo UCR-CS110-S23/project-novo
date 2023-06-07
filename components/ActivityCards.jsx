@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import Image from "next/image";
 import Disney from "../public/disneyland.png";
 
-const ActivityCard = () => {
+const ActivityCard = ({ post }) => {
 	const [toggle, setToggle] = useState(0);
 	return (
 		<>
