@@ -4,11 +4,7 @@ import UserCard from "../components/UserCard.jsx";
 import NavBar from "../components/NavBar";
 import { getAllPostData } from "@/lib/getFeed";
 
-// export default function Feed() {
 export default function Feed({ data }) {
-	// console.log("POSTDATA: ", postData);
-	// const data = JSON.stringify(postData);
-	// const data = JSON.parse(postData)[0];
 	const temp = JSON.parse(data);
 	console.log("DATA", temp);
 	return (
@@ -51,12 +47,3 @@ export async function getServerSideProps() {
 		},
 	};
 }
-
-// export async function getServerSideProps({}) {
-// 	const postData = await getPostData("647ec16bf8d2c7226edf1d84");
-// 	return {
-// 		props: {
-// 			postData,
-// 		},
-// 	};
-// }

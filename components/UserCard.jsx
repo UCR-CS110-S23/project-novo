@@ -4,8 +4,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 const UserCard = ({ post }) => {
-	// console.log("POST", {post.image});
-
 	return (
 		<>
 			<div className='grid rows-2'>
@@ -38,9 +36,6 @@ const UserCard = ({ post }) => {
 										{entry}
 									</Col>
 								))}
-								{/* {classes.map((entry) => (
-                      <Checkbox key={entry} curr={entry} className="" />
-                    ))} */}
 							</Row>
 						</div>
 					</div>
