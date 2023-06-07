@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import CreateActivity from "./CreateActivity";
 
 const activites1 = [
@@ -36,7 +36,7 @@ const activites2 = [
 ];
 
 const Questions = ({ counter }) => {
-	const router = useRouter();
+	// const router = useRouter();
 
 	const [tag, setTag] = useState("");
 	const [name, setName] = useState("");
@@ -63,6 +63,7 @@ const Questions = ({ counter }) => {
 		preference: "",
 		location: "",
 		interests: new Set(),
+		image: null,
 	});
 
 	const handleTagSubmit = e => {
@@ -82,7 +83,7 @@ const Questions = ({ counter }) => {
 
 	const createProfile = async e => {
 		e.preventDefault();
-		const base64File = await readFileAsBase64(file);
+		const image = await readFileAsBase64(file);
 
 		const newUser = {
 			name,
@@ -96,7 +97,7 @@ const Questions = ({ counter }) => {
 			bio,
 			interests,
 			activities,
-			base64File,
+			image,
 		};
 
 		try {
@@ -127,7 +128,12 @@ const Questions = ({ counter }) => {
 				setFile(null);
 
 				console.log("user made successfully");
-				router.push("/feed");
+				await signIn("credentials", {
+					redirect: true,
+					email,
+					password,
+					callbackUrl: "/feed",
+				});
 			}
 		} catch (e) {
 			console.log(e);
