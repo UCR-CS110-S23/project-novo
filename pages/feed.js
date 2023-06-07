@@ -20,10 +20,14 @@ export default function Feed({ data }) {
 	const [showModal, setShowModal] = useState(false);
 
 	const increase = () => {
-		if (counter < temp.length) setCounter(counter => counter + 1);
+		if (counter >= temp.length) {
+			setCounter(0);
+		} else {
+			setCounter(counter => counter + 1);
+		}
 	};
 
-	console.log("COUNT", temp[0]);
+	console.log("COUNT", temp.length);
 
 	const handleCheck = () => {
 		increase();
@@ -38,7 +42,6 @@ export default function Feed({ data }) {
 
 			<div className='col-start-2 col-span-6'>
 				<div className='grid rows-2 mt-12'>
-					{/* {temp.map((post, index) => ( */}
 					<div className='flex justify-center'>
 						<div className='w-5/12'>
 							<UserCard post={temp[counter]} />
@@ -50,7 +53,6 @@ export default function Feed({ data }) {
 							<ActivityCard post={temp[counter]} />
 						</div>
 					</div>
-					{/* ))} */}
 					<div className='flex justify-center mt-4  space-x-3'>
 						<button onClick={increase}>
 							<div className='hover:bg-novo-lightpurple rounded-full text-5xl border-4 border-novo-purple text-novo-purple text-center p-2 pr-3  hover:-translate-y-1 duration-300'>

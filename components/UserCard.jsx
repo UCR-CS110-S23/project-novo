@@ -11,7 +11,7 @@ const UserCard = ({ post }) => {
 					src={post.image}
 					alt='Landing'
 					layout='responsive'
-					className='rounded-t-3xl'
+					className='rounded-t-3xl w-full h-[425px]'
 				/>
 				<div className='border border-novo-lightgray rounded-b-3xl space-y-4 '>
 					<div className='flex justify-between items-center '>
