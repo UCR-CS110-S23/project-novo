@@ -1,37 +1,16 @@
 import React from "react";
-import Image from "next/image";
-import Viviane from "../public/viviane.png";
 import { GrLocation } from "react-icons/gr";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-const interests = [
-	{
-		interest: "ALTERNATIVE POP",
-	},
-	{
-		interest: "POP",
-	},
-	{
-		interest: "POP",
-	},
-	{
-		interest: "POP",
-	},
-	{
-		interest: "POP",
-	},
-	{
-		interest: "ALTERNATIVE POP",
-	},
-];
-
 const UserCard = ({ post }) => {
+	// console.log("POST", {post.image});
+
 	return (
 		<>
 			<div className='grid rows-2'>
-				<Image
-					src={Viviane}
+				<img
+					src={post.image}
 					alt='Landing'
 					layout='responsive'
 					className='rounded-t-3xl'
@@ -51,15 +30,14 @@ const UserCard = ({ post }) => {
 					<div className='text-novo-purple text-sm px-4'>
 						<div className=''>
 							<Row className='flex items-start'>
-								{interests.map((entry, index) => (
+								{post.interests.map((entry, index) => (
 									<Col
 										key={index}
 										className='bg-novo-lightpurple text-novo-purple text-xs rounded-full px-2 mx-1 py-1 whitespace-nowrap !max-w-fit'
 									>
-										{entry.interest}
+										{entry}
 									</Col>
 								))}
-
 								{/* {classes.map((entry) => (
                       <Checkbox key={entry} curr={entry} className="" />
                     ))} */}
