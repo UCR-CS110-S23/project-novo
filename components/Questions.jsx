@@ -52,7 +52,7 @@ const Questions = ({ counter }) => {
 
 	const [activities, setActivities] = useState([]);
 
-	const [interests, setInterests] = useState(new Set());
+	const [interests, setInterests] = useState([]);
 
 	const [data, setData] = useState({
 		name: "",
@@ -71,7 +71,7 @@ const Questions = ({ counter }) => {
 		if (data.interests.size < 6) {
 			setData({ ...data, interests: new Set([...data.interests, tag]) });
 			setTag("");
-			setInterests(new Set([...data.interests, tag]));
+			setInterests(Array.from(new Set([...data.interests, tag])));
 		}
 	};
 
