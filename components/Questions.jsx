@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import CreateActivity from "./CreateActivity";
 
 const activites1 = [
@@ -36,7 +36,7 @@ const activites2 = [
 ];
 
 const Questions = ({ counter }) => {
-	// const router = useRouter();
+	const router = useRouter();
 
 	const [tag, setTag] = useState("");
 	const [name, setName] = useState("");
@@ -52,7 +52,7 @@ const Questions = ({ counter }) => {
 
 	const [activities, setActivities] = useState([]);
 
-	const [interests, setInterests] = useState(new Set());
+	const [interests, setInterests] = useState([]);
 
 	const [data, setData] = useState({
 		name: "",
@@ -71,7 +71,7 @@ const Questions = ({ counter }) => {
 		if (data.interests.size < 6) {
 			setData({ ...data, interests: new Set([...data.interests, tag]) });
 			setTag("");
-			setInterests(new Set([...data.interests, tag]));
+			setInterests(Array.from(new Set([...data.interests, tag])));
 		}
 	};
 
@@ -128,12 +128,7 @@ const Questions = ({ counter }) => {
 				setFile(null);
 
 				console.log("user made successfully");
-				await signIn("credentials", {
-					redirect: true,
-					email,
-					password,
-					callbackUrl: "/feed",
-				});
+				router.push("/");
 			}
 		} catch (e) {
 			console.log(e);
