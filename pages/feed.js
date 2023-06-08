@@ -1,4 +1,3 @@
-// import MatchButtons from "@/components/MatchButtons.jsx";
 import ActivityCard from "../components/ActivityCards.jsx";
 import UserCard from "../components/UserCard.jsx";
 import NavBar from "../components/NavBar";
@@ -8,7 +7,6 @@ import { useState } from "react";
 import ActivitySelected from "../public/ActivitySelected.png";
 import { RxCross2 } from "react-icons/rx";
 import { BsCheckLg } from "react-icons/bs";
-// import MatchModal from "@/components/MatchModal.jsx";
 import Link from "next/link.js";
 import Image from "next/image.js";
 
@@ -20,7 +18,7 @@ export default function Feed({ data }) {
 	const [showModal, setShowModal] = useState(false);
 
 	const increase = () => {
-		if (counter >= temp.length) {
+		if (counter + 1 >= temp.length) {
 			setCounter(0);
 		} else {
 			setCounter(counter => counter + 1);
@@ -86,9 +84,9 @@ export default function Feed({ data }) {
 											Activity Selected
 										</div>
 									</div>
-									<div className='text-sm text-novo-messagegray mb-4 mt-1 font-light'>
+									<div className='text-sm text-novo-messagegray mb-4 mt-1 font-light uppercase'>
 										GO TO MESSAGES TO START CONVERSATION
-										WITH VIVIANE
+										WITH {temp[counter].name}
 									</div>
 									<div className='mx-24'>
 										<div className='relative w-96 flex justify-center items-center'>

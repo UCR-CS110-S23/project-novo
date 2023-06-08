@@ -18,7 +18,7 @@ const UserCard = ({ post }) => {
 						<div className='text-4xl font-medium pt-4 pl-4'>
 							{post.name}, {post.age}
 						</div>
-						<div className='mt-4 flex items-center text-sm bg-novo-lightgray py-1 pl-5 rounded-l-full pr-10'>
+						<div className='mt-4 flex items-center uppercase text-sm bg-novo-lightgray py-1 pl-5 rounded-l-full pr-10'>
 							<span className='pr-1.5'>
 								<GrLocation />
 							</span>
@@ -31,7 +31,7 @@ const UserCard = ({ post }) => {
 								{post.interests.map((entry, index) => (
 									<Col
 										key={index}
-										className='bg-novo-lightpurple text-novo-purple text-xs rounded-full px-2 mx-1 py-1 whitespace-nowrap !max-w-fit'
+										className='uppercase bg-novo-lightpurple text-novo-purple text-xs rounded-full px-2 mx-1 py-1 whitespace-nowrap !max-w-fit'
 									>
 										{entry}
 									</Col>
