@@ -113,7 +113,7 @@ export default function Messaging() {
 						</div>
 						<div className='flex w-3/4 ml-10'>
 							<input
-								class='bg-novo-gray pl-3 h-10 w-full rounded-lg text-sm focus:outline-none'
+								className='bg-novo-gray pl-3 h-10 w-full rounded-lg text-sm focus:outline-none'
 								type='search'
 								name='search'
 								placeholder='Write something...'

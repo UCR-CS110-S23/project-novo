@@ -1,16 +1,32 @@
 import NavBar from "../components/NavBar";
 import MessageGuy from "../public/messageGuy.jpg";
 import MessageChat from "@/components/MessageChat";
-import MessageResponse from "@/components/MessageResponse";
-import MyMessageResponse from "@/components/MyMessage";
+// import MessageResponse from "@/components/MessageResponse";
+// import MyMessageResponse from "@/components/MyMessage";
 import Image from "next/image";
-import { FiCamera } from "react-icons/fi";
-import { FiPaperclip } from "react-icons/fi";
-import { BsPlusSquare } from "react-icons/bs";
-import { FiSend } from "react-icons/fi";
+// import { FiCamera } from "react-icons/fi";
+// import { FiPaperclip } from "react-icons/fi";
+// import { BsPlusSquare } from "react-icons/bs";
+// import { FiSend } from "react-icons/fi";
 import Disney from "../public/disneyland.png";
+import { useEffect, useState } from "react";
+import io from "socket.io-client";
+const socket = io.connect("http://localhost:3001");
 
 export default function Messaging() {
+	const [message, setMessage] = useState("");
+	const [messageReceived, setMessageReceived] = useState("");
+
+	const sendMesssage = () => {
+		socket.emit("send_message", { message });
+	};
+
+	useEffect(() => {
+		socket.on("receive_message", data => {
+			setMessageReceived(data.message);
+		});
+	}, [socket]);
+
 	return (
 		<>
 			<div className='grid grid-cols-12'>
@@ -21,7 +37,7 @@ export default function Messaging() {
 					</div>
 				</div>
 				<div className='col-start-3 col-end-6 border-r h-screen'>
-					<div className='text-3xl mt-4 ml-4'>Messagesss</div>
+					<div className='text-3xl mt-4 ml-4'>Message</div>
 					<div className='text-sm mt-10 ml-8 text-novo-darkgray'>
 						Search
 					</div>
@@ -68,66 +84,20 @@ export default function Messaging() {
 							</div>
 						</div>
 					</div>
-					<div className='text-novo-dategray mt-2 text-center text-sm'>
-						YESTERDAY
-					</div>
-					<div className='flex relative justify-center'>
-						<div className='text-center justify-center p-2 mt-2 bg-novo-lightpurple text-novo-purple text-sm rounded-md w-80'>
-							You’re interested in going to Disneyland with Ricky!
-						</div>
-					</div>
-					<div className=' max-h-max'>
-						<MessageResponse
-							image={MessageGuy}
-							name='Ricky Smith'
-							message='Hi, How are you?'
-							time='11:00AM'
+					<div className='p-4'>
+						<input
+							className='border'
+							placeholder='Message...'
+							onChange={event => {
+								setMessage(event.target.value);
+							}}
 						/>
-						<MyMessageResponse
-							image={Disney}
-							message="Hey Ricky, I'm doing great!"
-							time='11:05AM'
-						/>
-						<MessageResponse
-							image={MessageGuy}
-							name='Ricky Smith'
-							message="I'm down to go DisneyLand next Monday"
-							time='11:15AM'
-						/>
-						<MyMessageResponse
-							image={Disney}
-							message="That would be fun, let's do it!"
-							time='11:25AM'
-						/>
+						<button onClick={sendMesssage} className='border'>
+							Send Message
+						</button>
 					</div>
-					<div className='absolute flex items-center inset-x-0 bottom-0 h-16'>
-						<div className='ml-10'>
-							<button className='text-novo-darkgray text-xl'>
-								<FiCamera />
-							</button>
-						</div>
-						<div className=' ml-10'>
-							<button className='text-novo-darkgray text-xl'>
-								<FiPaperclip />
-							</button>
-						</div>
-						<div className='flex w-3/4 ml-10'>
-							<input
-								class='bg-novo-gray pl-3 h-10 w-full rounded-lg text-sm focus:outline-none'
-								type='search'
-								name='search'
-								placeholder='Write something...'
-							></input>
-							<button className='bg-novo-gray text-novo-darkgray text-xl rounded-r-lg -ml-3 pr-3'>
-								<FiSend />
-							</button>
-						</div>
-						<div className='ml-3 mt-1'>
-							<button className='text-novo-darkgray text-xl'>
-								<BsPlusSquare />
-							</button>
-						</div>
-					</div>
+					<h1>Message:</h1>
+					{messageReceived}
 				</div>
 			</div>
 		</>

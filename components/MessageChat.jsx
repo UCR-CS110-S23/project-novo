@@ -10,7 +10,7 @@ const MessageChat = ({ image, name, message, mins }) => {
 					alt='Landing'
 					className=' w-11 h-10 object-cover rounded-full'
 				/>
-				<span class='top-2 left-10 absolute w-3 h-3 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full'></span>
+				<span className='top-2 left-10 absolute w-3 h-3 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full'></span>
 			</div>
 			<div className='flex justify-between w-full'>
 				<div className='ml-3'>
