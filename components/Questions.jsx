@@ -1,23 +1,69 @@
 import { React, useState } from "react";
-import Link from "next/link";
 import { FaTimes } from "react-icons/fa";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+// import { useRouter } from "next/router";
+import CreateActivity from "./CreateActivity";
 
-const Questions = ({ state }) => {
-	const [identity, setIdentity] = useState(0);
-	const [pronoun, setPronoun] = useState(0);
-	const [gender, setGender] = useState(0);
+const activites1 = [
+	{
+		name: "DISNEYLAND",
+		location: "ANAHEIM, CA",
+	},
+	{
+		name: "LEGOLAND",
+		location: "CARLSBAD, CA",
+	},
+	{
+		name: "THE BROAD",
+		location: "LOS ANGELES, CA",
+	},
+];
+
+const activites2 = [
+	{
+		name: "LITTLE ITALY",
+		location: "SAN DIEGO, CA",
+	},
+	{
+		name: "OC FAIR",
+		location: "ORANGE COUNTY, CA",
+	},
+	{
+		name: "OLVERA STREET",
+		location: "LOS ANGELES, CA",
+	},
+];
+
+const Questions = ({ counter }) => {
+	// const router = useRouter();
+
 	const [tag, setTag] = useState("");
+	const [name, setName] = useState("");
+	const [bio, setBio] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [age, setAge] = useState("");
+	const [pronoun, setPronoun] = useState("");
+	const [gender, setGender] = useState("");
+	const [preference, setPreference] = useState("");
+	const [location, setLocation] = useState("");
+	const [file, setFile] = useState(null);
+
+	const [activities, setActivities] = useState([]);
+
+	const [interests, setInterests] = useState(new Set());
 
 	const [data, setData] = useState({
 		name: "",
 		age: 0.0,
 		pronoun: "",
 		gender: "",
+		bio: "",
 		preference: "",
 		location: "",
 		interests: new Set(),
+		image: null,
 	});
 
 	const handleTagSubmit = e => {
@@ -25,6 +71,7 @@ const Questions = ({ state }) => {
 		if (data.interests.size < 6) {
 			setData({ ...data, interests: new Set([...data.interests, tag]) });
 			setTag("");
+			setInterests(new Set([...data.interests, tag]));
 		}
 	};
 
@@ -34,10 +81,78 @@ const Questions = ({ state }) => {
 		setData({ ...data, interests: interests });
 	};
 
+	const createProfile = async e => {
+		e.preventDefault();
+		const image = await readFileAsBase64(file);
+
+		const newUser = {
+			name,
+			email,
+			password,
+			age,
+			pronoun,
+			gender,
+			preference,
+			location,
+			bio,
+			interests,
+			activities,
+			image,
+		};
+
+		try {
+			const response = await fetch("/api/auth/createProfile", {
+				method: "POST",
+				body: JSON.stringify(newUser),
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
+
+			const data = await response.json();
+			if (data.userExists) {
+				// validateInputs();
+				console.log("user exists");
+			} else {
+				setName("");
+				setEmail("");
+				setPassword("");
+				setAge(0.0);
+				setPronoun("");
+				setGender("");
+				setPreference("");
+				setLocation("");
+				setBio("");
+				setInterests(new Set());
+				setActivities([]);
+				setFile(null);
+
+				console.log("user made successfully");
+				await signIn("credentials", {
+					redirect: true,
+					email,
+					password,
+					callbackUrl: "/feed",
+				});
+			}
+		} catch (e) {
+			console.log(e);
+		}
+	};
+
+	const readFileAsBase64 = file => {
+		return new Promise((resolve, reject) => {
+			const reader = new FileReader();
+			reader.readAsDataURL(file);
+			reader.onload = () => resolve(reader.result);
+			reader.onerror = error => reject(error);
+		});
+	};
+
 	return (
 		<>
 			<div className='w-full flex justify-center'>
-				{state === 0 && (
+				{counter === 0 && (
 					<>
 						<div className='flex justify-center flex-col items-center space-y-3 w-5/12 '>
 							<div className='text-novo-darkgray'>
@@ -46,12 +161,44 @@ const Questions = ({ state }) => {
 							<input
 								type='text'
 								className='bg-novo-gray w-full text-4xl py-4 px-3 text-center text-black focus:outline-none rounded-xl'
+								value={name}
+								onChange={e => setName(e.target.value)}
+							/>
+						</div>
+					</>
+				)}
+				{counter === 1 && (
+					<>
+						<div className='flex justify-center flex-col items-center space-y-3 w-5/12 '>
+							<div className='text-novo-darkgray'>
+								ENTER YOUR EMAIL
+							</div>
+							<input
+								type='text'
+								className='bg-novo-gray w-full text-4xl py-4 px-3 text-center text-black focus:outline-none rounded-xl'
+								value={email}
+								onChange={e => setEmail(e.target.value)}
+							/>
+						</div>
+					</>
+				)}
+				{counter === 2 && (
+					<>
+						<div className='flex justify-center flex-col items-center space-y-3 w-5/12 '>
+							<div className='text-novo-darkgray'>
+								ENTER YOUR PASSWORD
+							</div>
+							<input
+								type='password'
+								className='bg-novo-gray w-full text-4xl py-4 px-3 text-center text-black focus:outline-none rounded-xl'
+								value={password}
+								onChange={e => setPassword(e.target.value)}
 							/>
 						</div>
 					</>
 				)}
 
-				{state === 1 && (
+				{counter === 3 && (
 					<>
 						<div className='flex justify-center flex-col items-center space-y-3 w-5/12 '>
 							<div className='text-novo-darkgray'>
@@ -60,12 +207,14 @@ const Questions = ({ state }) => {
 							<input
 								type='number'
 								className='bg-novo-gray w-full text-4xl py-4 px-3 text-center text-black focus:outline-none rounded-xl'
+								value={age}
+								onChange={e => setAge(e.target.value)}
 							/>
 						</div>
 					</>
 				)}
 
-				{state === 2 && (
+				{counter === 4 && (
 					<>
 						<div className='flex justify-center flex-col items-center w-5/12 '>
 							<div className='text-novo-darkgray translate-y-0.5'>
@@ -73,9 +222,11 @@ const Questions = ({ state }) => {
 							</div>
 							<div className='space-x-4 text-md w-full flex justify-between py-4'>
 								<button
-									onClick={() => setIdentity(1)}
+									onClick={() => {
+										setGender("man");
+									}}
 									className={` text-novo-darkgray duration-300 hover:-translate-y-1 font-outfit text-center border rounded-full border-novo-darkgray py-3   w-1/3 ${
-										identity === 1
+										gender === "man"
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
@@ -83,9 +234,11 @@ const Questions = ({ state }) => {
 									MAN
 								</button>
 								<button
-									onClick={() => setIdentity(2)}
+									onClick={() => {
+										setGender("woman");
+									}}
 									className={`text-novo-darkgray duration-300 hover:-translate-y-1 font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
-										identity === 2
+										gender === "woman"
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
@@ -93,9 +246,11 @@ const Questions = ({ state }) => {
 									WOMAN
 								</button>
 								<button
-									onClick={() => setIdentity(3)}
+									onClick={() => {
+										setGender("non-binary");
+									}}
 									className={` text-novo-darkgray duration-300 hover:-translate-y-1 font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
-										identity === 3
+										gender === "non-binary"
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
@@ -106,7 +261,7 @@ const Questions = ({ state }) => {
 						</div>
 					</>
 				)}
-				{state === 3 && (
+				{counter === 5 && (
 					<>
 						<div className='flex justify-center flex-col items-center w-5/12 '>
 							<div className='text-novo-darkgray translate-y-0.5'>
@@ -114,9 +269,9 @@ const Questions = ({ state }) => {
 							</div>
 							<div className='space-x-4 text-md w-full flex justify-between py-4'>
 								<button
-									onClick={() => setPronoun(1)}
+									onClick={() => setPronoun("he/him")}
 									className={` text-novo-darkgray duration-300 hover:-translate-y-1 font-outfit text-center border rounded-full border-novo-darkgray py-3   w-1/3 ${
-										pronoun === 1
+										pronoun === "he/him"
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
@@ -124,9 +279,9 @@ const Questions = ({ state }) => {
 									HE/HIM
 								</button>
 								<button
-									onClick={() => setPronoun(2)}
+									onClick={() => setPronoun("she/her")}
 									className={`duration-300 hover:-translate-y-1 text-novo-darkgray font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
-										pronoun === 2
+										pronoun === "she/her"
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
@@ -134,9 +289,9 @@ const Questions = ({ state }) => {
 									SHE/HER
 								</button>
 								<button
-									onClick={() => setPronoun(3)}
+									onClick={() => setPronoun("they/them")}
 									className={`duration-300 hover:-translate-y-1 text-novo-darkgray font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
-										pronoun === 3
+										pronoun === "they/them"
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
@@ -147,7 +302,7 @@ const Questions = ({ state }) => {
 						</div>
 					</>
 				)}
-				{state === 4 && (
+				{counter === 6 && (
 					<>
 						<div className='flex justify-center flex-col items-center space-y-3 w-5/12 '>
 							<div className='text-novo-darkgray'>
@@ -156,41 +311,13 @@ const Questions = ({ state }) => {
 							<input
 								type='text'
 								className='bg-novo-gray w-full text-4xl py-4 px-3 text-center text-black focus:outline-none rounded-xl'
+								value={location}
+								onChange={e => setLocation(e.target.value)}
 							/>
 						</div>
 					</>
 				)}
-				{state === 5 && (
-					<>
-						<div className='flex justify-center flex-col items-center space-y-3 w-5/12 '>
-							<div className='text-novo-darkgray'>
-								ADD A PHOTO
-							</div>
-							<button
-								type='text'
-								className='border-dashed border-2 border-novo-lightgray w-full h-full text-xl font-light py-7 px-3 text-center text-[#B9B9B9] focus:outline-none rounded-xl'
-							>
-								UPLOAD FROM COMPUTER
-							</button>
-						</div>
-					</>
-				)}
-				{state === 6 && (
-					<>
-						<div className='flex justify-center flex-col items-center space-y-3 w-5/12 '>
-							<div className='text-novo-darkgray'>
-								ADD ACTIVITIES
-							</div>
-							<Link
-								href='/activityFeed'
-								className='border no-underline text-novo-darkgray  hover:bg-novo-purple hover:text-white border-novo-gray w-full h-full text-4xl py-4 px-3 text-center focus:outline-none rounded-xl'
-							>
-								CHOOSE 3 ACTIVITIES
-							</Link>
-						</div>
-					</>
-				)}
-				{state === 7 && (
+				{counter === 7 && (
 					<>
 						<div className='flex justify-center flex-col items-center w-5/12 '>
 							<div className='text-novo-darkgray translate-y-0.5'>
@@ -198,9 +325,9 @@ const Questions = ({ state }) => {
 							</div>
 							<div className='space-x-4 text-md w-full flex justify-between py-4'>
 								<button
-									onClick={() => setGender(1)}
+									onClick={() => setPreference("men")}
 									className={` text-novo-darkgray duration-300 hover:-translate-y-1 font-outfit text-center border rounded-full border-novo-darkgray py-3   w-1/3 ${
-										gender === 1
+										preference === "men"
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
@@ -208,9 +335,9 @@ const Questions = ({ state }) => {
 									MEN
 								</button>
 								<button
-									onClick={() => setGender(2)}
+									onClick={() => setPreference("women")}
 									className={`duration-300 hover:-translate-y-1 text-novo-darkgray font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
-										gender === 2
+										preference === "women"
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
@@ -218,9 +345,9 @@ const Questions = ({ state }) => {
 									WOMEN
 								</button>
 								<button
-									onClick={() => setGender(3)}
+									onClick={() => setPreference("both")}
 									className={`duration-300 hover:-translate-y-1 text-novo-darkgray font-outfit text-center border rounded-full border-novo-darkgray py-3  w-1/3 ${
-										gender === 3
+										preference === "both"
 											? "bg-novo-purple text-white border rounded-full border-novo-purple"
 											: "bg-transparent"
 									}`}
@@ -231,7 +358,7 @@ const Questions = ({ state }) => {
 						</div>
 					</>
 				)}
-				{state === 8 && (
+				{counter === 8 && (
 					<>
 						<div className='flex justify-center flex-col items-center w-5/12 '>
 							<div className='text-novo-darkgray -translate-y-3.5 mb-[2%]'>
@@ -283,6 +410,81 @@ const Questions = ({ state }) => {
 									</div>
 								</div>
 							</div>
+						</div>
+					</>
+				)}
+				{counter === 9 && (
+					<>
+						<div className='flex justify-center flex-col items-center space-y-3 w-5/12 '>
+							<div className='text-novo-darkgray'>
+								ADD A PHOTO
+							</div>
+							<input
+								onChange={e => setFile(e.target.files[0])}
+								type='file'
+								className='border-dashed border-2 border-novo-lightgray w-full h-full text-xl font-light py-7 px-3 text-center text-[#B9B9B9] focus:outline-none rounded-xl'
+							/>
+						</div>
+					</>
+				)}
+				{counter === 10 && (
+					<>
+						<div className='flex justify-center flex-col items-center space-y-3 w-5/12 '>
+							<div className='text-novo-darkgray'>
+								ENTER YOUR BIO
+							</div>
+							<textarea
+								type='text'
+								className='bg-novo-gray w-full text-4xl py-4 px-3 text-center text-black focus:outline-none rounded-xl'
+								value={bio}
+								onChange={e => setBio(e.target.value)}
+							/>
+						</div>
+					</>
+				)}
+				{counter === 11 && (
+					<>
+						<div className='flex justify-center flex-col items-center space-y-10 w-5/12 '>
+							<div className='text-novo-darkgray'>
+								SELECT 3 ACTIVITIES
+							</div>
+							<div className='grid cols-2 space-x-4'>
+								<div className='col-span-1 space-y-3 '>
+									{activites1.map((activity, index) => (
+										<CreateActivity
+											key={index}
+											activity={activity.name}
+											location={activity.location}
+											activities={activities}
+											setActivities={setActivities}
+										/>
+									))}
+								</div>
+								<div className='col-start-2 space-y-3'>
+									{activites2.map((activity, index) => (
+										<CreateActivity
+											key={index}
+											activity={activity.name}
+											location={activity.location}
+											activities={activities}
+											setActivities={setActivities}
+										/>
+									))}
+								</div>
+							</div>
+
+							{activities.length < 3 ? (
+								<button className='text-base mt-10 text-novo-lightgray border-2 border-novo-lightgray rounded-full px-5 py-1  duration-300p-1'>
+									CREATE PROFILE
+								</button>
+							) : (
+								<button
+									onClick={createProfile}
+									className='text-base mt-10 text-novo-purple bg-novo-lightpurple border-2 border-novo-purple rounded-full px-5 py-1  duration-300 hover:bg-novo-purple hover:text-white p-1'
+								>
+									CREATE PROFILE
+								</button>
+							)}
 						</div>
 					</>
 				)}

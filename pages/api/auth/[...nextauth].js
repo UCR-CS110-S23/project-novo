@@ -1,58 +1,95 @@
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
+import CredentialsProvider from "next-auth/providers/credentials";
 import clientPromise from "/lib/mongodb.js";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
+import { isPasswordValid } from "@/lib/hash";
 
-export default async function auth(req, res) {
-	const adapter = await MongoDBAdapter({
-		db: await clientPromise,
-	});
-	return await NextAuth(req, res, {
-		providers: [
-			GoogleProvider({
-				clientId: process.env.GOOGLE_CLIENT_ID,
-				clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-			}),
-		],
-		adapter: adapter,
-		callbacks: {
-			async signIn({ user, account, profile }) {
-				if (account.provider === "google") {
-					user.name = {
-						first: String(profile.name.split(" ")[0]),
-						last: String(profile.name.split(" ")[1]),
-					};
+export const authOptions = {
+	adapter: MongoDBAdapter(clientPromise),
+	// pages: {
+	// 	signIn: "/feed",
+	// 	newUser: "/profileCreation",
+	// },
+	providers: [
+		GoogleProvider({
+			clientId: process.env.GOOGLE_CLIENT_ID,
+			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+		}),
+
+		CredentialsProvider({
+			name: "Credentials",
+			async authorize(credentials) {
+				const db = (await clientPromise).db(process.env.MONGODB_DB);
+				const user = await db
+					.collection("users")
+					.findOne({ email: credentials.email });
+
+				// Checks if email exists
+				if (!user) {
+					console.log("Authentication: Email not found");
+					return null;
 				}
-				return true;
-			},
-			async session({ session, user }) {
+
+				const validPassword = await isPasswordValid(
+					credentials.password,
+					user.password
+				);
+
+				if (!validPassword) {
+					console.log("Password not found!");
+					return null;
+				}
+
 				return {
-					...session,
-					user: {
-						...session.user,
-						uid: user.uid,
-						name: user.name,
-						photoURL: user.photoURL,
-						bio: user.bio,
-						age: user.age,
-					},
+					uid: user._id,
+					name: user.name,
+					email: user.email,
+					image: user.image,
+					age: user.age,
+					pronoun: user.pronoun,
+					gender: user.gender,
+					bio: user.bio,
+					interests: user.interests,
+					location: user.location,
+					preference: user.preference,
 				};
 			},
-		},
-		pages: {
-			signIn: "/feed",
-		},
-		secret: process.env.JWT_SECRET,
-	});
-}
-// export const authOptions = {
-// 	providers: [
-// 		GoogleProvider({
-// 			clientId: process.env.GOOGLE_CLIENT_ID,
-// 			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-// 		}),
-// 	],
-// 	secret: process.env.JWT_SECRET,
-// };
+		}),
+	],
+	secret: process.env.JWT_SECRET,
+	session: {
+		strategy: "jwt",
+	},
+	callbacks: {
+		async signIn({ user, account }) {
+			if (account.provider === "google") {
+				user._id = account.providerAccountId;
+				user.name = {
+					first: String(profile.name.split(" ")[0]),
+					last: String(profile.name.split(" ")[1]),
+				};
+				user.provider = account.provider;
+			}
 
-// export default NextAuth(authOptions);
+			return true;
+		},
+		async jwt({ token, user, session, trigger }) {
+			if (user) {
+				token.user = user;
+			}
+
+			if (trigger === "update" && session?.name) {
+				token.user.name = session.name;
+			}
+
+			return token;
+		},
+		async session({ session, token }) {
+			session.user = token.user;
+			return session;
+		},
+	},
+};
+
+export default NextAuth(authOptions);

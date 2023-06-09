@@ -7,8 +7,13 @@ import { MdPersonOutline } from "react-icons/md";
 import { TbCircles } from "react-icons/tb";
 import { RxExit } from "react-icons/rx";
 import Link from "next/link";
+import { signOut, useSession } from "next-auth/react";
 
 function NavBar() {
+	const { data: session, status } = useSession();
+
+	console.log(session, status);
+
 	return (
 		<>
 			<div className='flex flex-col justify-between w-full bg-novo-purple h-screen rounded-r-xl'>
@@ -50,8 +55,14 @@ function NavBar() {
 					<Link href='/editProfile' className='text-white text-2xl'>
 						<MdPersonOutline />
 					</Link>
-
-					<button className='text-white text-2xl'>
+					<button
+						className='text-white text-2xl'
+						onClick={() =>
+							signOut({
+								callbackUrl: "/",
+							})
+						}
+					>
 						<RxExit />
 					</button>
 				</div>
