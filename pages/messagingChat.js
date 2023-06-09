@@ -1,13 +1,14 @@
 import NavBar from "../components/NavBar";
 import MessageGuy from "../public/messageGuy.jpg";
 import MessageChat from "@/components/MessageChat";
-// import MessageResponse from "@/components/MessageResponse";
-// import MyMessageResponse from "@/components/MyMessage";
+import MessageResponse from "@/components/MessageResponse";
+import MyMessageResponse from "@/components/MyMessage";
+// import ReactDOM from "react-dom";
 import Image from "next/image";
-// import { FiCamera } from "react-icons/fi";
-// import { FiPaperclip } from "react-icons/fi";
-// import { BsPlusSquare } from "react-icons/bs";
-// import { FiSend } from "react-icons/fi";
+import { FiCamera } from "react-icons/fi";
+import { FiPaperclip } from "react-icons/fi";
+import { BsPlusSquare } from "react-icons/bs";
+import { FiSend } from "react-icons/fi";
 import Disney from "../public/disneyland.png";
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
@@ -15,17 +16,26 @@ const socket = io.connect("http://localhost:3001");
 
 export default function Messaging() {
 	const [message, setMessage] = useState("");
-	const [messageReceived, setMessageReceived] = useState("");
+	const [messageContainer, setMessageContainer] = useState(null);
 
 	const sendMesssage = () => {
 		socket.emit("send_message", { message });
 	};
 
 	useEffect(() => {
-		socket.on("receive_message", data => {
-			setMessageReceived(data.message);
-		});
-	}, [socket]);
+		if (messageContainer) {
+			socket.on("receive_message", data => {
+				const messageElement = document.createElement("div");
+				messageElement.innerText = data.message;
+				messageContainer.appendChild(messageElement);
+			});
+		}
+	}, [messageContainer]);
+
+	useEffect(() => {
+		const container = document.getElementById("messageContainer");
+		setMessageContainer(container);
+	}, []);
 
 	return (
 		<>
@@ -84,20 +94,66 @@ export default function Messaging() {
 							</div>
 						</div>
 					</div>
-					<div className='p-4'>
-						<input
-							className='border'
-							placeholder='Message...'
-							onChange={event => {
-								setMessage(event.target.value);
-							}}
-						/>
-						<button onClick={sendMesssage} className='border'>
-							Send Message
-						</button>
+					<div className='text-novo-dategray mt-2 text-center text-sm'>
+						YESTERDAY
 					</div>
-					<h1>Message:</h1>
-					{messageReceived}
+					<div className='flex relative justify-center'>
+						<div className='text-center justify-center p-2 mt-2 bg-novo-lightpurple text-novo-purple text-sm rounded-md w-80'>
+							You’re interested in going to Disneyland with Ricky!
+						</div>
+					</div>
+					<div className=' max-h-max'>
+						<div>
+							<MessageResponse
+								image={MessageGuy}
+								name='Ricky Smith'
+								message='Hi, How are you?'
+								time='11:00AM'
+							/>
+						</div>
+						<MyMessageResponse
+							image={Disney}
+							message="Hey Ricky, I'm doing great!"
+							time='11:05AM'
+						/>
+					</div>
+					<div className='absolute flex items-center inset-x-0 bottom-0 h-16'>
+						<div className='ml-10'>
+							<button className='text-novo-darkgray text-xl'>
+								<FiCamera />
+							</button>
+						</div>
+						<div className=' ml-10'>
+							<button className='text-novo-darkgray text-xl'>
+								<FiPaperclip />
+							</button>
+						</div>
+						<div className='flex w-3/4 ml-10'>
+							<input
+								className='bg-novo-gray pl-3 h-10 w-full rounded-lg text-sm focus:outline-none'
+								type='search'
+								name='search'
+								placeholder='Write something...'
+								onChange={event => {
+									setMessage(event.target.value);
+								}}
+							></input>
+							<button
+								onClick={sendMesssage}
+								className='bg-novo-gray text-novo-darkgray text-xl rounded-r-lg -ml-3 pr-3'
+							>
+								<FiSend />
+							</button>
+						</div>
+						<div className='mr-1 mt-1'>
+							<button className='text-novo-darkgray text-xl'>
+								<BsPlusSquare />
+							</button>
+						</div>
+					</div>
+					<div id='messageContainer'>
+						<h1>Message:</h1>
+					</div>
 				</div>
 			</div>
 		</>
