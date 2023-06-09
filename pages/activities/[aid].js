@@ -31,7 +31,7 @@ export default function ActivityProfile() {
 					<div className='flex flex-col items-center justify-center w-10/12'>
 						<div className='relative'>
 							<Image
-								src={act.image}
+								src={act.banner}
 								width={40}
 								height={30}
 								alt='Landing'

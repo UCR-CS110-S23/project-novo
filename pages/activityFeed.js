@@ -19,12 +19,6 @@ export default function ActivityProfile() {
 					<div className='flex flex-col w-10/12'>
 						<div className='flex flex-col justify-start pt-3'>
 							<div className='text-3xl mt-4'>Activity</div>
-							<input
-								className='border border-gray-200 mt-4 bg-white h-10 w-full p-4 rounded-lg text-sm focus:outline-none'
-								type='search'
-								name='search'
-								placeholder='Search activites...'
-							></input>
 						</div>
 						<div className='grid grid-cols-3 gap-4 mt-10'>
 							{Activities.map((activity, index) => (
@@ -34,7 +28,7 @@ export default function ActivityProfile() {
 									className='no-underline text-black'
 								>
 									<ActivityFeedCard
-										image={activity.image}
+										image={activity.square}
 										title={activity.name}
 										location={activity.location}
 										rating={activity.rating}

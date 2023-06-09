@@ -7,7 +7,8 @@ const Activities = [
 		address: "1313 Disneyland Dr, Anaheim, CA 92802",
 		reviews: "",
 		rating: "",
-		image: "/disney-banner.png",
+		banner: "/disney-banner.png",
+		square: "/disney-square.png",
 		url: "https://disneyland.disney.go.com/",
 	},
 	{
@@ -18,7 +19,8 @@ const Activities = [
 		address: "5905 Wilshire Blvd, Los Angeles, CA 90036",
 		reviews: "",
 		rating: "",
-		image: "/lacma-banner.png",
+		banner: "/lacma-banner.png",
+		square: "/lacma-square.png",
 		url: "https://www.lacma.com",
 	},
 	{
@@ -29,7 +31,8 @@ const Activities = [
 		address: "100 Aquarium Way, Long Beach, CA 90802",
 		reviews: "",
 		rating: "",
-		image: "/aquarium-banner.png",
+		banner: "/aquarium-banner.png",
+		square: "/aquarium-square.png",
 		url: "www.aquariumofpacific.org",
 	},
 	{
@@ -40,7 +43,8 @@ const Activities = [
 		address: "1313 Disneyland Dr, Anaheim, CA 92802",
 		reviews: "",
 		rating: "",
-		image: "/laguna-banner.png",
+		banner: "/laguna-banner.png",
+		square: "/laguna-square.png",
 		url: "www.lagunabeachcity.net",
 	},
 	{
@@ -51,7 +55,8 @@ const Activities = [
 		address: "100 Universal City Plaza, Universal City, CA 91608",
 		reviews: "",
 		rating: "",
-		image: "/universal-banner.png",
+		banner: "/universal-banner.png",
+		square: "/universal-square.png",
 		url: "www.universalstudioshollywood.com.",
 	},
 	{
@@ -62,7 +67,8 @@ const Activities = [
 		address: "7850 Melrose Avenue, Los Angeles, California, 90046",
 		reviews: "",
 		rating: "",
-		image: "/melrose-banner.png",
+		banner: "/melrose-banner.png",
+		square: "/melrose-square.png",
 		url: "http://melrosetradingpost.org",
 	},
 ];

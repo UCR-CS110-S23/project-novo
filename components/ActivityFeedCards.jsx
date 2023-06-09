@@ -7,15 +7,15 @@ const ActivityFeedCard = ({ image, title, location, rating }) => {
 		<div className='rounded-3xl duration-300 hover:-translate-y-1 border gird grid-rows-4'>
 			<Image
 				src={image}
-				width={192}
+				width={250}
 				// heigth='35'
-				height={192}
+				height={250}
 				alt='Landing'
-				className=' rounded-t-3xl h-48'
+				className=' rounded-t-3xl aspect-square'
 			/>
 			<div className='-space-y-1 pl-3 pb-3 pt-2'>
 				<div className='flex justify-between'>
-					<div className='text-2xl font-regular'>{title}</div>
+					<div className='text-lg font-base'>{title}</div>
 					<div className='flex items-center pr-3 pt-1 pb-1 text-novo-purple '>
 						<AiOutlineStar />
 						{rating}
