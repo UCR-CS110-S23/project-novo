@@ -5,7 +5,14 @@ import { AiOutlineStar } from "react-icons/ai";
 const ActivityFeedCard = ({ image, title, location, rating }) => {
 	return (
 		<div className='rounded-3xl duration-300 hover:-translate-y-1 border gird grid-rows-4'>
-			<Image src={image} alt='Landing' className=' rounded-t-3xl h-48' />
+			<Image
+				src={image}
+				width={192}
+				// heigth='35'
+				height={192}
+				alt='Landing'
+				className=' rounded-t-3xl h-48'
+			/>
 			<div className='-space-y-1 pl-3 pb-3 pt-2'>
 				<div className='flex justify-between'>
 					<div className='text-2xl font-regular'>{title}</div>

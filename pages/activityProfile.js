@@ -4,8 +4,9 @@ import Review from "../components/Review";
 import NavBar from "../components/NavBar";
 import { AiOutlineStar } from "react-icons/ai";
 import ActivitiesCart from "../components/ActivitiesCart";
+import { getActivity } from "@/lib/getActivity";
 
-export default function ActivityProfile() {
+export default function ActivityProfile({ act }) {
 	return (
 		<>
 			<div className='grid grid-cols-6'>
@@ -116,4 +117,14 @@ export default function ActivityProfile() {
 			</div>
 		</>
 	);
+}
+
+export async function getServerSideProps() {
+	const activityData = await getActivity();
+	const data = JSON.stringify(activityData);
+	return {
+		props: {
+			data,
+		},
+	};
 }

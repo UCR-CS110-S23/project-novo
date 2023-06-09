@@ -1,8 +1,9 @@
 import ActivityFeedCard from "../components/ActivityFeedCards";
 import NavBar from "../components/NavBar";
-import Disney from "../public/disneyCard.jpg";
+// import Disney from "../public/disneyCard.jpg";
 import ActivitiesCart from "../components/ActivitiesCart";
 import Link from "next/link";
+import Activities from "../public/data/Activities";
 
 export default function ActivityProfile() {
 	return (
@@ -26,48 +27,20 @@ export default function ActivityProfile() {
 							></input>
 						</div>
 						<div className='grid grid-cols-3 gap-4 mt-10'>
-							<Link
-								href='/activityProfile'
-								className='no-underline text-black'
-							>
-								<ActivityFeedCard
-									image={Disney}
-									title='DisneyLand'
-									location='Anaheim,CA'
-									rating='4.6'
-								/>
-							</Link>
-
-							<ActivityFeedCard
-								image={Disney}
-								title='DisneyLand'
-								location='Anaheim,CA'
-								rating='4.7'
-							/>
-							<ActivityFeedCard
-								image={Disney}
-								title='DisneyLand'
-								location='Anaheim,CA'
-								rating='4.8'
-							/>
-							<ActivityFeedCard
-								image={Disney}
-								title='DisneyLand'
-								location='Anaheim,CA'
-								rating='4.6'
-							/>
-							<ActivityFeedCard
-								image={Disney}
-								title='DisneyLand'
-								location='Anaheim,CA'
-								rating='4.6'
-							/>
-							<ActivityFeedCard
-								image={Disney}
-								title='DisneyLand'
-								location='Anaheim,CA'
-								rating='4.6'
-							/>
+							{Activities.map((activity, index) => (
+								<Link
+									key={index}
+									href={`/activities/${activity.id}`}
+									className='no-underline text-black'
+								>
+									<ActivityFeedCard
+										image={activity.image}
+										title={activity.name}
+										location={activity.location}
+										rating={activity.rating}
+									/>
+								</Link>
+							))}
 						</div>
 					</div>
 				</div>
