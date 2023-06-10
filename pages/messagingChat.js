@@ -3,14 +3,63 @@ import MessageGuy from "../public/messageGuy.jpg";
 import MessageChat from "@/components/MessageChat";
 import MessageResponse from "@/components/MessageResponse";
 import MyMessageResponse from "@/components/MyMessage";
+import ReactDOM from "react-dom";
 import Image from "next/image";
 import { FiCamera } from "react-icons/fi";
 import { FiPaperclip } from "react-icons/fi";
 import { BsPlusSquare } from "react-icons/bs";
 import { FiSend } from "react-icons/fi";
 import Disney from "../public/disneyland.png";
+import { useEffect, useState } from "react";
+import io from "socket.io-client";
+const socket = io.connect("http://localhost:3001");
 
 export default function Messaging() {
+	const [message, setMessage] = useState("");
+	const [messageContainer, setMessageContainer] = useState(null);
+
+	const sendMesssage = () => {
+		const mymessageElement = document.createElement("div");
+		ReactDOM.render(
+			<MyMessageResponse
+				image={Disney}
+				message={message}
+				time='11:05AM'
+			/>,
+			mymessageElement
+		);
+		if (messageContainer) {
+			messageContainer.appendChild(mymessageElement);
+		}
+
+		socket.emit("send_message", { message });
+
+		setMessage("");
+	};
+
+	useEffect(() => {
+		if (messageContainer) {
+			socket.on("receive_message", data => {
+				const messageElement = document.createElement("div");
+				ReactDOM.render(
+					<MessageResponse
+						image={MessageGuy}
+						name='Ricky Smith'
+						message={data.message}
+						time='11:00AM'
+					/>,
+					messageElement
+				);
+				messageContainer.appendChild(messageElement);
+			});
+		}
+	}, [messageContainer]);
+
+	useEffect(() => {
+		const container = document.getElementById("messageContainer");
+		setMessageContainer(container);
+	}, []);
+
 	return (
 		<>
 			<div className='grid grid-cols-12'>
@@ -21,7 +70,7 @@ export default function Messaging() {
 					</div>
 				</div>
 				<div className='col-start-3 col-end-6 border-r h-screen'>
-					<div className='text-3xl mt-4 ml-4'>Messages</div>
+					<div className='text-3xl mt-4 ml-4'>Message</div>
 					<div className='text-sm mt-10 ml-8 text-novo-darkgray'>
 						Search
 					</div>
@@ -68,39 +117,36 @@ export default function Messaging() {
 							</div>
 						</div>
 					</div>
-					<div className='text-novo-dategray mt-2 text-center text-sm'>
-						YESTERDAY
-					</div>
-					<div className='flex relative justify-center'>
-						<div className='text-center justify-center p-2 mt-2 bg-novo-lightpurple text-novo-purple text-sm rounded-md w-80'>
-							You’re interested in going to Disneyland with Ricky!
+					<div
+						id='messagingPart'
+						className='max-h-[calc(100vh-4rem-4rem)] overflow-y-auto mb-16'
+					>
+						<div className='text-novo-dategray mt-2 text-center text-sm'>
+							YESTERDAY
+						</div>
+						<div className='flex relative justify-center'>
+							<div className='text-center justify-center p-2 mt-2 bg-novo-lightpurple text-novo-purple text-sm rounded-md w-80'>
+								You’re interested in going to Disneyland with
+								Ricky!
+							</div>
+						</div>
+						<div id='messageContainer' className='mb-16'>
+							<div>
+								<MessageResponse
+									image={MessageGuy}
+									name='Ricky Smith'
+									message='Hi, How are you?'
+									time='11:00AM'
+								/>
+							</div>
+							<MyMessageResponse
+								image={Disney}
+								message="Hey Ricky, I'm doing great!"
+								time='11:05AM'
+							/>
 						</div>
 					</div>
-					<div className=' max-h-max'>
-						<MessageResponse
-							image={MessageGuy}
-							name='Ricky Smith'
-							message='Hi, How are you?'
-							time='11:00AM'
-						/>
-						<MyMessageResponse
-							image={Disney}
-							message="Hey Ricky, I'm doing great!"
-							time='11:05AM'
-						/>
-						<MessageResponse
-							image={MessageGuy}
-							name='Ricky Smith'
-							message="I'm down to go DisneyLand next Monday"
-							time='11:15AM'
-						/>
-						<MyMessageResponse
-							image={Disney}
-							message="That would be fun, let's do it!"
-							time='11:25AM'
-						/>
-					</div>
-					<div className='absolute flex items-center inset-x-0 bottom-0 h-16'>
+					<div className='absolute fixed flex items-center inset-x-0 bottom-0 h-16 bg-white'>
 						<div className='ml-10'>
 							<button className='text-novo-darkgray text-xl'>
 								<FiCamera />
@@ -117,12 +163,19 @@ export default function Messaging() {
 								type='search'
 								name='search'
 								placeholder='Write something...'
+								value={message}
+								onChange={event => {
+									setMessage(event.target.value);
+								}}
 							></input>
-							<button className='bg-novo-gray text-novo-darkgray text-xl rounded-r-lg -ml-3 pr-3'>
+							<button
+								onClick={sendMesssage}
+								className='bg-novo-gray text-novo-darkgray text-xl rounded-r-lg -ml-3 pr-3'
+							>
 								<FiSend />
 							</button>
 						</div>
-						<div className='ml-3 mt-1'>
+						<div className='mr-1 mt-1'>
 							<button className='text-novo-darkgray text-xl'>
 								<BsPlusSquare />
 							</button>
