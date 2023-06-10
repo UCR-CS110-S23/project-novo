@@ -37,6 +37,7 @@ module.exports = {
 			},
 			aspectRatio: {
 				"4/3": "12/10",
+				card: "12/6",
 			},
 		},
 	},

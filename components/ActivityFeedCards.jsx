@@ -14,14 +14,14 @@ const ActivityFeedCard = ({ image, title, location, rating }) => {
 				className=' rounded-t-3xl aspect-square'
 			/>
 			<div className='-space-y-1 pl-3 pb-3 pt-2'>
-				<div className='flex justify-between'>
+				<div className='flex justify-between items-center'>
 					<div className='text-lg font-base'>{title}</div>
-					<div className='flex items-center pr-3 pt-1 pb-1 text-novo-purple '>
+					<div className='flex items-center pr-3 text-novo-purple '>
 						<AiOutlineStar />
 						{rating}
 					</div>
 				</div>
-				<div className='text-base text-gray-400 pt-1 font-light'>
+				<div className='text-base text-gray-400font-light'>
 					{location}
 				</div>
 			</div>

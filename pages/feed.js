@@ -9,13 +9,19 @@ import { RxCross2 } from "react-icons/rx";
 import { BsCheckLg } from "react-icons/bs";
 import Link from "next/link.js";
 import Image from "next/image.js";
+import Activities from "@/public/data/Activities";
+import { useEffect } from "react";
 
 export default function Feed({ data }) {
 	const temp = JSON.parse(data);
 	console.log("DATA", temp);
 
 	const [counter, setCounter] = useState(0);
+	// const [selection, setSelection] = useState("");
 	const [showModal, setShowModal] = useState(false);
+	const [act1, setAct1] = useState({});
+	const [act2, setAct2] = useState({});
+	const [act3, setAct3] = useState({});
 
 	const increase = () => {
 		if (counter + 1 >= temp.length) {
@@ -25,12 +31,27 @@ export default function Feed({ data }) {
 		}
 	};
 
-	console.log("COUNT", temp.length);
-
 	const handleCheck = () => {
 		increase();
 		setShowModal(true);
 	};
+
+	useEffect(() => {
+		const one = temp[counter].activities[0];
+		const two = temp[counter].activities[1];
+		const three = temp[counter].activities[2];
+		// console.log("ONE ", one);
+		// console.log("TWO ", two);
+		// console.log("THREE ", three);
+		// setActivities(activities.filter(a => a !== activity));
+		setAct1(Activities.find(a => one == a.name.toUpperCase()));
+		setAct2(Activities.find(a => two == a.name.toUpperCase()));
+		setAct3(Activities.find(a => three == a.name.toUpperCase()));
+	}, [counter, temp]);
+
+	// console.log("ACT1 ", act1);
+	// console.log("ACT2 ", act2);
+	// console.log("ACT3 ", act3);
 
 	return (
 		<div className='grid grid-cols-6'>
@@ -48,7 +69,13 @@ export default function Feed({ data }) {
 							<div className='text-sm my-2.5 font-light'>
 								SELECT AN ACTIVITY:
 							</div>
-							<ActivityCard post={temp[counter]} />
+							<ActivityCard
+								post={temp[counter]}
+								// setSelection={setSelection}
+								one={act1}
+								two={act2}
+								three={act3}
+							/>
 						</div>
 					</div>
 					<div className='flex justify-center mt-4  space-x-3'>

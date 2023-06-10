@@ -10,26 +10,26 @@ const activites1 = [
 		location: "ANAHEIM, CA",
 	},
 	{
-		name: "LEGOLAND",
-		location: "CARLSBAD, CA",
+		name: "LACMA",
+		location: "LOS ANGELES, CA",
 	},
 	{
-		name: "THE BROAD",
-		location: "LOS ANGELES, CA",
+		name: "AQUARIUM OF THE PACIFIC",
+		location: "LONG BEACH, CA",
 	},
 ];
 
 const activites2 = [
 	{
-		name: "LITTLE ITALY",
-		location: "SAN DIEGO, CA",
-	},
-	{
-		name: "OC FAIR",
+		name: "LAGUNA BEACH",
 		location: "ORANGE COUNTY, CA",
 	},
 	{
-		name: "OLVERA STREET",
+		name: "UNIVERSAL STUDIOS",
+		location: "HOLLYWOOD, CA",
+	},
+	{
+		name: "MELROSE TRADING POST",
 		location: "LOS ANGELES, CA",
 	},
 ];
