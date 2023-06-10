@@ -18,7 +18,7 @@ export default function Messaging() {
 	const [message, setMessage] = useState("");
 	const [messageContainer, setMessageContainer] = useState(null);
 
-	const sendMesssage = () => {
+	const sendMessage = () => {
 		const mymessageElement = document.createElement("div");
 		ReactDOM.render(
 			<MyMessageResponse
@@ -59,6 +59,36 @@ export default function Messaging() {
 		const container = document.getElementById("messageContainer");
 		setMessageContainer(container);
 	}, []);
+
+	const postMessage = async e => {
+		e.preventDefault();
+
+		const messages = {
+			name,
+			message,
+		};
+
+		try {
+			await fetch("/api/auth/createMessage", {
+				method: "POST",
+				body: JSON.stringify(messages),
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
+
+			setMessage("");
+
+			console.log("message made successfully");
+		} catch (e) {
+			console.log(e);
+		}
+	};
+
+	const handleSend = e => {
+		sendMessage();
+		postMessage(e);
+	};
 
 	return (
 		<>
@@ -169,7 +199,7 @@ export default function Messaging() {
 								}}
 							></input>
 							<button
-								onClick={sendMesssage}
+								onClick={handleSend}
 								className='bg-novo-gray text-novo-darkgray text-xl rounded-r-lg -ml-3 pr-3'
 							>
 								<FiSend />
