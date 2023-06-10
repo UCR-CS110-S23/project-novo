@@ -40,18 +40,10 @@ export default function Feed({ data }) {
 		const one = temp[counter].activities[0];
 		const two = temp[counter].activities[1];
 		const three = temp[counter].activities[2];
-		// console.log("ONE ", one);
-		// console.log("TWO ", two);
-		// console.log("THREE ", three);
-		// setActivities(activities.filter(a => a !== activity));
 		setAct1(Activities.find(a => one == a.name.toUpperCase()));
 		setAct2(Activities.find(a => two == a.name.toUpperCase()));
 		setAct3(Activities.find(a => three == a.name.toUpperCase()));
 	}, [counter, temp]);
-
-	// console.log("ACT1 ", act1);
-	// console.log("ACT2 ", act2);
-	// console.log("ACT3 ", act3);
 
 	return (
 		<div className='grid grid-cols-6'>
@@ -89,7 +81,6 @@ export default function Feed({ data }) {
 								<BsCheckLg />
 							</div>
 						</button>
-						{/* <MatchButtons /> */}
 					</div>
 				</div>
 			</div>

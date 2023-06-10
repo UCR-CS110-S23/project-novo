@@ -1,32 +1,14 @@
 import { React, useState } from "react";
 import Image from "next/image";
-// import Activities from "@/public/data/Activities";
 
 const ActivityCard = ({ post, setSelection, one, two, three }) => {
 	const [toggle, setToggle] = useState(0);
-
-	// const [act1, setAct1] = useState({});
-	// console.log("ACT 1: ", post.activities[0]);
-	// const activityGrab = () => {
-	// 	const data = post.activities[0];
-
-	// setAct1(Activities.filter(a => data === a.name.toUpperCase)[0]);
-	// console.log("ACTS: ", act1);
-	// // };
-
-	// useEffect(() => {
-	// 	const data = post.activities[0];
-	// 	console.log("ACT 1: ", data);
-	// 	setAct1(Activities.filter(a => data === a.name.toUpperCase)[0]);
-	// 	console.log("ACTS: ", act1);
-	// }, []);
 
 	return (
 		<>
 			<div className='flex flex-col space-y-3'>
 				<label className='checked:border-novo-purple relative grid rows-2 h-fit rounded-3xl hover:-translate-y-1 duration-300'>
 					<div className='relative w-11/12'>
-						{/* {activityGrab} */}
 						<Image
 							src={one.banner}
 							alt='Landing'
