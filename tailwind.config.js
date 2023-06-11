@@ -35,6 +35,10 @@ module.exports = {
 					dategray: "#CBCBCB",
 				},
 			},
+			aspectRatio: {
+				"4/3": "12/10",
+				card: "12/6",
+			},
 		},
 	},
 	plugins: [],

@@ -2,7 +2,6 @@ import { React, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-// import { useRouter } from "next/router";
 import CreateActivity from "./CreateActivity";
 
 const activites1 = [
@@ -11,26 +10,26 @@ const activites1 = [
 		location: "ANAHEIM, CA",
 	},
 	{
-		name: "LEGOLAND",
-		location: "CARLSBAD, CA",
+		name: "LACMA",
+		location: "LOS ANGELES, CA",
 	},
 	{
-		name: "THE BROAD",
-		location: "LOS ANGELES, CA",
+		name: "AQUARIUM OF THE PACIFIC",
+		location: "LONG BEACH, CA",
 	},
 ];
 
 const activites2 = [
 	{
-		name: "LITTLE ITALY",
-		location: "SAN DIEGO, CA",
-	},
-	{
-		name: "OC FAIR",
+		name: "LAGUNA BEACH",
 		location: "ORANGE COUNTY, CA",
 	},
 	{
-		name: "OLVERA STREET",
+		name: "UNIVERSAL STUDIOS",
+		location: "HOLLYWOOD, CA",
+	},
+	{
+		name: "MELROSE TRADING POST",
 		location: "LOS ANGELES, CA",
 	},
 ];
@@ -52,7 +51,7 @@ const Questions = ({ counter }) => {
 
 	const [activities, setActivities] = useState([]);
 
-	const [interests, setInterests] = useState(new Set());
+	const [interests, setInterests] = useState([]);
 
 	const [data, setData] = useState({
 		name: "",
@@ -71,7 +70,7 @@ const Questions = ({ counter }) => {
 		if (data.interests.size < 6) {
 			setData({ ...data, interests: new Set([...data.interests, tag]) });
 			setTag("");
-			setInterests(new Set([...data.interests, tag]));
+			setInterests(Array.from(new Set([...data.interests, tag])));
 		}
 	};
 
