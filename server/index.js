@@ -15,7 +15,7 @@ const io = new Server(server, {
 	},
 });
 
-const messages = [];
+messages = [];
 
 io.on("connection", socket => {
 	console.log(`User connected: ${socket.id}`);
@@ -34,6 +34,7 @@ io.on("connection", socket => {
 	socket.on("disconnect", () => {
 		console.log(`User disconnected: ${socket.id}`);
 		socket.broadcast.emit("user-disconnected", messages);
+		messages = [];
 	});
 });
 
