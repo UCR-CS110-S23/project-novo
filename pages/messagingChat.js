@@ -53,11 +53,19 @@ export default function Messaging() {
 				messageContainer.appendChild(messageElement);
 			});
 		}
+		socket.on("user-disconnected", data => {
+			console.log(JSON.stringify(data));
+		});
 	}, [messageContainer]);
 
 	useEffect(() => {
 		const container = document.getElementById("messageContainer");
 		setMessageContainer(container);
+
+		return () => {
+			socket.off("receive_message");
+			socket.off("user-disconnected");
+		};
 	}, []);
 
 	const postMessage = async e => {

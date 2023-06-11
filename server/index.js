@@ -15,11 +15,25 @@ const io = new Server(server, {
 	},
 });
 
+const messages = [];
+
 io.on("connection", socket => {
 	console.log(`User connected: ${socket.id}`);
 
 	socket.on("send_message", data => {
+		const messageData = {
+			id: socket.id,
+			message: data.message,
+		};
+
+		messages.push(messageData);
+
 		socket.broadcast.emit("receive_message", data);
+	});
+
+	socket.on("disconnect", () => {
+		console.log(`User disconnected: ${socket.id}`);
+		socket.broadcast.emit("user-disconnected", messages);
 	});
 });
 
