@@ -12,6 +12,7 @@ import { FiSend } from "react-icons/fi";
 import Disney from "../public/disneyland.png";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+
 import io from "socket.io-client";
 const socket = io.connect("http://localhost:3001");
 
@@ -22,7 +23,7 @@ export default function Messaging() {
 	const router = useRouter();
 	const { name: selectedName } = router.query;
 
-	const sendMesssage = () => {
+	const sendMessage = () => {
 		const mymessageElement = document.createElement("div");
 		ReactDOM.render(
 			<MyMessageResponse
