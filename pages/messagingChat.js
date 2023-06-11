@@ -88,18 +88,13 @@ export default function Messaging() {
 
 					{/* TODO - where message histories go */}
 					<div className='mt-4 border-t'>
-						<MessageChat
-							image={MessageGuy}
-							name={selectedName}
-							message='click to chat!'
-							// mins='10'
-						/>
-						{/* <MessageChat
-							image={MessageGuy}
-							name='Blake L'
-							message='Okay, Let’s grab drinks and then go...'
-							mins='20'
-						/> */}
+						{selectedName && (
+							<MessageChat
+								image={MessageGuy}
+								name={selectedName}
+								message='click to chat!'
+							/>
+						)}
 					</div>
 				</div>
 
