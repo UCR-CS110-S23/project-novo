@@ -15,7 +15,6 @@ export default function ActivityProfile() {
 	useEffect(() => {
 		const data = router.query.aid;
 		setAct(Activities.filter(a => data === a.id)[0]);
-		console.log("ACTS: ", act);
 	}, []);
 
 	return (
