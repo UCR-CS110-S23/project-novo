@@ -1,6 +1,6 @@
 import NavBar from "../components/NavBar";
 import MessageGuy from "../public/messageGuy.jpg";
-import MessageChat from "@/components/MessageChat";
+// import MessageChat from "@/components/MessageChat";
 import MessageResponse from "@/components/MessageResponse";
 import MyMessageResponse from "@/components/MyMessage";
 import ReactDOM from "react-dom";
@@ -62,20 +62,29 @@ export default function Messaging() {
 
 	return (
 		<>
+			{/* =========== WHOLE PAGE =========== */}
 			<div className='grid grid-cols-12'>
-				<div className='col-span-2'></div>
+				{/* Nav bar */}
 				<div className='col-span-2 w-1/6 fixed'>
 					<div className='absolute '>
 						<NavBar />
 					</div>
 				</div>
+
+				{/* =========== MESSAGES COLUMN =========== */}
 				<div className='col-start-3 col-end-6 border-r h-screen'>
-					<div className='text-3xl mt-4 ml-4'>Message</div>
-					<div className='text-sm mt-10 ml-8 text-novo-darkgray'>
-						Search
-					</div>
+					<div className='text-3xl mt-11 ml-8'>Message</div>
+
+					{/* search bar */}
+					<input
+						type='search'
+						placeholder='Search'
+						className='focus:outline-none placeholder:font-light placeholder-[#858585] placeholder:font-regular pl-[5px] mt-10 ml-11 text-sm'
+					/>
+
+					{/* TODO - where message histories go */}
 					<div className='mt-4 border-t'>
-						<MessageChat
+						{/* <MessageChat
 							image={MessageGuy}
 							name='Jeffery Pine'
 							message='Okay, Let’s grab drinks and then go...'
@@ -86,10 +95,13 @@ export default function Messaging() {
 							name='Blake L'
 							message='Okay, Let’s grab drinks and then go...'
 							mins='20'
-						/>
+						/> */}
 					</div>
 				</div>
+
+				{/* =========== ACTUAL CHAT CONTENT =========== */}
 				<div className='col-start-6 border-t col-end-13 h-screen relative'>
+					{/* TOP PORTION OF CHAT CONTENT */}
 					<div className='flex justify-between w-full border-b'>
 						<div className='flex mt-4'>
 							<div className='pl-3'>
@@ -100,7 +112,7 @@ export default function Messaging() {
 								/>
 							</div>
 							<div className='text-2xl mt-2 ml-3'>
-								Ricky Smith
+								user being messaged
 								<div className='text-sm -mt-2 text-green-500'>
 									Online
 								</div>
