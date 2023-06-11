@@ -22,6 +22,8 @@ export default function Feed({ data }) {
 	const [act2, setAct2] = useState({});
 	const [act3, setAct3] = useState({});
 
+	const [selectedName, setSelectedName] = useState("");
+
 	const increase = () => {
 		if (counter + 1 >= temp.length) {
 			setCounter(0);
@@ -32,6 +34,7 @@ export default function Feed({ data }) {
 
 	const handleCheck = () => {
 		setShowModal(true);
+		setSelectedName(temp[counter]?.name);
 	};
 
 	useEffect(() => {
@@ -114,7 +117,11 @@ export default function Feed({ data }) {
 										</div>
 									</div>
 									<div>
-										<Link href='/messaging'>
+										<Link
+											href={`/messagingChat?name=${encodeURIComponent(
+												selectedName
+											)}`}
+										>
 											<button className='bg-novo-purple hover:bg-novo-darkpurple w-48 rounded-full text-white mt-8 px-3 py-0.5 mb-4 font-light text-l'>
 												Message
 											</button>

@@ -1,6 +1,6 @@
 import NavBar from "../components/NavBar";
 import MessageGuy from "../public/messageGuy.jpg";
-// import MessageChat from "@/components/MessageChat";
+import MessageChat from "@/components/MessageChat";
 import MessageResponse from "@/components/MessageResponse";
 import MyMessageResponse from "@/components/MyMessage";
 import ReactDOM from "react-dom";
@@ -11,12 +11,16 @@ import { BsPlusSquare } from "react-icons/bs";
 import { FiSend } from "react-icons/fi";
 import Disney from "../public/disneyland.png";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import io from "socket.io-client";
 const socket = io.connect("http://localhost:3001");
 
 export default function Messaging() {
 	const [message, setMessage] = useState("");
 	const [messageContainer, setMessageContainer] = useState(null);
+
+	const router = useRouter();
+	const { name: selectedName } = router.query;
 
 	const sendMesssage = () => {
 		const mymessageElement = document.createElement("div");
@@ -84,13 +88,13 @@ export default function Messaging() {
 
 					{/* TODO - where message histories go */}
 					<div className='mt-4 border-t'>
-						{/* <MessageChat
-							image={MessageGuy}
-							name='Jeffery Pine'
-							message='Okay, Let’s grab drinks and then go...'
-							mins='10'
-						/>
 						<MessageChat
+							image={MessageGuy}
+							name={selectedName}
+							message='click to chat!'
+							// mins='10'
+						/>
+						{/* <MessageChat
 							image={MessageGuy}
 							name='Blake L'
 							message='Okay, Let’s grab drinks and then go...'
