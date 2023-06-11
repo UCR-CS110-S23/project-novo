@@ -1,9 +1,8 @@
-// import Image from "next/image";
+import Image from "next/image";
 import Review from "../../components/Review";
 import NavBar from "../../components/NavBar";
 import { AiOutlineStar } from "react-icons/ai";
 import ActivitiesCart from "../../components/ActivitiesCart";
-import { getActivity } from "@/lib/getActivity";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Activities from "@/public/data/Activities";
@@ -15,6 +14,7 @@ export default function ActivityProfile() {
 	useEffect(() => {
 		const data = router.query.aid;
 		setAct(Activities.filter(a => data === a.id)[0]);
+		console.log("ACTS: ", act);
 	}, []);
 
 	return (
@@ -29,10 +29,10 @@ export default function ActivityProfile() {
 				<div className=' flex flex-col items-center col-start-2 col-end-6'>
 					<div className='flex flex-col items-center justify-center w-10/12'>
 						<div className='relative'>
-							<img
+							<Image
 								src={act.banner}
-								// width={40}
-								// height={30}
+								width={40}
+								height={30}
 								alt='Landing'
 								layout='responsive'
 								className='rounded-b-xl'
@@ -116,14 +116,4 @@ export default function ActivityProfile() {
 			</div>
 		</>
 	);
-}
-
-export async function getServerSideProps() {
-	const activityData = await getActivity();
-	const data = JSON.stringify(activityData);
-	return {
-		props: {
-			data,
-		},
-	};
 }
