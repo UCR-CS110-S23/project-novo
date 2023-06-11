@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 import Review from "../../components/Review";
 import NavBar from "../../components/NavBar";
 import { AiOutlineStar } from "react-icons/ai";
@@ -30,10 +30,10 @@ export default function ActivityProfile() {
 				<div className=' flex flex-col items-center col-start-2 col-end-6'>
 					<div className='flex flex-col items-center justify-center w-10/12'>
 						<div className='relative'>
-							<Image
+							<img
 								src={act.banner}
-								width={40}
-								height={30}
+								// width={40}
+								// height={30}
 								alt='Landing'
 								layout='responsive'
 								className='rounded-b-xl'

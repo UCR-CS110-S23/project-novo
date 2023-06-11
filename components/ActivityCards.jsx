@@ -6,7 +6,10 @@ const ActivityCard = ({ post, setSelection, one, two, three }) => {
 
 	return (
 		<>
-			<div className='flex flex-col space-y-3'>
+			<div className='flex flex-col justify-between h-full'>
+				<div className='text-sm my-2.5 font-light'>
+					SELECT AN ACTIVITY:
+				</div>
 				<label className='checked:border-novo-purple relative grid rows-2 h-fit rounded-3xl hover:-translate-y-1 duration-300'>
 					<div className='relative w-11/12'>
 						<Image
@@ -22,7 +25,7 @@ const ActivityCard = ({ post, setSelection, one, two, three }) => {
 								type='radio'
 								onClick={() => {
 									setToggle(1);
-									setSelection(post.activities[0]);
+									// setSelection(post.activities[0]);
 								}}
 								className={`h-5 w-5 rounded-full appearance-none border border-white  ${
 									toggle === 1

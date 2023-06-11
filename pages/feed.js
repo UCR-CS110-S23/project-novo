@@ -58,9 +58,6 @@ export default function Feed({ data }) {
 							<UserCard post={temp[counter]} />
 						</div>
 						<div className='w-[26vw] ml-5'>
-							<div className='text-sm my-2.5 font-light'>
-								SELECT AN ACTIVITY:
-							</div>
 							<ActivityCard
 								post={temp[counter]}
 								// setSelection={setSelection}

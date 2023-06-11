@@ -16,7 +16,10 @@ const UserCard = ({ post }) => {
 				<div className='border border-novo-lightgray rounded-b-3xl space-y-4 '>
 					<div className='flex justify-between items-center '>
 						<div className='text-4xl font-medium pt-4 pl-4'>
-							{post.name}, {post.age}
+							{post.name}, {post.age} {"  "}
+							<span className='font-light uppercase text-xs text-novo-dategray'>
+								{post.pronoun}
+							</span>
 						</div>
 						<div className='mt-4 flex items-center uppercase text-sm bg-novo-lightgray py-1 pl-5 rounded-l-full pr-10'>
 							<span className='pr-1.5'>
