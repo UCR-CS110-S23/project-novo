@@ -1,5 +1,4 @@
 import { React, useState } from "react";
-import Image from "next/image";
 
 const ActivityCard = ({ post, setSelection, one, two, three }) => {
 	const [toggle, setToggle] = useState(0);
@@ -12,11 +11,11 @@ const ActivityCard = ({ post, setSelection, one, two, three }) => {
 				</div>
 				<label className='checked:border-novo-purple relative grid rows-2 h-fit rounded-3xl hover:-translate-y-1 duration-300'>
 					<div className='relative w-11/12'>
-						<Image
+						<img
 							src={one.banner}
 							alt='Landing'
-							width={40}
-							height={40}
+							// width={40}
+							// height={40}
 							layout='responsive'
 							className='z-0 rounded-3xl aspect-card'
 						/>
@@ -42,10 +41,10 @@ const ActivityCard = ({ post, setSelection, one, two, three }) => {
 
 				<label className='checked:border-novo-purple relative grid rows-2 h-fit rounded-3xl  hover:-translate-y-1 duration-300'>
 					<div className='relative w-11/12'>
-						<Image
+						<img
 							src={two.banner}
-							width={40}
-							height={20}
+							// width={40}
+							// height={20}
 							alt='Landing'
 							layout='responsive'
 							className='z-0 rounded-3xl aspect-card'
@@ -69,10 +68,10 @@ const ActivityCard = ({ post, setSelection, one, two, three }) => {
 
 				<label className='checked:border-novo-purple relative grid rows-2 h-fit rounded-3xl  hover:-translate-y-1 duration-300'>
 					<div className='relative w-11/12 '>
-						<Image
+						<img
 							src={three.banner}
-							width={40}
-							height={20}
+							// width={40}
+							// height={20}
 							alt='Landing'
 							layout='responsive'
 							className='z-0 rounded-3xl aspect-card'
