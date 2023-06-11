@@ -17,7 +17,6 @@ export default function Feed({ data }) {
 	console.log("DATA", temp);
 
 	const [counter, setCounter] = useState(0);
-	// const [selection, setSelection] = useState("");
 	const [showModal, setShowModal] = useState(false);
 	const [act1, setAct1] = useState({});
 	const [act2, setAct2] = useState({});
@@ -32,7 +31,6 @@ export default function Feed({ data }) {
 	};
 
 	const handleCheck = () => {
-		increase();
 		setShowModal(true);
 	};
 
@@ -40,9 +38,9 @@ export default function Feed({ data }) {
 		const one = temp[counter].activities[0];
 		const two = temp[counter].activities[1];
 		const three = temp[counter].activities[2];
-		setAct1(Activities.find(a => one == a.name.toUpperCase()));
-		setAct2(Activities.find(a => two == a.name.toUpperCase()));
-		setAct3(Activities.find(a => three == a.name.toUpperCase()));
+		setAct1(Activities.find(a => one === a.name.toUpperCase()));
+		setAct2(Activities.find(a => two === a.name.toUpperCase()));
+		setAct3(Activities.find(a => three === a.name.toUpperCase()));
 	}, [counter, temp]);
 
 	return (
@@ -60,7 +58,6 @@ export default function Feed({ data }) {
 						<div className='w-[26vw] ml-5'>
 							<ActivityCard
 								post={temp[counter]}
-								// setSelection={setSelection}
 								one={act1}
 								two={act2}
 								three={act3}
@@ -84,7 +81,7 @@ export default function Feed({ data }) {
 			{showModal ? (
 				<>
 					<div className='justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50'>
-						<div className=' w-auto my-6  mx-auto max-w-3xl'>
+						<div className='w-auto my-6  mx-auto max-w-3xl'>
 							<div className='border-0  rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
 								<div className='flex flex-col place-items-center p-6'>
 									<div className='text-2xl w-full flex justify-end'>
@@ -101,7 +98,7 @@ export default function Feed({ data }) {
 									</div>
 									<div className='text-sm text-novo-messagegray mb-4 mt-1 font-light uppercase'>
 										GO TO MESSAGES TO START CONVERSATION
-										WITH {temp[counter].name}
+										WITH {temp[counter]?.name}
 									</div>
 									<div className='mx-24'>
 										<div className='relative w-96 flex justify-center items-center'>
