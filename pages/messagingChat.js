@@ -270,13 +270,13 @@ export default function Messaging({ data }) {
 								</div>
 							</div>
 						</div>
-						<div className='relative flex mt-4 mr-4 mb-4 items-start h-20 w-40'>
+						<div className='relative flex mt-4 mr-8 mb-4 items-start h-20 w-40'>
 							<Image
 								src={pic}
 								alt='Landing'
 								className='rounded-md'
 							/>
-							<div className='absolute bg-novo-lightpurple text-novo-purple text-xs rounded-full whitespace-nowrap !max-w-fit py-1 pr-2 pl-[5%] ml-28 -mt-2'>
+							<div className='absolute bg-novo-lightpurple text-novo-purple text-xs rounded-full !max-w-fit py-2 pr-2 pl-[5%] ml-28 -mt-2'>
 								{room}
 							</div>
 						</div>
