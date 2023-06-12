@@ -19,7 +19,8 @@ export default function ActivityProfile({ data }) {
 	const [text, setText] = useState("");
 	const [comment, setComments] = useState([]);
 	const [rating, setRating] = useState(0);
-	// const {submit, }
+	const [actRating, setActRating] = useState(0.0);
+	// const [sum, setSum]
 
 	useEffect(() => {
 		const data = router.query.aid;
@@ -33,6 +34,15 @@ export default function ActivityProfile({ data }) {
 	const handleClick = newRating => {
 		setRating(newRating);
 	};
+
+	// const calculateAverage = () => {
+	// 	const sum = numbers.reduce(
+	// 		(accumulator, currentValue) => accumulator + currentValue,
+	// 		0
+	// 	);
+	// 	const average = sum / numbers.length;
+	// 	return average.toFixed(2); // Rounds the average to 2 decimal places
+	// };
 
 	console.log("COMMENT: ", comment);
 
@@ -107,7 +117,7 @@ export default function ActivityProfile({ data }) {
 									</div>
 									<div className='flex justify-center flex-col items-center space-y-2 border-l'>
 										<div className='text-6xl font-medium'>
-											4.6
+											{actRating}
 										</div>
 										<div className='flex text-xl'>
 											<AiOutlineStar />
@@ -129,6 +139,7 @@ export default function ActivityProfile({ data }) {
 											key={index}
 											text={entry.text}
 											rating={entry.rating}
+											setActRating={setActRating}
 										/>
 									))}
 								</div>
