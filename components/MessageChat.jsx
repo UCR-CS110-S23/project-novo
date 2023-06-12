@@ -1,11 +1,18 @@
-import { React } from "react";
+import { React, useState } from "react";
 import Image from "next/image";
 
 const MessageChat = ({ image, name, message, onClick }) => {
+	const [backgroundColor, setBackgroundColor] = useState("white");
+
+	const handleClick = () => {
+		setBackgroundColor("#F3EFFF");
+	};
 	return (
 		<div
+			id='main'
+			style={{ backgroundColor: backgroundColor }}
 			className='flex relative mt-4 m-2 py-2 hover:bg-novo-lightpurple hover:rounded-md'
-			onClick={onClick}
+			onClick={handleClick}
 		>
 			<div className='pl-3'>
 				<Image

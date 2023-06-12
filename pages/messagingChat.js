@@ -11,7 +11,6 @@ import { FiPaperclip } from "react-icons/fi";
 import { FiSend } from "react-icons/fi";
 import Disney from "../public/disneyland.png";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 
 import io from "socket.io-client";
 const socket = io.connect("http://localhost:3001");
@@ -27,10 +26,6 @@ export default function Messaging() {
 	// const toggleChatContent = () => {
 	// 	setShowChatContent(!showChatContent);
 	// };
-
-	// helps with getting name info from feed
-	const router = useRouter();
-	const { name: selectedName } = router.query;
 
 	const joinRoom = () => {
 		if (room !== "") {
@@ -114,6 +109,10 @@ export default function Messaging() {
 		setMessage("");
 	};
 
+	const handleRoom = () => {
+		joinRoom();
+	};
+
 	return (
 		<>
 			{/* =========== WHOLE PAGE =========== */}
@@ -133,25 +132,58 @@ export default function Messaging() {
 					<input
 						type='search'
 						placeholder='Room'
-						onChange={event => {
-							setRoom(event.target.value);
-						}}
 						className='focus:outline-none placeholder:font-light placeholder-[#858585] placeholder:font-regular pl-[5px] mt-10 ml-11 text-sm'
 					/>
-					<button onClick={joinRoom}>
+					<button>
 						<FiSend className='text-xl text-novo-darkgray' />
 					</button>
 
 					{/* TODO - where message histories go */}
 					<div className='mt-4 border-t'>
-						{selectedName && (
+						<button
+							onClick={() => {
+								setRoom("disney");
+							}}
+						>
 							<MessageChat
 								image={MessageGuy}
-								name={selectedName}
+								name='Disney'
 								message='click to chat!'
-								// onClick={toggleChatContent} // deals w/ click functionality
 							/>
-						)}
+						</button>
+						<button className='text-sm border' onClick={handleRoom}>
+							Join Room
+						</button>
+
+						<button
+							onClick={() => {
+								setRoom("laguna");
+							}}
+						>
+							<MessageChat
+								image={MessageGuy}
+								name='Laguna'
+								message='click to chat!'
+							/>
+						</button>
+						<button className='text-sm border' onClick={handleRoom}>
+							Join Room
+						</button>
+
+						<button
+							onClick={() => {
+								setRoom("melrose");
+							}}
+						>
+							<MessageChat
+								image={MessageGuy}
+								name='Melrose'
+								message='click to chat!'
+							/>
+						</button>
+						<button className='text-sm border' onClick={handleRoom}>
+							Join Room
+						</button>
 					</div>
 				</div>
 
@@ -172,7 +204,7 @@ export default function Messaging() {
 								/>
 							</div>
 							<div className='text-2xl mt-2 ml-3'>
-								{selectedName}
+								Chatroom
 								<div className='text-sm -mt-2 text-green-500'>
 									Online
 								</div>
