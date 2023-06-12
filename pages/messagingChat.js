@@ -79,12 +79,17 @@ export default function Messaging({ data }) {
 	}, [room]);
 
 	const sendMessage = () => {
+		const currentTime = new Date().toLocaleTimeString([], {
+			hour: "numeric",
+			minute: "2-digit",
+		});
+
 		const mymessageElement = document.createElement("div");
 		ReactDOM.render(
 			<MyMessageResponse
 				image={Disney}
 				message={message}
-				time='11:05AM'
+				time={currentTime}
 			/>,
 			mymessageElement
 		);
@@ -125,10 +130,16 @@ export default function Messaging({ data }) {
 	}, []);
 
 	const postMessage = async () => {
+		const currentTime = new Date().toLocaleTimeString([], {
+			hour: "numeric",
+			minute: "2-digit",
+		});
+
 		const messages = {
 			user,
 			message,
 			room,
+			time: currentTime, // Add the current time to the messages object
 		};
 		try {
 			await fetch("/api/auth/createMessage", {
