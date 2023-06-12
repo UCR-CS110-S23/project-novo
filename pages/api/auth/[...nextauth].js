@@ -45,7 +45,7 @@ export const authOptions = {
 					uid: user._id,
 					name: user.name,
 					email: user.email,
-					image: user.image,
+					// image: user.image,
 					age: user.age,
 					pronoun: user.pronoun,
 					gender: user.gender,
