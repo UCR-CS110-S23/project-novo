@@ -1,9 +1,12 @@
 import { React } from "react";
 import Image from "next/image";
 
-const MessageChat = ({ image, name, message, mins }) => {
+const MessageChat = ({ image, name, message, onClick }) => {
 	return (
-		<div className='flex relative mt-4 m-2 py-2 hover:bg-novo-lightpurple hover:rounded-md'>
+		<div
+			className='flex relative mt-4 m-2 py-2 hover:bg-novo-lightpurple hover:rounded-md'
+			onClick={onClick}
+		>
 			<div className='pl-3'>
 				<Image
 					src={image}
@@ -19,9 +22,9 @@ const MessageChat = ({ image, name, message, mins }) => {
 						You: {message}
 					</div>
 				</div>
-				<div className='flex items-start text-novo-purple pt-1 text-xs'>
+				{/* <div className='flex items-start text-novo-purple pt-1 text-xs'>
 					{mins}min ago
-				</div>
+				</div> */}
 			</div>
 		</div>
 	);

@@ -7,16 +7,29 @@ import ReactDOM from "react-dom";
 import Image from "next/image";
 import { FiCamera } from "react-icons/fi";
 import { FiPaperclip } from "react-icons/fi";
-import { BsPlusSquare } from "react-icons/bs";
+// import { BsPlusSquare } from "react-icons/bs";
 import { FiSend } from "react-icons/fi";
 import Disney from "../public/disneyland.png";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+
 import io from "socket.io-client";
 const socket = io.connect("http://localhost:3001");
 
 export default function Messaging() {
 	const [message, setMessage] = useState("");
 	const [messageContainer, setMessageContainer] = useState(null);
+
+	// deals w/ showing chat of each person
+	// const [showChatContent, setShowChatContent] = useState(false);
+
+	// const toggleChatContent = () => {
+	// 	setShowChatContent(!showChatContent);
+	// };
+
+	// helps with getting name info from feed
+	const router = useRouter();
+	const { name: selectedName } = router.query;
 
 	const sendMessage = () => {
 		const mymessageElement = document.createElement("div");
@@ -97,34 +110,46 @@ export default function Messaging() {
 
 	return (
 		<>
+			{/* =========== WHOLE PAGE =========== */}
 			<div className='grid grid-cols-12'>
-				<div className='col-span-2'></div>
+				{/* Nav bar */}
 				<div className='col-span-2 w-1/6 fixed'>
 					<div className='absolute '>
 						<NavBar />
 					</div>
 				</div>
+
+				{/* =========== MESSAGES COLUMN =========== */}
 				<div className='col-start-3 col-end-6 border-r h-screen'>
-					<div className='text-3xl mt-4 ml-4'>Message</div>
-					<div className='text-sm mt-10 ml-8 text-novo-darkgray'>
-						Search
-					</div>
+					<div className='text-3xl mt-11 ml-8'>Message</div>
+
+					{/* search bar */}
+					<input
+						type='search'
+						placeholder='Search'
+						className='focus:outline-none placeholder:font-light placeholder-[#858585] placeholder:font-regular pl-[5px] mt-10 ml-11 text-sm'
+					/>
+
+					{/* TODO - where message histories go */}
 					<div className='mt-4 border-t'>
-						<MessageChat
-							image={MessageGuy}
-							name='Jeffery Pine'
-							message='Okay, Let’s grab drinks and then go...'
-							mins='10'
-						/>
-						<MessageChat
-							image={MessageGuy}
-							name='Blake L'
-							message='Okay, Let’s grab drinks and then go...'
-							mins='20'
-						/>
+						{selectedName && (
+							<MessageChat
+								image={MessageGuy}
+								name={selectedName}
+								message='click to chat!'
+								// onClick={toggleChatContent} // deals w/ click functionality
+							/>
+						)}
 					</div>
 				</div>
-				<div className='col-start-6 border-t col-end-13 h-screen relative'>
+
+				{/* =========== ACTUAL CHAT CONTENT =========== */}
+				{/* {showChatContent && ( */}
+				<div
+					id='chatContent'
+					className='col-start-6 border-t col-end-13 h-screen relative'
+				>
+					{/* TOP PORTION OF CHAT CONTENT */}
 					<div className='flex justify-between w-full border-b'>
 						<div className='flex mt-4'>
 							<div className='pl-3'>
@@ -135,7 +160,7 @@ export default function Messaging() {
 								/>
 							</div>
 							<div className='text-2xl mt-2 ml-3'>
-								Ricky Smith
+								user being messaged
 								<div className='text-sm -mt-2 text-green-500'>
 									Online
 								</div>
@@ -166,19 +191,19 @@ export default function Messaging() {
 							</div>
 						</div>
 						<div id='messageContainer' className='mb-16'>
-							<div>
-								<MessageResponse
-									image={MessageGuy}
-									name='Ricky Smith'
-									message='Hi, How are you?'
-									time='11:00AM'
-								/>
-							</div>
-							<MyMessageResponse
-								image={Disney}
-								message="Hey Ricky, I'm doing great!"
-								time='11:05AM'
-							/>
+							{/* <div>
+									<MessageResponse
+										image={MessageGuy}
+										name='Ricky Smith'
+										message='Hi, How are you?'
+										time='11:00AM'
+									/>
+								</div>
+								<MyMessageResponse
+									image={Disney}
+									message="Hey Ricky, I'm doing great!"
+									time='11:05AM'
+								/> */}
 						</div>
 					</div>
 					<div className='absolute fixed flex items-center inset-x-0 bottom-0 h-16 bg-white'>
@@ -202,21 +227,16 @@ export default function Messaging() {
 								onChange={event => {
 									setMessage(event.target.value);
 								}}
-							></input>
-							<button
-								onClick={handleSend}
-								className='bg-novo-gray text-novo-darkgray text-xl rounded-r-lg -ml-3 pr-3'
-							>
-								<FiSend />
-							</button>
+							/>
 						</div>
-						<div className='mr-1 mt-1'>
-							<button className='text-novo-darkgray text-xl'>
-								<BsPlusSquare />
+						<div className='mr-2 ml-3'>
+							<button onClick={handleSend}>
+								<FiSend className='text-xl text-novo-darkgray' />
 							</button>
 						</div>
 					</div>
 				</div>
+				{/* )} */}
 			</div>
 		</>
 	);

@@ -36,7 +36,7 @@ function NavBar() {
 							<div>Feed</div>
 						</Link>
 						<Link
-							href='/messaging'
+							href='/messagingChat'
 							className='text-white flex w-full no-underline items-center py-2 px-4 space-x-2 font-light'
 						>
 							<FiMessageSquare />
