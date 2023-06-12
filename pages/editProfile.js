@@ -1,12 +1,7 @@
 import NavBar from "../components/NavBar";
-import ProfilePicture from "../components/ProfilePicture.jsx";
-import AddPicture from "../components/AddPicture.jsx";
-import AddActivityCard from "../components/AddActivityCard";
-import AddActivityPopUp from "../components/AddActivityPopUp.jsx";
 import { FaTimes } from "react-icons/fa";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Beach from "../public/beach.png";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 
@@ -68,12 +63,6 @@ export default function EditProfile() {
 				<div className='col-start-2 col-end-6'>
 					<div className='mt-8 text-left'>
 						<div className='text-2xl ml-40 mt-14'>Edit Profile</div>
-					</div>
-
-					{/* Adding Photos Part */}
-					<div className='ml-40 mt-14 flex flex-row space-x-6'>
-						<ProfilePicture />
-						<AddPicture />
 					</div>
 
 					{/* About Me section */}
@@ -262,27 +251,6 @@ export default function EditProfile() {
 								</Col>
 							))}
 						</Row>
-					</div>
-
-					{/* Current Activities section */}
-					<div className='mt-8 ml-40 flex space-x-3 items-baseline'>
-						<div className='text-xl font-medium mb-2'>
-							Current Activities
-						</div>
-
-						<div className='font-light text-[#858585] text-base'>
-							Go to Activities Tab to add activities. Choose up to
-							3.
-						</div>
-					</div>
-
-					{/* Current activities pictures */}
-					<div className='ml-40 mt-3 items-baseline'>
-						<div className='w-10/12 space-x-4 flex justify-center'>
-							<AddActivityCard image={Beach} />
-							<AddActivityCard image={Beach} />
-							<AddActivityPopUp />
-						</div>
 					</div>
 
 					{/* Submit Button */}
