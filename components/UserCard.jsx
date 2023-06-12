@@ -2,15 +2,17 @@ import React from "react";
 import { GrLocation } from "react-icons/gr";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Image from "next/image";
 
 const UserCard = ({ post }) => {
 	return (
 		<>
 			<div className='grid rows-2'>
-				<img
+				<Image
 					src={post.image}
 					alt='Landing'
-					layout='responsive'
+					width={80}
+					height={80}
 					className='rounded-t-3xl w-full aspect-4/3'
 				/>
 				<div className='border border-novo-lightgray rounded-b-3xl space-y-4 '>

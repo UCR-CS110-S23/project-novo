@@ -2,7 +2,7 @@ import NavBar from "../components/NavBar";
 import { FaTimes } from "react-icons/fa";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { useSession } from "next-auth/react";
+import { useSession, getSession } from "next-auth/react";
 import { useState } from "react";
 import axios from "axios";
 
@@ -270,3 +270,20 @@ export default function EditProfile() {
 		</>
 	);
 }
+
+export const getServerSideProps = async context => {
+	const session = await getSession({ req: context.req });
+
+	if (!session) {
+		return {
+			redirect: {
+				destination: "/",
+				permanent: false,
+			},
+		};
+	}
+
+	return {
+		props: { session },
+	};
+};
