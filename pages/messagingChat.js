@@ -160,7 +160,7 @@ export default function Messaging() {
 								/>
 							</div>
 							<div className='text-2xl mt-2 ml-3'>
-								user being messaged
+								{selectedName}
 								<div className='text-sm -mt-2 text-green-500'>
 									Online
 								</div>
