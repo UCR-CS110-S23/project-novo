@@ -55,6 +55,8 @@ export default function Messaging() {
 		}
 		socket.on("user-disconnected", data => {
 			console.log(JSON.stringify(data));
+			const disconnectedData = JSON.stringify(data);
+			postMessage(disconnectedData);
 		});
 	}, [messageContainer]);
 
@@ -68,14 +70,11 @@ export default function Messaging() {
 		};
 	}, []);
 
-	const postMessage = async e => {
-		e.preventDefault();
-
+	const postMessage = async userData => {
 		const messages = {
-			name,
-			message,
+			name: "my_name",
+			messageData: userData,
 		};
-
 		try {
 			await fetch("/api/auth/createMessage", {
 				method: "POST",
@@ -85,17 +84,15 @@ export default function Messaging() {
 				},
 			});
 
-			setMessage("");
-
 			console.log("message made successfully");
-		} catch (e) {
-			console.log(e);
+		} catch (error) {
+			console.log(error);
 		}
 	};
 
-	const handleSend = e => {
+	const handleSend = () => {
 		sendMessage();
-		postMessage(e);
+		setMessage("");
 	};
 
 	return (
