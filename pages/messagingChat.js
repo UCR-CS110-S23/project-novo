@@ -169,7 +169,7 @@ export default function Messaging({ data }) {
 								setRoom("Disney");
 							}}
 						>
-							<MessageChat image={Disney} name='Disney' />
+							<MessageChat image={Disney} name='DisneyLand' />
 						</button>
 						<button className='text-sm border' onClick={handleRoom}>
 							Join Disney Chat Room
@@ -180,7 +180,7 @@ export default function Messaging({ data }) {
 								setRoom("Laguna");
 							}}
 						>
-							<MessageChat image={Laguna} name='Laguna' />
+							<MessageChat image={Laguna} name='Laguna Beach' />
 						</button>
 						<button className='text-sm border' onClick={handleRoom}>
 							Join Laguna Room
@@ -191,7 +191,10 @@ export default function Messaging({ data }) {
 								setRoom("Melrose");
 							}}
 						>
-							<MessageChat image={Melrose} name='Melrose' />
+							<MessageChat
+								image={Melrose}
+								name='Melrose Trading Post'
+							/>
 						</button>
 						<button className='text-sm border' onClick={handleRoom}>
 							Join Melrose Room
@@ -242,8 +245,7 @@ export default function Messaging({ data }) {
 						</div>
 						<div className='flex relative justify-center'>
 							<div className='text-center justify-center p-2 mt-2 bg-novo-lightpurple text-novo-purple text-sm rounded-md w-80'>
-								You’re interested in going to Disneyland with
-								Ricky!
+								You’re interested in going to {room}!
 							</div>
 						</div>
 						<div id='messageContainer' className='mb-16'>
