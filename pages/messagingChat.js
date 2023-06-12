@@ -19,6 +19,7 @@ const socket = io.connect("http://localhost:3001");
 export default function Messaging() {
 	const [message, setMessage] = useState("");
 	const [messageContainer, setMessageContainer] = useState(null);
+	const [room, setRoom] = useState("");
 
 	// deals w/ showing chat of each person
 	// const [showChatContent, setShowChatContent] = useState(false);
@@ -31,6 +32,11 @@ export default function Messaging() {
 	const router = useRouter();
 	const { name: selectedName } = router.query;
 
+	const joinRoom = () => {
+		if (room !== "") {
+			socket.emit("join_room", room);
+		}
+	};
 	const sendMessage = () => {
 		const mymessageElement = document.createElement("div");
 		ReactDOM.render(
@@ -45,7 +51,7 @@ export default function Messaging() {
 			messageContainer.appendChild(mymessageElement);
 		}
 
-		socket.emit("send_message", { message });
+		socket.emit("send_message", { message, room });
 
 		setMessage("");
 	};
@@ -126,9 +132,15 @@ export default function Messaging() {
 					{/* search bar */}
 					<input
 						type='search'
-						placeholder='Search'
+						placeholder='Room'
+						onChange={event => {
+							setRoom(event.target.value);
+						}}
 						className='focus:outline-none placeholder:font-light placeholder-[#858585] placeholder:font-regular pl-[5px] mt-10 ml-11 text-sm'
 					/>
+					<button onClick={joinRoom}>
+						<FiSend className='text-xl text-novo-darkgray' />
+					</button>
 
 					{/* TODO - where message histories go */}
 					<div className='mt-4 border-t'>

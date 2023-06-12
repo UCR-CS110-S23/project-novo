@@ -20,6 +20,10 @@ messages = [];
 io.on("connection", socket => {
 	console.log(`User connected: ${socket.id}`);
 
+	socket.on("join_room", data => {
+		socket.join(data);
+	});
+
 	socket.on("send_message", data => {
 		const messageData = {
 			id: socket.id,
@@ -28,7 +32,7 @@ io.on("connection", socket => {
 
 		messages.push(messageData);
 
-		socket.broadcast.emit("receive_message", data);
+		socket.to(data.room).emit("receive_message", data);
 	});
 
 	socket.on("disconnect", () => {
