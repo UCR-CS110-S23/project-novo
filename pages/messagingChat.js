@@ -21,11 +21,11 @@ export default function Messaging() {
 	const [messageContainer, setMessageContainer] = useState(null);
 
 	// deals w/ showing chat of each person
-	const [showChatContent, setShowChatContent] = useState(false);
+	// const [showChatContent, setShowChatContent] = useState(false);
 
-	const toggleChatContent = () => {
-		setShowChatContent(!showChatContent);
-	};
+	// const toggleChatContent = () => {
+	// 	setShowChatContent(!showChatContent);
+	// };
 
 	// helps with getting name info from feed
 	const router = useRouter();
@@ -132,61 +132,61 @@ export default function Messaging() {
 								image={MessageGuy}
 								name={selectedName}
 								message='click to chat!'
-								onClick={toggleChatContent} // deals w/ click functionality
+								// onClick={toggleChatContent} // deals w/ click functionality
 							/>
 						)}
 					</div>
 				</div>
 
 				{/* =========== ACTUAL CHAT CONTENT =========== */}
-				{showChatContent && (
-					<div
-						id='chatContent'
-						className='col-start-6 border-t col-end-13 h-screen relative'
-					>
-						{/* TOP PORTION OF CHAT CONTENT */}
-						<div className='flex justify-between w-full border-b'>
-							<div className='flex mt-4'>
-								<div className='pl-3'>
-									<Image
-										src={Disney}
-										alt='Landing'
-										className=' w-20 h-20 object-cover rounded-full'
-									/>
-								</div>
-								<div className='text-2xl mt-2 ml-3'>
-									user being messaged
-									<div className='text-sm -mt-2 text-green-500'>
-										Online
-									</div>
-								</div>
-							</div>
-							<div className='relative flex mt-4 mr-4 mb-4 items-start h-20 w-40'>
+				{/* {showChatContent && ( */}
+				<div
+					id='chatContent'
+					className='col-start-6 border-t col-end-13 h-screen relative'
+				>
+					{/* TOP PORTION OF CHAT CONTENT */}
+					<div className='flex justify-between w-full border-b'>
+						<div className='flex mt-4'>
+							<div className='pl-3'>
 								<Image
 									src={Disney}
 									alt='Landing'
-									className='rounded-md'
+									className=' w-20 h-20 object-cover rounded-full'
 								/>
-								<div className='absolute bg-novo-lightpurple text-novo-purple text-xs rounded-full whitespace-nowrap !max-w-fit py-1 pr-2 pl-[5%] ml-20 -mt-2'>
-									DISNEYLAND
+							</div>
+							<div className='text-2xl mt-2 ml-3'>
+								user being messaged
+								<div className='text-sm -mt-2 text-green-500'>
+									Online
 								</div>
 							</div>
 						</div>
-						<div
-							id='messagingPart'
-							className='max-h-[calc(100vh-4rem-4rem)] overflow-y-auto mb-16'
-						>
-							<div className='text-novo-dategray mt-2 text-center text-sm'>
-								YESTERDAY
+						<div className='relative flex mt-4 mr-4 mb-4 items-start h-20 w-40'>
+							<Image
+								src={Disney}
+								alt='Landing'
+								className='rounded-md'
+							/>
+							<div className='absolute bg-novo-lightpurple text-novo-purple text-xs rounded-full whitespace-nowrap !max-w-fit py-1 pr-2 pl-[5%] ml-20 -mt-2'>
+								DISNEYLAND
 							</div>
-							<div className='flex relative justify-center'>
-								<div className='text-center justify-center p-2 mt-2 bg-novo-lightpurple text-novo-purple text-sm rounded-md w-80'>
-									You’re interested in going to Disneyland
-									with Ricky!
-								</div>
+						</div>
+					</div>
+					<div
+						id='messagingPart'
+						className='max-h-[calc(100vh-4rem-4rem)] overflow-y-auto mb-16'
+					>
+						<div className='text-novo-dategray mt-2 text-center text-sm'>
+							YESTERDAY
+						</div>
+						<div className='flex relative justify-center'>
+							<div className='text-center justify-center p-2 mt-2 bg-novo-lightpurple text-novo-purple text-sm rounded-md w-80'>
+								You’re interested in going to Disneyland with
+								Ricky!
 							</div>
-							<div id='messageContainer' className='mb-16'>
-								<div>
+						</div>
+						<div id='messageContainer' className='mb-16'>
+							{/* <div>
 									<MessageResponse
 										image={MessageGuy}
 										name='Ricky Smith'
@@ -198,40 +198,40 @@ export default function Messaging() {
 									image={Disney}
 									message="Hey Ricky, I'm doing great!"
 									time='11:05AM'
-								/>
-							</div>
-						</div>
-						<div className='absolute fixed flex items-center inset-x-0 bottom-0 h-16 bg-white'>
-							<div className='ml-10'>
-								<button className='text-novo-darkgray text-xl'>
-									<FiCamera />
-								</button>
-							</div>
-							<div className=' ml-10'>
-								<button className='text-novo-darkgray text-xl'>
-									<FiPaperclip />
-								</button>
-							</div>
-							<div className='flex w-3/4 ml-10'>
-								<input
-									className='bg-novo-gray pl-3 h-10 w-full rounded-lg text-sm focus:outline-none'
-									type='search'
-									name='search'
-									placeholder='Write something...'
-									value={message}
-									onChange={event => {
-										setMessage(event.target.value);
-									}}
-								/>
-							</div>
-							<div className='mr-2 ml-3'>
-								<button onClick={handleSend}>
-									<FiSend className='text-xl text-novo-darkgray' />
-								</button>
-							</div>
+								/> */}
 						</div>
 					</div>
-				)}
+					<div className='absolute fixed flex items-center inset-x-0 bottom-0 h-16 bg-white'>
+						<div className='ml-10'>
+							<button className='text-novo-darkgray text-xl'>
+								<FiCamera />
+							</button>
+						</div>
+						<div className=' ml-10'>
+							<button className='text-novo-darkgray text-xl'>
+								<FiPaperclip />
+							</button>
+						</div>
+						<div className='flex w-3/4 ml-10'>
+							<input
+								className='bg-novo-gray pl-3 h-10 w-full rounded-lg text-sm focus:outline-none'
+								type='search'
+								name='search'
+								placeholder='Write something...'
+								value={message}
+								onChange={event => {
+									setMessage(event.target.value);
+								}}
+							/>
+						</div>
+						<div className='mr-2 ml-3'>
+							<button onClick={handleSend}>
+								<FiSend className='text-xl text-novo-darkgray' />
+							</button>
+						</div>
+					</div>
+				</div>
+				{/* )} */}
 			</div>
 		</>
 	);
