@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
+import axios from "axios";
 
 export default function EditProfile() {
 	const { data: session } = useSession();
@@ -42,11 +43,13 @@ export default function EditProfile() {
 	const handleUpdate = () => {
 		const packet = {
 			...user,
-			...info,
+			interests: Array.from(info.interests),
 			preference: showMeToggle,
 			pronoun: pronounsToggle,
 		};
-		console.log(packet);
+		axios
+			.post("/api/updateUser", packet)
+			.then(response => console.log(response));
 	};
 
 	return (
