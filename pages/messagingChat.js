@@ -58,16 +58,16 @@ export default function Messaging() {
 			const disconnectedData = JSON.stringify(data);
 			postMessage(disconnectedData);
 		});
-	}, [messageContainer]);
-
-	useEffect(() => {
-		const container = document.getElementById("messageContainer");
-		setMessageContainer(container);
 
 		return () => {
 			socket.off("receive_message");
 			socket.off("user-disconnected");
 		};
+	}, [messageContainer]);
+
+	useEffect(() => {
+		const container = document.getElementById("messageContainer");
+		setMessageContainer(container);
 	}, []);
 
 	const postMessage = async userData => {
