@@ -4,7 +4,6 @@ import NavBar from "../components/NavBar";
 import { GrClose } from "react-icons/gr";
 import { getAllPostData } from "@/lib/getFeed";
 import { useState } from "react";
-import ActivitySelected from "../public/ActivitySelected.png";
 import { RxCross2 } from "react-icons/rx";
 import { BsCheckLg } from "react-icons/bs";
 import Link from "next/link.js";
@@ -21,6 +20,11 @@ export default function Feed({ data }) {
 	const [act1, setAct1] = useState({});
 	const [act2, setAct2] = useState({});
 	const [act3, setAct3] = useState({});
+	const [activityChosen, setActivityChosen] = useState("");
+
+	const handleStateChange = newState => {
+		setActivityChosen(newState);
+	};
 
 	const increase = () => {
 		if (counter + 1 >= temp.length) {
@@ -31,8 +35,12 @@ export default function Feed({ data }) {
 	};
 
 	const handleCheck = () => {
-		increase();
 		setShowModal(true);
+	};
+
+	const modalExit = () => {
+		setShowModal(false);
+		increase();
 	};
 
 	useEffect(() => {
@@ -43,6 +51,18 @@ export default function Feed({ data }) {
 		setAct2(Activities.find(a => two == a.name.toUpperCase()));
 		setAct3(Activities.find(a => three == a.name.toUpperCase()));
 	}, [counter, temp]);
+
+	const activityImageSelect = activityChosen => {
+		if (activityChosen === 0) {
+			return act1.banner;
+		}
+		if (activityChosen === 1) {
+			return act2.banner;
+		}
+		if (activityChosen === 2) {
+			return act3.banner;
+		}
+	};
 
 	return (
 		<div className='grid grid-cols-6'>
@@ -58,8 +78,7 @@ export default function Feed({ data }) {
 						</div>
 						<div className='w-[26vw] ml-5'>
 							<ActivityCard
-								post={temp[counter]}
-								// setSelection={setSelection}
+								onStateChange={handleStateChange}
 								one={act1}
 								two={act2}
 								three={act3}
@@ -87,9 +106,7 @@ export default function Feed({ data }) {
 							<div className='border-0  rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
 								<div className='flex flex-col place-items-center p-6'>
 									<div className='text-2xl w-full flex justify-end'>
-										<button
-											onClick={() => setShowModal(false)}
-										>
+										<button onClick={() => modalExit()}>
 											<GrClose />
 										</button>
 									</div>
@@ -105,13 +122,20 @@ export default function Feed({ data }) {
 									<div className='mx-24'>
 										<div className='relative w-96 flex justify-center items-center'>
 											<Image
-												src={ActivitySelected}
-												alt='Landing'
-												layout='responsive'
+												src={activityImageSelect(
+													activityChosen
+												)}
+												alt='Selected Image'
+												width={400}
+												height={200}
 												className='rounded-xl'
 											/>
 											<div className='absolute bg-white rounded-full text-black text-md px-4 py-2'>
-												DISNEYLAND
+												{
+													temp[counter].activities[
+														activityChosen
+													]
+												}
 											</div>
 										</div>
 									</div>
