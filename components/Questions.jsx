@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { signIn } from "next-auth/react";
 import CreateActivity from "./CreateActivity";
+import { signIn } from "next-auth/react";
 
 const activites1 = [
 	{
