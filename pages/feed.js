@@ -64,8 +64,6 @@ export default function Feed({ data }) {
 		}
 	};
 
-	console.log(activityImageSelect(activityChosen));
-
 	return (
 		<div className='grid grid-cols-6'>
 			<div className='col-span-1'>
