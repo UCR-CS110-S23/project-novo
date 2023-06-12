@@ -2,7 +2,10 @@ import clientPromise from "@/lib/mongodb";
 
 export default async function handler(req, res) {
 	if (req.method === "POST") {
-		const newMessage = req.body;
+		const newMessage = {
+			...req.body,
+			timestamp: new Date().toISOString(),
+		};
 
 		const db = (await clientPromise).db(process.env.MONGODB_DB);
 

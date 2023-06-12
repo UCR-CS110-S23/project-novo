@@ -97,26 +97,30 @@ export default function Messaging({ data }) {
 			messageContainer.appendChild(mymessageElement);
 		}
 
-		socket.emit("send_message", { user, message, room });
+		socket.emit("send_message", { user, message, room, time: currentTime }); // Add "time: currentTime" to the emit payload
 		postMessage();
 	};
 
 	useEffect(() => {
-		if (messageContainer) {
-			socket.on("receive_message", data => {
-				const messageElement = document.createElement("div");
-				ReactDOM.render(
-					<MessageResponse
-						image={MessageGuy}
-						name='Ricky Smith'
-						message={data.message}
-						time='11:00AM'
-					/>,
-					messageElement
-				);
+		const container = document.getElementById("messageContainer");
+		setMessageContainer(container);
+
+		socket.on("receive_message", data => {
+			const messageElement = document.createElement("div");
+			ReactDOM.render(
+				<MessageResponse
+					key={data.timestamp}
+					image={MessageGuy}
+					name='Ricky Smith'
+					message={data.message}
+					time={data.time} // Change "data.timestamp" to "data.time"
+				/>,
+				messageElement
+			);
+			if (messageContainer) {
 				messageContainer.appendChild(messageElement);
-			});
-		}
+			}
+		});
 
 		return () => {
 			socket.off("receive_message");
