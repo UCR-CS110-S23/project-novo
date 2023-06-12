@@ -2,67 +2,87 @@ import Image from "next/image";
 import Review from "../../components/Review";
 import NavBar from "../../components/NavBar";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
-import ActivitiesCart from "../../components/ActivitiesCart";
+// import ActivitiesCart from "../../components/ActivitiesCart";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Activities from "@/public/data/Activities";
 import axios from "axios";
 import { getAllComments } from "@/lib/getComments";
+import { useSession } from "next-auth/react";
+// import { BsStar, BsStarFill } from "react-icons/bs";
 
 export default function ActivityProfile({ data }) {
+	const { data: session, status } = useSession();
 	const comments = JSON.parse(data);
-	console.log("comments: ", comments);
+	// console.log("comments: ", comments);
+	console.log("SESSION: ", session, status);
 
 	const router = useRouter();
 	const [act, setAct] = useState({});
 	const [actID, setActID] = useState("");
 	const [text, setText] = useState("");
+	// const [name, setName] = useState("");
+	const [picture, setPicture] = useState("");
 	const [comment, setComments] = useState([]);
 	const [rating, setRating] = useState(0);
 	const [actRating, setActRating] = useState(0.0);
-	// const [sum, setSum]
+
+	const handleClick = newRating => {
+		setRating(newRating);
+	};
+
+	const calculateAverage = () => {
+		console.log("COMMENT LENGTH", comment.length);
+		if (comment.length === 0) {
+			setActRating(0);
+			return;
+		}
+
+		const sum = comment.reduce((acc, entry) => acc + entry.rating, 0);
+		const average = sum / comment.length;
+		setActRating(average.toFixed(1));
+	};
 
 	useEffect(() => {
 		const data = router.query.aid;
 		setAct(Activities.filter(a => data === a.id)[0]);
 		setActID(data);
 		setComments(comments.filter(a => data === a.actID));
+		// calculateAverage();
 	}, [router.query]);
 
-	console.log("ACTS: ", router.query.aid);
+	useEffect(() => {
+		calculateAverage();
+	}, [comment]);
 
-	const handleClick = newRating => {
-		setRating(newRating);
-	};
+	console.log("RATING", actRating);
 
-	// const calculateAverage = () => {
-	// 	const sum = numbers.reduce(
-	// 		(accumulator, currentValue) => accumulator + currentValue,
-	// 		0
-	// 	);
-	// 	const average = sum / numbers.length;
-	// 	return average.toFixed(2); // Rounds the average to 2 decimal places
-	// };
-
-	console.log("COMMENT: ", comment);
-
+	// console.log("RATING: ", actRating);
+	// console.log("NAME ", session.user.name);
 	const handleSubmit = e => {
 		e.preventDefault();
+		// setName(session.user.name);
+		// setPicture(session.user.image);
+
 		const newReview = {
 			text,
 			rating,
 			actID,
+			name: session.user.name,
+			picture,
 		};
 
 		axios
 			.post("/api/addReview", newReview)
 			.then(({ data }) => {
+				router.reload();
 				if (data.success) {
 					setText("");
 					setRating(0);
 					setAct({});
+					setName("");
+					setPicture("");
 				}
-				router.reload();
 			})
 			.catch(error => {
 				console.log("[Post-Error]", error);
@@ -79,7 +99,7 @@ export default function ActivityProfile({ data }) {
 						</div>
 					</div>
 
-					<div className=' flex flex-col items-center col-start-2 col-end-6'>
+					<div className=' flex flex-col items-center col-start-2 col-end-7'>
 						<div className='flex flex-col items-center justify-center w-10/12'>
 							<div className='relative'>
 								<Image
@@ -94,9 +114,9 @@ export default function ActivityProfile({ data }) {
 									<div className='absolute uppercase bottom-6 left-0 bg-white rounded-r-full text-black text-2xl py-1 pr-4 pl-[5%]'>
 										{act?.name}
 									</div>
-									<div className='absolute hover:bg-novo-purple hover:text-white bottom-6 right-[3%] bg-novo-lightpurple border-2 border-novo-purple text-novo-purple rounded-full px-3 py-0.5 text-xl'>
+									{/* <div className='absolute hover:bg-novo-purple hover:text-white bottom-6 right-[3%] bg-novo-lightpurple border-2 border-novo-purple text-novo-purple rounded-full px-3 py-0.5 text-xl'>
 										ADD ACTIVITY
-									</div>
+									</div> */}
 								</div>
 							</div>
 							<div className='flex flex-col justify-start pt-3 pl-5'>
@@ -119,12 +139,24 @@ export default function ActivityProfile({ data }) {
 										<div className='text-6xl font-medium'>
 											{actRating}
 										</div>
-										<div className='flex text-xl'>
-											<AiOutlineStar />
-											<AiOutlineStar />
-											<AiOutlineStar />
-											<AiOutlineStar />
-											<AiOutlineStar />
+										<div className='flex flex-col justify-center items-center'>
+											<div className='text-novo-darkgray font-light text-xs'>
+												{comment.length === 0 && (
+													<>NO REVIEWS</>
+												)}
+												{comment.length === 1 && (
+													<>1 REVIEW</>
+												)}
+
+												{comment.length > 1 && (
+													<>
+														{comment.length} REVIEWS
+													</>
+												)}
+											</div>
+											<div className='text-novo-darkgray font-light text-xs'>
+												AVERAGE RATING
+											</div>
 										</div>
 									</div>
 								</div>
@@ -135,12 +167,16 @@ export default function ActivityProfile({ data }) {
 								</div>
 								<div className='space-y-10 mt-3'>
 									{comment.map((entry, index) => (
-										<Review
-											key={index}
-											text={entry.text}
-											rating={entry.rating}
-											setActRating={setActRating}
-										/>
+										<>
+											<Review
+												key={index}
+												text={entry.text}
+												rating={entry.rating}
+												name={entry.name}
+											/>
+											{/* {setPrevious(sum)}
+											{setSum(previous + entry.text)} */}
+										</>
 									))}
 								</div>
 							</div>
@@ -185,9 +221,9 @@ export default function ActivityProfile({ data }) {
 							</div>
 						</div>
 					</div>
-					<div className='col-start-6 border-l h-full'>
-						<ActivitiesCart />
-					</div>
+					{/* <div className='col-start-6 border-l h-full'> */}
+					{/* <ActivitiesCart /> */}
+					{/* </div> */}
 				</div>
 			</>
 		)

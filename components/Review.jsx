@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Henry from "../public/henry.png";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import { useSession } from "next-auth/react";
+import { BsStar, BsStarFill } from "react-icons/bs";
+// import { useSession } from "next-auth/react";
 
-const Review = ({ text, rating, setActRating }) => {
-	const { data: session, status } = useSession();
+const Review = ({ text, rating, name }) => {
 	const [timePassed, setTimePassed] = useState(0);
 
-	console.log(session, status);
+	// console.log(session, status);
 
 	// const calculateAverage = () => {
 	// 	const sum = numbers.reduce(
@@ -22,6 +21,8 @@ const Review = ({ text, rating, setActRating }) => {
 	// useEffect(() => {
 	// 	setActRating(calculateAverage());
 	// }, []);
+
+	console.log("ASDFJASDJF NAME: ", name);
 
 	useEffect(() => {
 		const updateTimePassed = () => {
@@ -40,7 +41,7 @@ const Review = ({ text, rating, setActRating }) => {
 		return () => clearInterval(interval);
 	}, []);
 
-	console.log("rating: ", rating);
+	// console.log("rating: ", rating);
 
 	return (
 		<>
@@ -59,7 +60,7 @@ const Review = ({ text, rating, setActRating }) => {
 				</div>
 				<div className='col-start-2 col-span-4 space-y-2'>
 					<div className='font-medium capitalize text-base'>
-						{session.user.name}
+						{name}
 					</div>
 					<div className='text-sm font-light'>{text}</div>
 				</div>
@@ -68,50 +69,50 @@ const Review = ({ text, rating, setActRating }) => {
 						<div className='text-xs text-novo-purple font-light'>
 							{timePassed} MIN AGO
 						</div>
-						<div className='flex'>
+						<div className='flex space-x-1'>
 							{rating === 1 && (
 								<>
-									<AiFillStar />
-									<AiOutlineStar />
-									<AiOutlineStar />
-									<AiOutlineStar />
-									<AiOutlineStar />
+									<BsStarFill />
+									<BsStar />
+									<BsStar />
+									<BsStar />
+									<BsStar />
 								</>
 							)}
 							{rating === 2 && (
 								<>
-									<AiFillStar />
-									<AiFillStar />
-									<AiOutlineStar />
-									<AiOutlineStar />
-									<AiOutlineStar />
+									<BsStarFill />
+									<BsStarFill />
+									<BsStar />
+									<BsStar />
+									<BsStar />
 								</>
 							)}
 							{rating === 3 && (
 								<>
-									<AiFillStar />
-									<AiFillStar />
-									<AiFillStar />
-									<AiOutlineStar />
-									<AiOutlineStar />
+									<BsStarFill />
+									<BsStarFill />
+									<BsStarFill />
+									<BsStar />
+									<BsStar />
 								</>
 							)}
 							{rating === 4 && (
 								<>
-									<AiFillStar />
-									<AiFillStar />
-									<AiFillStar />
-									<AiFillStar />
-									<AiOutlineStar />
+									<BsStarFill />
+									<BsStarFill />
+									<BsStarFill />
+									<BsStarFill />
+									<BsStar />
 								</>
 							)}
 							{rating === 5 && (
 								<>
-									<AiFillStar />
-									<AiFillStar />
-									<AiFillStar />
-									<AiFillStar />
-									<AiFillStar />
+									<BsStarFill />
+									<BsStarFill />
+									<BsStarFill />
+									<BsStarFill />
+									<BsStarFill />
 								</>
 							)}
 						</div>
