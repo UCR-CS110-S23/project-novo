@@ -3,7 +3,7 @@ import Image from "next/image";
 import Henry from "../public/henry.png";
 import { AiOutlineStar } from "react-icons/ai";
 
-const Review = () => {
+const Review = ({ text, rating }) => {
 	return (
 		<>
 			<div className='grid grid-cols-6'>
@@ -21,15 +21,7 @@ const Review = () => {
 				</div>
 				<div className='col-start-2 col-span-4 space-y-2'>
 					<div className='font-medium text-base'>Henry Cavil</div>
-					<div className='text-sm font-light'>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-						sed do eiusmod tempor incididunt ut labore et dolore
-						magna aliqua. Ut enim ad minim veniam, quis nostrud
-						exercitation ullamco laboris nisi ut aliquip ex ea
-						commodo consequat. Duis aute irure dolor in
-						reprehenderit in voluptate velit esse cillum dolore eu
-						fugiat nulla pariatur.
-					</div>
+					<div className='text-sm font-light'>{text}</div>
 				</div>
 				<div className='col-start-6'>
 					<div className='flex flex-col justify-between items-end h-full'>
