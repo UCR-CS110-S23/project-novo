@@ -14,8 +14,6 @@ import { useEffect } from "react";
 
 export default function Feed({ data }) {
 	const temp = JSON.parse(data);
-	console.log("TEMP", temp);
-	console.log("DATA", data);
 
 	const [counter, setCounter] = useState(0);
 	// const [selection, setSelection] = useState("");

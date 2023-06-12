@@ -17,7 +17,6 @@ const WelcomeText = () => {
 	const handleSignIn = async e => {
 		e.preventDefault();
 
-		console.log("Email: ", email);
 		await signIn("credentials", {
 			redirect: true,
 			email,
