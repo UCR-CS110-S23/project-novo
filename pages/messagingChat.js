@@ -26,21 +26,21 @@ const socket = io.connect("http://localhost:3001");
 
 // TO DO - FIX THE PICTURES
 const roomProfilePics = {
-	Disneyland: { src: "/disneyland.png", width: 200, height: 200 },
-	"Laguna Beach": { src: "/lagunaChat.png", width: 200, height: 200 },
+	Disneyland: { src: "/DisneyChat.png", width: 200, height: 200 },
+	"Laguna Beach": { src: "/LagunaChat.png", width: 200, height: 200 },
 	"Melrose Trading Post": {
-		src: "/melroseChat.png",
+		src: "/Melrosechat.png",
 		width: 200,
 		height: 200,
 	},
-	LACMA: { src: "/lacma-banner.png", width: 200, height: 200 },
+	LACMA: { src: "/LacmaChat.png", width: 200, height: 200 },
 	"Aquarium of the Pacific": {
-		src: "/aquarium-banner.png",
+		src: "/AquaChat.png",
 		width: 200,
 		height: 200,
 	},
 	"Universal Studios": {
-		src: "/universal-banner.png",
+		src: "/UniversalChat.png",
 		width: 200,
 		height: 200,
 	},
@@ -187,8 +187,8 @@ export default function Messaging({ data }) {
 					{/* search bar */}
 					<input
 						type='search'
-						placeholder='Search for a chat room'
-						className='focus:outline-none placeholder:font-light placeholder-[#858585] placeholder:font-regular pl-[5px] mt-10 ml-11 text-sm w-96'
+						placeholder='Click on a chat room to join and start chatting!'
+						className='focus:outline-none placeholder:font-light text-center placeholder-[#858585] placeholder:font-regular pl-[5px] mt-10 ml-11 text-base w-96'
 					/>
 
 					<div className='flex flex-col mt-4 border-t'>
@@ -270,40 +270,59 @@ export default function Messaging({ data }) {
 				>
 					{/* TOP PORTION OF CHAT CONTENT */}
 					<div className='flex justify-between w-full border-b'>
-						<div className='flex mt-4'>
-							<div className='pl-3'>
+						{room !== "" ? (
+							<div className='flex mt-4'>
+								<div className='pl-3'>
+									<Image
+										src={pic}
+										alt='Landing'
+										className=' w-20 h-20 object-cover rounded-full'
+									/>
+								</div>
+								<div
+									id='topContainer'
+									className='text-2xl mt-2 ml-3'
+								>
+									{room}&apos;s Chat Room
+									<div className='text-sm -mt-2 text-green-500'>
+										Online
+									</div>
+								</div>
+							</div>
+						) : (
+							<div
+								id='topContainer'
+								className='flex justify-center w-full text-2xl mt-12 ml-3 mb-12'
+							>
+								<div className='justify-center text-novo-messagegray'>
+									No Room Selected, Click on Chat Room to
+									Join!
+								</div>
+							</div>
+						)}
+						{room !== "" && (
+							<div className='relative flex mt-4 mr-8 mb-4 items-start h-20 w-40'>
 								<Image
 									src={pic}
 									alt='Landing'
-									className=' w-20 h-20 object-cover rounded-full'
+									className='rounded-md'
 								/>
-							</div>
-							<div className='text-2xl mt-2 ml-3'>
-								{room}&apos;s Chat Room
-								<div className='text-sm -mt-2 text-green-500'>
-									Online
+								<div className='absolute bg-novo-lightpurple text-novo-purple text-xs rounded-full !max-w-fit py-2 pr-2 pl-[5%] ml-28 -mt-2'>
+									{room}
 								</div>
 							</div>
-						</div>
-						<div className='relative flex mt-4 mr-8 mb-4 items-start h-20 w-40'>
-							<Image
-								src={pic}
-								alt='Landing'
-								className='rounded-md'
-							/>
-							<div className='absolute bg-novo-lightpurple text-novo-purple text-xs rounded-full !max-w-fit py-2 pr-2 pl-[5%] ml-28 -mt-2'>
-								{room}
-							</div>
-						</div>
+						)}
 					</div>
 					<div
 						id='messagingPart'
 						className='max-h-[calc(100vh-4rem-4rem)] overflow-y-auto mb-16'
 					>
 						<div className='flex relative justify-center'>
-							<div className='text-center justify-center p-2 mt-4 bg-novo-lightpurple text-novo-purple text-sm rounded-md w-80'>
-								You’re interested in going to {room}!
-							</div>
+							{room !== "" && (
+								<div className='text-center justify-center p-2 mt-4 bg-novo-lightpurple text-novo-purple text-sm rounded-md w-80'>
+									You’re interested in going to {room}!
+								</div>
+							)}
 						</div>
 						<div id='messageContainer' className='mb-16'>
 							{topic.map((entry, index) => (
