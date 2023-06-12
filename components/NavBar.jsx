@@ -15,12 +15,7 @@ function NavBar() {
 			<div className='flex flex-col justify-between w-full bg-novo-purple h-screen rounded-r-xl'>
 				<div className='flex flex-col items-center justify-start'>
 					<div className='w-5/12 m-[20%]'>
-						<Image
-							src={NOVO}
-							alt='Landing'
-							layout='responsive'
-							className=''
-						/>
+						<Image src={NOVO} alt='Landing' />
 					</div>
 
 					<div className='flex flex-col justify-start w-full space-y-2 '>

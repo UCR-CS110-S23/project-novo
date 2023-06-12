@@ -1,8 +1,13 @@
 import { React, useState } from "react";
 import Image from "next/image";
 
-const ActivityCard = ({ post, setSelection, one, two, three }) => {
+const ActivityCard = ({ onStateChange, one, two, three }) => {
 	const [toggle, setToggle] = useState(0);
+
+	const handleToggleChange = newToggle => {
+		setToggle(newToggle);
+		onStateChange(newToggle);
+	};
 
 	return (
 		<>
@@ -24,15 +29,13 @@ const ActivityCard = ({ post, setSelection, one, two, three }) => {
 						<div className='absolute rounded-full text-white left-4 top-3'>
 							<input
 								type='radio'
-								onClick={() => {
-									setToggle(1);
-									// setSelection(post.activities[0]);
-								}}
+								onClick={() => handleToggleChange(0)}
 								className={`h-5 w-5 rounded-full appearance-none border border-white  ${
-									toggle === 1
+									toggle === 0
 										? "bg-novo-purple text-white border rounded-full border-novo-purple"
 										: "bg-transparent"
 								}`}
+								name='activityOne'
 							/>
 						</div>
 						<div className='absolute uppercase bg-white right-3 top-3 text-sm px-3 py-1 text-black rounded-full'>
@@ -55,12 +58,13 @@ const ActivityCard = ({ post, setSelection, one, two, three }) => {
 						<div className='absolute rounded-full text-white left-4 top-3'>
 							<input
 								type='radio'
-								onClick={() => setToggle(2)}
+								onClick={() => handleToggleChange(1)}
 								className={`h-5 w-5 rounded-full appearance-none border border-white  ${
-									toggle === 2
+									toggle === 1
 										? "bg-novo-purple text-white border rounded-full border-novo-purple"
 										: "bg-transparent"
 								}`}
+								name='activityTwo'
 							/>
 						</div>
 						<div className='absolute uppercase bg-white right-3 top-3 text-sm px-3 py-1 text-black rounded-full'>
@@ -83,12 +87,13 @@ const ActivityCard = ({ post, setSelection, one, two, three }) => {
 						<div className='absolute rounded-full text-white left-4 top-3'>
 							<input
 								type='radio'
-								onClick={() => setToggle(3)}
+								onClick={() => handleToggleChange(2)}
 								className={`h-5 w-5 rounded-full appearance-none border border-white  ${
-									toggle === 3
+									toggle === 2
 										? "bg-novo-purple text-white border rounded-full border-novo-purple"
 										: "bg-transparent"
 								}`}
+								name='activityThree'
 							/>
 						</div>
 						<div className='absolute uppercase bg-white right-3 top-3 text-sm px-3 py-1 text-black rounded-full'>

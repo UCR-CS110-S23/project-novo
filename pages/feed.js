@@ -21,7 +21,13 @@ export default function Feed({ data }) {
 	const [act1, setAct1] = useState({});
 	const [act2, setAct2] = useState({});
 	const [act3, setAct3] = useState({});
+	const [activityChosen, setActivityChosen] = useState("");
 
+	const handleStateChange = newState => {
+		setActivityChosen(newState);
+	};
+
+	console.log(activityChosen);
 	const increase = () => {
 		if (counter + 1 >= temp.length) {
 			setCounter(0);
@@ -58,8 +64,7 @@ export default function Feed({ data }) {
 						</div>
 						<div className='w-[26vw] ml-5'>
 							<ActivityCard
-								post={temp[counter]}
-								// setSelection={setSelection}
+								onStateChange={handleStateChange}
 								one={act1}
 								two={act2}
 								three={act3}
@@ -100,18 +105,21 @@ export default function Feed({ data }) {
 									</div>
 									<div className='text-sm text-novo-messagegray mb-4 mt-1 font-light uppercase'>
 										GO TO MESSAGES TO START CONVERSATION
-										WITH {temp[counter].name}
+										WITH {temp[counter - 1].name}
 									</div>
 									<div className='mx-24'>
 										<div className='relative w-96 flex justify-center items-center'>
 											<Image
 												src={ActivitySelected}
 												alt='Landing'
-												layout='responsive'
 												className='rounded-xl'
 											/>
 											<div className='absolute bg-white rounded-full text-black text-md px-4 py-2'>
-												DISNEYLAND
+												{
+													temp[counter].activities[
+														activityChosen
+													]
+												}
 											</div>
 										</div>
 									</div>
