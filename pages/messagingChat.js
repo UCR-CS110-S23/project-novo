@@ -86,11 +86,7 @@ export default function Messaging({ data }) {
 
 		const mymessageElement = document.createElement("div");
 		ReactDOM.render(
-			<MyMessageResponse
-				image={Disney}
-				message={message}
-				time={currentTime}
-			/>,
+			<MyMessageResponse message={message} time={currentTime} />,
 			mymessageElement
 		);
 		if (messageContainer) {
@@ -110,7 +106,6 @@ export default function Messaging({ data }) {
 			ReactDOM.render(
 				<MessageResponse
 					key={data.timestamp}
-					image={MessageGuy}
 					name='Ricky Smith'
 					message={data.message}
 					time={data.time}

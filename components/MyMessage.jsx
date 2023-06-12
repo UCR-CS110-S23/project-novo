@@ -1,7 +1,8 @@
 import { React } from "react";
 import Image from "next/image";
+import ProfilePic from "../public/ProfilePic.svg";
 
-const MyMessageResponse = ({ image, message, time }) => {
+const MyMessageResponse = ({ message, time }) => {
 	return (
 		<div className='flex  relative mt-4 ml-4 pr-4'>
 			<div className='flex justify-end w-full'>
@@ -19,7 +20,7 @@ const MyMessageResponse = ({ image, message, time }) => {
 			</div>
 			<div>
 				<Image
-					src={image}
+					src={ProfilePic}
 					alt='Landing'
 					className=' w-11 h-10 object-cover rounded-full'
 				/>
