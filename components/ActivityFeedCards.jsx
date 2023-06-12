@@ -7,7 +7,7 @@ const ActivityFeedCard = ({ image, title, location, rating }) => {
 		<div className='rounded-3xl duration-300 hover:-translate-y-1 border gird grid-rows-4'>
 			<Image
 				src={image}
-				width={250}
+				width={400}
 				// heigth='35'
 				height={250}
 				alt='Landing'
