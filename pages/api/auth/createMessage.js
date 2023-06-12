@@ -9,7 +9,7 @@ export default async function handler(req, res) {
 
 		const db = (await clientPromise).db(process.env.MONGODB_DB);
 
-		// Store new message
+		// stores a new message
 		await db.collection("messages").insertOne(newMessage);
 
 		res.status(201).json({

@@ -97,7 +97,7 @@ export default function Messaging({ data }) {
 			messageContainer.appendChild(mymessageElement);
 		}
 
-		socket.emit("send_message", { user, message, room, time: currentTime }); // Add "time: currentTime" to the emit payload
+		socket.emit("send_message", { user, message, room, time: currentTime });
 		postMessage();
 	};
 
@@ -113,7 +113,7 @@ export default function Messaging({ data }) {
 					image={MessageGuy}
 					name='Ricky Smith'
 					message={data.message}
-					time={data.time} // Change "data.timestamp" to "data.time"
+					time={data.time}
 				/>,
 				messageElement
 			);
@@ -143,7 +143,7 @@ export default function Messaging({ data }) {
 			user,
 			message,
 			room,
-			time: currentTime, // Add the current time to the messages object
+			time: currentTime,
 		};
 		try {
 			await fetch("/api/auth/createMessage", {
