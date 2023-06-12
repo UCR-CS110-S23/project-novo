@@ -7,18 +7,33 @@ import ReactDOM from "react-dom";
 import Image from "next/image";
 import { FiCamera } from "react-icons/fi";
 import { FiPaperclip } from "react-icons/fi";
+import { getAllChats } from "../lib/getChat";
 // import { BsPlusSquare } from "react-icons/bs";
 import { FiSend } from "react-icons/fi";
 import Disney from "../public/disneyland.png";
+import Laguna from "../public/laguna-square.png";
+import Melrose from "../public/melrose-square.png";
 import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 
 import io from "socket.io-client";
 const socket = io.connect("http://localhost:3001");
 
-export default function Messaging() {
+const roomProfilePics = {
+	Disney: { src: "/disneyland.png", width: 200, height: 200 },
+	Laguna: { src: "/lagunaChat.png", width: 200, height: 200 },
+	Melrose: { src: "/MelroseChat.png", width: 200, height: 200 },
+};
+
+export default function Messaging({ data }) {
+	const temp = JSON.parse(data);
+
 	const [message, setMessage] = useState("");
 	const [messageContainer, setMessageContainer] = useState(null);
 	const [room, setRoom] = useState("");
+	const [user, setUser] = useState(null);
+	const [topic, setTopic] = useState([]);
+	const [pic, setPic] = useState({});
 
 	// deals w/ showing chat of each person
 	// const [showChatContent, setShowChatContent] = useState(false);
@@ -27,11 +42,28 @@ export default function Messaging() {
 	// 	setShowChatContent(!showChatContent);
 	// };
 
+	useEffect(() => {
+		const data = room;
+		setTopic(temp.filter(a => data === a.room));
+
+		setPic(roomProfilePics[data]);
+	});
+
 	const joinRoom = () => {
 		if (room !== "") {
 			socket.emit("join_room", room);
 		}
 	};
+
+	const { data: session } = useSession();
+	useEffect(() => {
+		setUser(session?.user?.name);
+	});
+
+	useEffect(() => {
+		setTopic([]);
+	}, [room]);
+
 	const sendMessage = () => {
 		const mymessageElement = document.createElement("div");
 		ReactDOM.render(
@@ -46,9 +78,8 @@ export default function Messaging() {
 			messageContainer.appendChild(mymessageElement);
 		}
 
-		socket.emit("send_message", { message, room });
-
-		setMessage("");
+		socket.emit("send_message", { user, message, room });
+		postMessage();
 	};
 
 	useEffect(() => {
@@ -67,11 +98,6 @@ export default function Messaging() {
 				messageContainer.appendChild(messageElement);
 			});
 		}
-		socket.on("user-disconnected", data => {
-			console.log(JSON.stringify(data));
-			const disconnectedData = JSON.stringify(data);
-			postMessage(disconnectedData);
-		});
 
 		return () => {
 			socket.off("receive_message");
@@ -84,10 +110,11 @@ export default function Messaging() {
 		setMessageContainer(container);
 	}, []);
 
-	const postMessage = async userData => {
+	const postMessage = async () => {
 		const messages = {
-			name: "my_name",
-			messageData: userData,
+			user,
+			message,
+			room,
 		};
 		try {
 			await fetch("/api/auth/createMessage", {
@@ -131,58 +158,43 @@ export default function Messaging() {
 					{/* search bar */}
 					<input
 						type='search'
-						placeholder='Room'
+						placeholder='Messages'
 						className='focus:outline-none placeholder:font-light placeholder-[#858585] placeholder:font-regular pl-[5px] mt-10 ml-11 text-sm'
 					/>
-					<button>
-						<FiSend className='text-xl text-novo-darkgray' />
-					</button>
 
 					{/* TODO - where message histories go */}
-					<div className='mt-4 border-t'>
+					<div className='flex flex-col mt-4 border-t'>
 						<button
 							onClick={() => {
-								setRoom("disney");
+								setRoom("Disney");
 							}}
 						>
-							<MessageChat
-								image={MessageGuy}
-								name='Disney'
-								message='click to chat!'
-							/>
+							<MessageChat image={Disney} name='Disney' />
 						</button>
 						<button className='text-sm border' onClick={handleRoom}>
-							Join Room
+							Join Disney Chat Room
 						</button>
 
 						<button
 							onClick={() => {
-								setRoom("laguna");
+								setRoom("Laguna");
 							}}
 						>
-							<MessageChat
-								image={MessageGuy}
-								name='Laguna'
-								message='click to chat!'
-							/>
+							<MessageChat image={Laguna} name='Laguna' />
 						</button>
 						<button className='text-sm border' onClick={handleRoom}>
-							Join Room
+							Join Laguna Room
 						</button>
 
 						<button
 							onClick={() => {
-								setRoom("melrose");
+								setRoom("Melrose");
 							}}
 						>
-							<MessageChat
-								image={MessageGuy}
-								name='Melrose'
-								message='click to chat!'
-							/>
+							<MessageChat image={Melrose} name='Melrose' />
 						</button>
 						<button className='text-sm border' onClick={handleRoom}>
-							Join Room
+							Join Melrose Room
 						</button>
 					</div>
 				</div>
@@ -198,13 +210,13 @@ export default function Messaging() {
 						<div className='flex mt-4'>
 							<div className='pl-3'>
 								<Image
-									src={Disney}
+									src={pic}
 									alt='Landing'
 									className=' w-20 h-20 object-cover rounded-full'
 								/>
 							</div>
 							<div className='text-2xl mt-2 ml-3'>
-								Chatroom
+								{room} Chatroom
 								<div className='text-sm -mt-2 text-green-500'>
 									Online
 								</div>
@@ -212,12 +224,12 @@ export default function Messaging() {
 						</div>
 						<div className='relative flex mt-4 mr-4 mb-4 items-start h-20 w-40'>
 							<Image
-								src={Disney}
+								src={pic}
 								alt='Landing'
 								className='rounded-md'
 							/>
-							<div className='absolute bg-novo-lightpurple text-novo-purple text-xs rounded-full whitespace-nowrap !max-w-fit py-1 pr-2 pl-[5%] ml-20 -mt-2'>
-								DISNEYLAND
+							<div className='absolute bg-novo-lightpurple text-novo-purple text-xs rounded-full whitespace-nowrap !max-w-fit py-1 pr-2 pl-[5%] ml-28 -mt-2'>
+								{room}
 							</div>
 						</div>
 					</div>
@@ -235,13 +247,17 @@ export default function Messaging() {
 							</div>
 						</div>
 						<div id='messageContainer' className='mb-16'>
+							{topic.map((entry, index) => (
+								<MessageResponse
+									key={index}
+									image={MessageGuy}
+									name={entry.user}
+									message={entry.message}
+									time='11:00AM'
+								/>
+							))}
 							{/* <div>
-									<MessageResponse
-										image={MessageGuy}
-										name='Ricky Smith'
-										message='Hi, How are you?'
-										time='11:00AM'
-									/>
+									
 								</div>
 								<MyMessageResponse
 									image={Disney}
@@ -284,4 +300,14 @@ export default function Messaging() {
 			</div>
 		</>
 	);
+}
+
+export async function getServerSideProps() {
+	const postData = await getAllChats();
+	const data = JSON.stringify(postData);
+	return {
+		props: {
+			data,
+		},
+	};
 }

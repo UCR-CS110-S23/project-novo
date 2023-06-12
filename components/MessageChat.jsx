@@ -1,18 +1,11 @@
-import { React, useState } from "react";
+import { React } from "react";
 import Image from "next/image";
 
-const MessageChat = ({ image, name, message, onClick }) => {
-	const [backgroundColor, setBackgroundColor] = useState("white");
-
-	const handleClick = () => {
-		setBackgroundColor("#F3EFFF");
-	};
+const MessageChat = ({ image, name }) => {
 	return (
 		<div
 			id='main'
-			style={{ backgroundColor: backgroundColor }}
 			className='flex relative mt-4 m-2 py-2 hover:bg-novo-lightpurple hover:rounded-md'
-			onClick={handleClick}
 		>
 			<div className='pl-3'>
 				<Image
@@ -23,12 +16,7 @@ const MessageChat = ({ image, name, message, onClick }) => {
 				<span className='top-2 left-10 absolute w-3 h-3 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full'></span>
 			</div>
 			<div className='flex justify-between w-full'>
-				<div className='ml-3'>
-					{name}
-					<div className='text-sm text-novo-messagegray'>
-						You: {message}
-					</div>
-				</div>
+				<div className='ml-3'>{name}</div>
 				{/* <div className='flex items-start text-novo-purple pt-1 text-xs'>
 					{mins}min ago
 				</div> */}
