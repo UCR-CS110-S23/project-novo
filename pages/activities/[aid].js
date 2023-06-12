@@ -49,10 +49,12 @@ export default function ActivityProfile({ data }) {
 		setActID(data);
 		setComments(comments.filter(a => data === a.actID));
 		// calculateAverage();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [router.query]);
 
 	useEffect(() => {
 		calculateAverage();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [comment]);
 
 	console.log("RATING", actRating);

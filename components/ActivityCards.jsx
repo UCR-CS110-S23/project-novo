@@ -16,9 +16,8 @@ const ActivityCard = ({ post, setSelection, one, two, three }) => {
 							<Image
 								src={one.banner}
 								alt='Landing'
-								width={40}
-								height={40}
-								layout='responsive'
+								width={400}
+								height={200}
 								className='z-0 rounded-3xl aspect-card'
 							/>
 						)}
@@ -47,10 +46,9 @@ const ActivityCard = ({ post, setSelection, one, two, three }) => {
 						{two.banner && (
 							<Image
 								src={two.banner}
-								width={40}
-								height={20}
+								width={400}
+								height={200}
 								alt='Landing'
-								layout='responsive'
 								className='z-0 rounded-3xl aspect-card'
 							/>
 						)}
@@ -76,10 +74,9 @@ const ActivityCard = ({ post, setSelection, one, two, three }) => {
 						{three.banner && (
 							<Image
 								src={three.banner}
-								width={40}
-								height={20}
+								width={400}
+								height={200}
 								alt='Landing'
-								layout='responsive'
 								className='z-0 rounded-3xl aspect-card'
 							/>
 						)}
