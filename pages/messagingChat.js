@@ -10,19 +10,40 @@ import { FiPaperclip } from "react-icons/fi";
 import { getAllChats } from "../lib/getChat";
 // import { BsPlusSquare } from "react-icons/bs";
 import { FiSend } from "react-icons/fi";
+
 import Disney from "../public/disneyland.png";
 import Laguna from "../public/laguna-square.png";
 import Melrose from "../public/melrose-square.png";
+import Lacma from "../public/lacma-square.png";
+import Aquarium from "../public/aquarium-square.png";
+import Universal from "../public/universal-square.png";
+
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 
 import io from "socket.io-client";
 const socket = io.connect("http://localhost:3001");
 
+// TO DO - FIX THE PICTURES
 const roomProfilePics = {
-	Disney: { src: "/disneyland.png", width: 200, height: 200 },
-	Laguna: { src: "/lagunaChat.png", width: 200, height: 200 },
-	Melrose: { src: "/MelroseChat.png", width: 200, height: 200 },
+	Disneyland: { src: "/disneyland.png", width: 200, height: 200 },
+	"Laguna Beach": { src: "/lagunaChat.png", width: 200, height: 200 },
+	"Melrose Trading Post": {
+		src: "/melroseChat.png",
+		width: 200,
+		height: 200,
+	},
+	LACMA: { src: "/lacma-banner.png", width: 200, height: 200 },
+	"Aquarium of the Pacific": {
+		src: "/aquarium-banner.png",
+		width: 200,
+		height: 200,
+	},
+	"Universal Studios": {
+		src: "/universal-banner.png",
+		width: 200,
+		height: 200,
+	},
 };
 
 export default function Messaging({ data }) {
@@ -34,13 +55,6 @@ export default function Messaging({ data }) {
 	const [user, setUser] = useState(null);
 	const [topic, setTopic] = useState([]);
 	const [pic, setPic] = useState({});
-
-	// deals w/ showing chat of each person
-	// const [showChatContent, setShowChatContent] = useState(false);
-
-	// const toggleChatContent = () => {
-	// 	setShowChatContent(!showChatContent);
-	// };
 
 	useEffect(() => {
 		const data = room;
@@ -158,37 +172,39 @@ export default function Messaging({ data }) {
 					{/* search bar */}
 					<input
 						type='search'
-						placeholder='Messages'
-						className='focus:outline-none placeholder:font-light placeholder-[#858585] placeholder:font-regular pl-[5px] mt-10 ml-11 text-sm'
+						placeholder='Search for a chat room'
+						className='focus:outline-none placeholder:font-light placeholder-[#858585] placeholder:font-regular pl-[5px] mt-10 ml-11 text-sm w-96'
 					/>
 
-					{/* TODO - where message histories go */}
 					<div className='flex flex-col mt-4 border-t'>
+						{/* Disney */}
 						<button
 							onClick={() => {
-								setRoom("Disney");
+								setRoom("Disneyland");
 							}}
 						>
-							<MessageChat image={Disney} name='DisneyLand' />
+							<MessageChat image={Disney} name='Disneyland' />
 						</button>
 						<button className='text-sm border' onClick={handleRoom}>
-							Join Disney Chat Room
+							Join Disneyland&apos;s Chat Room
 						</button>
 
+						{/* Laguna */}
 						<button
 							onClick={() => {
-								setRoom("Laguna");
+								setRoom("Laguna Beach");
 							}}
 						>
 							<MessageChat image={Laguna} name='Laguna Beach' />
 						</button>
 						<button className='text-sm border' onClick={handleRoom}>
-							Join Laguna Room
+							Join Laguna Beach&apos;s Chat Room
 						</button>
 
+						{/* Melrose */}
 						<button
 							onClick={() => {
-								setRoom("Melrose");
+								setRoom("Melrose Trading Post");
 							}}
 						>
 							<MessageChat
@@ -197,13 +213,54 @@ export default function Messaging({ data }) {
 							/>
 						</button>
 						<button className='text-sm border' onClick={handleRoom}>
-							Join Melrose Room
+							Join Melrose Trading Post&apos;s Chat Room
+						</button>
+
+						{/* Lacma */}
+						<button
+							onClick={() => {
+								setRoom("LACMA");
+							}}
+						>
+							<MessageChat image={Lacma} name='LACMA' />
+						</button>
+						<button className='text-sm border' onClick={handleRoom}>
+							Join LACMA&apos;s Chat Room
+						</button>
+
+						{/* Aquarium */}
+						<button
+							onClick={() => {
+								setRoom("Aquarium of the Pacific");
+							}}
+						>
+							<MessageChat
+								image={Aquarium}
+								name='Aquarium of the Pacific'
+							/>
+						</button>
+						<button className='text-sm border' onClick={handleRoom}>
+							Join Aquarium of the Pacific&apos;s Chat Room
+						</button>
+
+						{/* Universal */}
+						<button
+							onClick={() => {
+								setRoom("Universal Studios");
+							}}
+						>
+							<MessageChat
+								image={Universal}
+								name='Universal Studios'
+							/>
+						</button>
+						<button className='text-sm border' onClick={handleRoom}>
+							Join Universal Studio&apos;s Chat Room
 						</button>
 					</div>
 				</div>
 
 				{/* =========== ACTUAL CHAT CONTENT =========== */}
-				{/* {showChatContent && ( */}
 				<div
 					id='chatContent'
 					className='col-start-6 border-t col-end-13 h-screen relative'
@@ -219,7 +276,7 @@ export default function Messaging({ data }) {
 								/>
 							</div>
 							<div className='text-2xl mt-2 ml-3'>
-								{room} Chatroom
+								{room}&apos;s Chat Room
 								<div className='text-sm -mt-2 text-green-500'>
 									Online
 								</div>
@@ -240,11 +297,8 @@ export default function Messaging({ data }) {
 						id='messagingPart'
 						className='max-h-[calc(100vh-4rem-4rem)] overflow-y-auto mb-16'
 					>
-						<div className='text-novo-dategray mt-2 text-center text-sm'>
-							YESTERDAY
-						</div>
 						<div className='flex relative justify-center'>
-							<div className='text-center justify-center p-2 mt-2 bg-novo-lightpurple text-novo-purple text-sm rounded-md w-80'>
+							<div className='text-center justify-center p-2 mt-4 bg-novo-lightpurple text-novo-purple text-sm rounded-md w-80'>
 								You’re interested in going to {room}!
 							</div>
 						</div>
@@ -258,14 +312,6 @@ export default function Messaging({ data }) {
 									time='11:00AM'
 								/>
 							))}
-							{/* <div>
-									
-								</div>
-								<MyMessageResponse
-									image={Disney}
-									message="Hey Ricky, I'm doing great!"
-									time='11:05AM'
-								/> */}
 						</div>
 					</div>
 					<div className='absolute fixed flex items-center inset-x-0 bottom-0 h-16 bg-white'>
@@ -298,7 +344,6 @@ export default function Messaging({ data }) {
 						</div>
 					</div>
 				</div>
-				{/* )} */}
 			</div>
 		</>
 	);
