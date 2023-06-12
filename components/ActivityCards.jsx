@@ -12,14 +12,16 @@ const ActivityCard = ({ post, setSelection, one, two, three }) => {
 				</div>
 				<label className='checked:border-novo-purple relative grid rows-2 h-fit rounded-3xl hover:-translate-y-1 duration-300'>
 					<div className='relative w-11/12'>
-						<Image
-							src={one.banner}
-							alt='Landing'
-							width={40}
-							height={40}
-							layout='responsive'
-							className='z-0 rounded-3xl aspect-card'
-						/>
+						{one.banner && (
+							<Image
+								src={one.banner}
+								alt='Landing'
+								width={40}
+								height={40}
+								layout='responsive'
+								className='z-0 rounded-3xl aspect-card'
+							/>
+						)}
 						<div className='absolute rounded-full text-white left-4 top-3'>
 							<input
 								type='radio'
@@ -42,14 +44,16 @@ const ActivityCard = ({ post, setSelection, one, two, three }) => {
 
 				<label className='checked:border-novo-purple relative grid rows-2 h-fit rounded-3xl  hover:-translate-y-1 duration-300'>
 					<div className='relative w-11/12'>
-						<Image
-							src={two.banner}
-							width={40}
-							height={20}
-							alt='Landing'
-							layout='responsive'
-							className='z-0 rounded-3xl aspect-card'
-						/>
+						{two.banner && (
+							<Image
+								src={two.banner}
+								width={40}
+								height={20}
+								alt='Landing'
+								layout='responsive'
+								className='z-0 rounded-3xl aspect-card'
+							/>
+						)}
 						<div className='absolute rounded-full text-white left-4 top-3'>
 							<input
 								type='radio'
@@ -69,14 +73,16 @@ const ActivityCard = ({ post, setSelection, one, two, three }) => {
 
 				<label className='checked:border-novo-purple relative grid rows-2 h-fit rounded-3xl  hover:-translate-y-1 duration-300'>
 					<div className='relative w-11/12 '>
-						<Image
-							src={three.banner}
-							width={40}
-							height={20}
-							alt='Landing'
-							layout='responsive'
-							className='z-0 rounded-3xl aspect-card'
-						/>
+						{three.banner && (
+							<Image
+								src={three.banner}
+								width={40}
+								height={20}
+								alt='Landing'
+								layout='responsive'
+								className='z-0 rounded-3xl aspect-card'
+							/>
+						)}
 						<div className='absolute rounded-full text-white left-4 top-3'>
 							<input
 								type='radio'
