@@ -181,32 +181,27 @@ export default function Messaging({ data }) {
 						<button
 							onClick={() => {
 								setRoom("Disneyland");
+								handleRoom();
 							}}
 						>
 							<MessageChat image={Disney} name='Disneyland' />
 						</button>
-						<button
-							className='bg-transparent'
-							onClick={handleRoom}
-						></button>
 
 						{/* Laguna */}
 						<button
 							onClick={() => {
 								setRoom("Laguna Beach");
+								handleRoom();
 							}}
 						>
 							<MessageChat image={Laguna} name='Laguna Beach' />
 						</button>
-						<button
-							className='bg-transparent'
-							onClick={handleRoom}
-						></button>
 
 						{/* Melrose */}
 						<button
 							onClick={() => {
 								setRoom("Melrose Trading Post");
+								handleRoom();
 							}}
 						>
 							<MessageChat
@@ -214,28 +209,22 @@ export default function Messaging({ data }) {
 								name='Melrose Trading Post'
 							/>
 						</button>
-						<button
-							className='bg-transparent'
-							onClick={handleRoom}
-						></button>
 
 						{/* Lacma */}
 						<button
 							onClick={() => {
 								setRoom("LACMA");
+								handleRoom();
 							}}
 						>
 							<MessageChat image={Lacma} name='LACMA' />
 						</button>
-						<button
-							className='bg-transparent'
-							onClick={handleRoom}
-						></button>
 
 						{/* Aquarium */}
 						<button
 							onClick={() => {
 								setRoom("Aquarium of the Pacific");
+								handleRoom();
 							}}
 						>
 							<MessageChat
@@ -243,15 +232,12 @@ export default function Messaging({ data }) {
 								name='Aquarium of the Pacific'
 							/>
 						</button>
-						<button
-							className='bg-transparent'
-							onClick={handleRoom}
-						></button>
 
 						{/* Universal */}
 						<button
 							onClick={() => {
 								setRoom("Universal Studios");
+								handleRoom();
 							}}
 						>
 							<MessageChat
@@ -259,10 +245,6 @@ export default function Messaging({ data }) {
 								name='Universal Studios'
 							/>
 						</button>
-						<button
-							className='bg-transparent'
-							onClick={handleRoom}
-						></button>
 					</div>
 				</div>
 
