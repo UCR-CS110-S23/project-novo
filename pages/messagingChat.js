@@ -185,9 +185,10 @@ export default function Messaging({ data }) {
 						>
 							<MessageChat image={Disney} name='Disneyland' />
 						</button>
-						<button className='text-sm border' onClick={handleRoom}>
-							Join Disneyland&apos;s Chat Room
-						</button>
+						<button
+							className='bg-transparent'
+							onClick={handleRoom}
+						></button>
 
 						{/* Laguna */}
 						<button
@@ -197,9 +198,10 @@ export default function Messaging({ data }) {
 						>
 							<MessageChat image={Laguna} name='Laguna Beach' />
 						</button>
-						<button className='text-sm border' onClick={handleRoom}>
-							Join Laguna Beach&apos;s Chat Room
-						</button>
+						<button
+							className='bg-transparent'
+							onClick={handleRoom}
+						></button>
 
 						{/* Melrose */}
 						<button
@@ -212,9 +214,10 @@ export default function Messaging({ data }) {
 								name='Melrose Trading Post'
 							/>
 						</button>
-						<button className='text-sm border' onClick={handleRoom}>
-							Join Melrose Trading Post&apos;s Chat Room
-						</button>
+						<button
+							className='bg-transparent'
+							onClick={handleRoom}
+						></button>
 
 						{/* Lacma */}
 						<button
@@ -224,9 +227,10 @@ export default function Messaging({ data }) {
 						>
 							<MessageChat image={Lacma} name='LACMA' />
 						</button>
-						<button className='text-sm border' onClick={handleRoom}>
-							Join LACMA&apos;s Chat Room
-						</button>
+						<button
+							className='bg-transparent'
+							onClick={handleRoom}
+						></button>
 
 						{/* Aquarium */}
 						<button
@@ -239,9 +243,10 @@ export default function Messaging({ data }) {
 								name='Aquarium of the Pacific'
 							/>
 						</button>
-						<button className='text-sm border' onClick={handleRoom}>
-							Join Aquarium of the Pacific&apos;s Chat Room
-						</button>
+						<button
+							className='bg-transparent'
+							onClick={handleRoom}
+						></button>
 
 						{/* Universal */}
 						<button
@@ -254,9 +259,10 @@ export default function Messaging({ data }) {
 								name='Universal Studios'
 							/>
 						</button>
-						<button className='text-sm border' onClick={handleRoom}>
-							Join Universal Studio&apos;s Chat Room
-						</button>
+						<button
+							className='bg-transparent'
+							onClick={handleRoom}
+						></button>
 					</div>
 				</div>
 
