@@ -106,7 +106,7 @@ export default function Messaging({ data }) {
 			ReactDOM.render(
 				<MessageResponse
 					key={data.timestamp}
-					name='Ricky Smith'
+					name={data.user}
 					message={data.message}
 					time={data.time}
 				/>,
@@ -182,7 +182,7 @@ export default function Messaging({ data }) {
 					{/* search bar */}
 					<input
 						type='search'
-						placeholder='Click on a chat room to join and start chatting!'
+						placeholder='Click on a chat room below to join!'
 						className='focus:outline-none placeholder:font-light text-center placeholder-[#858585] placeholder:font-regular pl-[5px] mt-10 ml-11 text-base w-96'
 					/>
 
