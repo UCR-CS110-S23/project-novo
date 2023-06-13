@@ -117,8 +117,8 @@ export default function Feed({ data }) {
 										</div>
 									</div>
 									<div className='text-sm text-novo-messagegray mb-4 mt-1 font-light uppercase'>
-										GO TO CHAT ROOMS TO JOIN THE ACTIVITY
-										CHAT
+										GO TO MESSAGES TO START CONVERSATION
+										WITH {temp[counter].name}
 									</div>
 									<div className='mx-24'>
 										<div className='relative w-96 flex justify-center items-center'>
@@ -143,7 +143,7 @@ export default function Feed({ data }) {
 									<div>
 										<Link href='/messagingChat'>
 											<button className='bg-novo-purple hover:bg-novo-darkpurple w-48 rounded-full text-white mt-8 px-3 py-0.5 mb-4 font-light text-l'>
-												Go To Chat Rooms
+												Message
 											</button>
 										</Link>
 									</div>
