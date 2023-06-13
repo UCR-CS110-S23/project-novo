@@ -2,25 +2,9 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Henry from "../public/henry.png";
 import { BsStar, BsStarFill } from "react-icons/bs";
-// import { useSession } from "next-auth/react";
 
 const Review = ({ text, rating, name }) => {
 	const [timePassed, setTimePassed] = useState(0);
-
-	// console.log(session, status);
-
-	// const calculateAverage = () => {
-	// 	const sum = numbers.reduce(
-	// 		(accumulator, currentValue) => accumulator + currentValue,
-	// 		0
-	// 	);
-	// 	const average = sum / numbers.length;
-	// 	return average.toFixed(2); // Rounds the average to 2 decimal places
-	// };
-
-	// useEffect(() => {
-	// 	setActRating(calculateAverage());
-	// }, []);
 
 	console.log("ASDFJASDJF NAME: ", name);
 
@@ -40,8 +24,6 @@ const Review = ({ text, rating, name }) => {
 
 		return () => clearInterval(interval);
 	}, []);
-
-	// console.log("rating: ", rating);
 
 	return (
 		<>

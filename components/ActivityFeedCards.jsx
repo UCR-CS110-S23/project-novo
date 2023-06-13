@@ -8,7 +8,6 @@ const ActivityFeedCard = ({ image, title, location, rating }) => {
 			<Image
 				src={image}
 				width={400}
-				// heigth='35'
 				height={250}
 				alt='Landing'
 				className=' rounded-t-3xl aspect-square'
