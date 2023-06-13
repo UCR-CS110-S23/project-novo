@@ -16,7 +16,7 @@ import Melrose from "../public/melrose-square.png";
 import Lacma from "../public/lacma-square.png";
 import Aquarium from "../public/aquarium-square.png";
 import Universal from "../public/universal-square.png";
-
+// import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 
@@ -54,9 +54,11 @@ export default function Messaging({ data }) {
 	const [user, setUser] = useState(null);
 	const [topic, setTopic] = useState([]);
 	const [address, setAddress] = useState("");
+	const [counter, setCounter] = useState(0);
 	// let currentMessages = [];
 	// const [recentMessage, setrecentMessage] = useState(null);
 	const [pic, setPic] = useState({});
+	// const router = useRouter();
 	// const [enterRoom, setEnterRoom] = useState(false);
 
 	useEffect(() => {
@@ -67,7 +69,6 @@ export default function Messaging({ data }) {
 
 	const joinRoom = () => {
 		if (room !== "") {
-			setMessageContainer(null);
 			socket.emit("join_room", room);
 		}
 	};
@@ -90,33 +91,43 @@ export default function Messaging({ data }) {
 			minute: "2-digit",
 		});
 
+		if (room === "Disneyland") {
+			const dContainer = document.getElementById("disneyContainer");
+			setMessageContainer(dContainer);
+		}
+		if (room === "Laguna Beach") {
+			const lContainer = document.getElementById("lagunaContainer");
+			setMessageContainer(lContainer);
+		}
+
 		const mymessageElement = document.createElement("div");
 		ReactDOM.render(
 			<MyMessageResponse message={message} time={currentTime} />,
 			mymessageElement
 		);
 		if (messageContainer) {
-			console.log("before append", messageContainer);
+			// console.log("before append", messageContainer);
 			messageContainer.appendChild(mymessageElement); // Append the container to the message container
-			console.log("after append", messageContainer);
+			// console.log("after append", messageContainer);
 			// setrecentMessage(mymessageElement);
 			/* currentMessages.push(message);
 			console.log("Curr mess:",currentMessages);*/
 			// setEnterRoom(true)
+			socket.emit("send_message", {
+				user,
+				message,
+				room,
+				time: currentTime,
+			});
+			postMessage();
 		}
-
-		socket.emit("send_message", { user, message, room, time: currentTime });
-		postMessage();
 	};
 
-	/* if (room == "Laguna Beach" && recentMessage) {
-		messageContainer.removeChild(recentMessage);
-	}*/
+	const increase = () => {
+		setCounter(counter => counter + 1);
+	};
 
 	useEffect(() => {
-		const container = document.getElementById("messageContainer");
-		setMessageContainer(container);
-
 		socket.on("receive_message", data => {
 			const messageElement = document.createElement("div");
 			ReactDOM.render(
@@ -168,7 +179,11 @@ export default function Messaging({ data }) {
 
 	const handleSend = () => {
 		sendMessage();
-		setMessage("");
+		increase();
+		console.log(counter);
+		if (counter >= 1) {
+			setMessage("");
+		}
 	};
 
 	const handleRoom = () => {
@@ -346,31 +361,54 @@ export default function Messaging({ data }) {
 								</div>
 							)}
 						</div>
-						<div id='messageContainer' className='mb-16'>
-							{topic.map((entry, index) => {
-								if (entry.user !== user) {
-									return (
-										<MessageResponse
-											key={index}
-											name={entry.user}
-											message={entry.message}
-											time={entry.time}
-										/>
-									);
-								} else {
-									return (
-										<MyMessageResponse
-											key={index}
-											message={entry.message}
-											time={entry.time}
-										/>
-									);
-								}
-							})}
-							{/* {currentMessages.map((entry,index) => {
-								<MyMessageResponse key= {index} message={entry} time={"11:00AM"} />;
-							})}  */}
-						</div>
+						{room === "Disneyland" && (
+							<div id='disneyContainer' className='mb-16'>
+								{topic.map((entry, index) => {
+									if (entry.user !== user) {
+										return (
+											<MessageResponse
+												key={index}
+												name={entry.user}
+												message={entry.message}
+												time={entry.time}
+											/>
+										);
+									} else {
+										return (
+											<MyMessageResponse
+												key={index}
+												message={entry.message}
+												time={entry.time}
+											/>
+										);
+									}
+								})}
+							</div>
+						)}
+						{room === "Laguna Beach" && (
+							<div id='lagunaContainer' className='mb-16'>
+								{topic.map((entry, index) => {
+									if (entry.user !== user) {
+										return (
+											<MessageResponse
+												key={index}
+												name={entry.user}
+												message={entry.message}
+												time={entry.time}
+											/>
+										);
+									} else {
+										return (
+											<MyMessageResponse
+												key={index}
+												message={entry.message}
+												time={entry.time}
+											/>
+										);
+									}
+								})}
+							</div>
+						)}
 					</div>
 					<div className='absolute fixed flex items-center inset-x-0 bottom-0 h-16 bg-white'>
 						<div className='ml-10'>
