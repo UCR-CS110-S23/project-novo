@@ -17,7 +17,6 @@ const WelcomeText = () => {
 	const handleSignIn = async e => {
 		e.preventDefault();
 
-		console.log("Email: ", email);
 		await signIn("credentials", {
 			redirect: true,
 			email,
@@ -36,7 +35,12 @@ const WelcomeText = () => {
 	return (
 		<div className='flex flex-row items-center justify-between mx-80 h-screen'>
 			<div className='flex flex-col'>
-				<Image src={NOVO} alt='site-logo' className='max-w-md pb-4' />
+				<Image
+					src={NOVO}
+					alt='site-logo'
+					className='max-w-md pb-4'
+					priority={true}
+				/>
 				<p className='text-2xl text-white font-light'>
 					meet your <b>new</b> adventure
 				</p>

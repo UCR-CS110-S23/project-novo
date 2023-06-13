@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { signIn } from "next-auth/react";
 import CreateActivity from "./CreateActivity";
 
 const activites1 = [
@@ -35,8 +36,6 @@ const activites2 = [
 ];
 
 const Questions = ({ counter }) => {
-	// const router = useRouter();
-
 	const [tag, setTag] = useState("");
 	const [name, setName] = useState("");
 	const [bio, setBio] = useState("");
@@ -421,6 +420,7 @@ const Questions = ({ counter }) => {
 							<input
 								onChange={e => setFile(e.target.files[0])}
 								type='file'
+								accept='image/webp'
 								className='border-dashed border-2 border-novo-lightgray w-full h-full text-xl font-light py-7 px-3 text-center text-[#B9B9B9] focus:outline-none rounded-xl'
 							/>
 						</div>

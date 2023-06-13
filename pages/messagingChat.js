@@ -329,14 +329,26 @@ export default function Messaging({ data }) {
 							)}
 						</div>
 						<div id='messageContainer' className='mb-16'>
-							{topic.map((entry, index) => (
-								<MessageResponse
-									key={index}
-									name={entry.user}
-									message={entry.message}
-									time={entry.time}
-								/>
-							))}
+							{topic.map((entry, index) => {
+								if (entry.user !== user) {
+									return (
+										<MessageResponse
+											key={index}
+											name={entry.user}
+											message={entry.message}
+											time={entry.time}
+										/>
+									);
+								} else {
+									return (
+										<MyMessageResponse
+											key={index}
+											message={entry.message}
+											time={entry.time}
+										/>
+									);
+								}
+							})}
 							{/* {currentMessages.map((entry,index) => {
 								<MyMessageResponse key= {index} message={entry} time={"11:00AM"} />;
 							})}  */}
