@@ -8,17 +8,19 @@ import Activities from "@/public/data/Activities";
 import axios from "axios";
 import { getAllComments } from "@/lib/getComments";
 import { useSession } from "next-auth/react";
+import { getAllPostData } from "@/lib/getFeed";
 
-export default function ActivityProfile({ data }) {
-	const { data: session, status } = useSession();
+export default function ActivityProfile({ data, posts }) {
+	const { data: session } = useSession();
+
 	const comments = JSON.parse(data);
-	console.log("SESSION: ", session, status);
-
+	const post = JSON.parse(posts);
 	const router = useRouter();
 	const [act, setAct] = useState({});
 	const [actID, setActID] = useState("");
 	const [text, setText] = useState("");
 	const [picture, setPicture] = useState("");
+
 	const [comment, setComments] = useState([]);
 	const [rating, setRating] = useState(0);
 	const [actRating, setActRating] = useState(0.0);
@@ -50,34 +52,38 @@ export default function ActivityProfile({ data }) {
 		calculateAverage();
 	}, [comment]);
 
-	console.log("RATING", actRating);
+	// console.log("PICTURE", picture);
 
 	const handleSubmit = e => {
 		e.preventDefault();
+		setPicture(post.filter(a => a.email === session.user.email)[0].image);
 
-		const newReview = {
-			text,
-			rating,
-			actID,
-			name: session.user.name,
-			picture,
-		};
+		if (picture) {
+			const newReview = {
+				text,
+				rating,
+				actID,
+				name: session.user.name,
+				picture,
+				time: new Date().toLocaleString(),
+			};
 
-		axios
-			.post("/api/addReview", newReview)
-			.then(({ data }) => {
-				router.reload();
-				if (data.success) {
-					setText("");
-					setRating(0);
-					setAct({});
-					setName("");
-					setPicture("");
-				}
-			})
-			.catch(error => {
-				console.log("[Post-Error]", error);
-			});
+			axios
+				.post("/api/addReview", newReview)
+				.then(({ data }) => {
+					router.reload();
+					if (data.success) {
+						setText("");
+						setRating(0);
+						setAct({});
+						setName("");
+						setPicture("");
+					}
+				})
+				.catch(error => {
+					console.log("[Post-Error]", error);
+				});
+		}
 	};
 
 	return (
@@ -161,6 +167,8 @@ export default function ActivityProfile({ data }) {
 												text={entry.text}
 												rating={entry.rating}
 												name={entry.name}
+												time={entry.time}
+												picture={entry.picture}
 											/>
 										</>
 									))}
@@ -199,7 +207,7 @@ export default function ActivityProfile({ data }) {
 									</div>
 									<button
 										onClick={handleSubmit}
-										className='bg-novo-purple hover:bg-novo-darkpurple rounded-full text-white px-3 py-0.5 font-light text-md right-0'
+										className='bg-novo-purple hover:bg-novo-hoverPurple transition-colors duration-300 rounded-full text-white px-3 py-0.5 font-light text-md right-0'
 									>
 										SUBMIT REVIEW
 									</button>
@@ -215,11 +223,15 @@ export default function ActivityProfile({ data }) {
 
 export async function getServerSideProps() {
 	const comments = await getAllComments();
+	const postData = await getAllPostData();
+
+	const posts = JSON.stringify(postData);
 	const data = JSON.stringify(comments);
 
 	return {
 		props: {
 			data,
+			posts,
 		},
 	};
 }
