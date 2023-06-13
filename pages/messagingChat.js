@@ -53,6 +53,7 @@ export default function Messaging({ data }) {
 	const [room, setRoom] = useState("");
 	const [user, setUser] = useState(null);
 	const [topic, setTopic] = useState([]);
+	const [address, setAddress] = useState("");
 	// let currentMessages = [];
 	// const [recentMessage, setrecentMessage] = useState(null);
 	const [pic, setPic] = useState({});
@@ -74,6 +75,7 @@ export default function Messaging({ data }) {
 	const { data: session } = useSession();
 	useEffect(() => {
 		setUser(session?.user?.name);
+		console.log(user);
 	}, [session]);
 
 	useEffect(() => {
@@ -186,7 +188,7 @@ export default function Messaging({ data }) {
 
 				{/* =========== MESSAGES COLUMN =========== */}
 				<div className='col-start-3 col-end-6 border-r h-screen'>
-					<div className='text-3xl mt-11 ml-8'>Message</div>
+					<div className='text-3xl mt-11 ml-8'>Chat Rooms</div>
 
 					{/* search bar */}
 					<div className='font-light text-[#858585] pl-[5px] mt-10 ml-8 text-base'>
@@ -199,6 +201,9 @@ export default function Messaging({ data }) {
 							onClick={() => {
 								setRoom("Disneyland");
 								handleRoom();
+								setAddress(
+									"1313 Disneyland Dr, Anaheim, CA 92802"
+								);
 							}}
 						>
 							<MessageChat image={Disney} name='Disneyland' />
@@ -209,6 +214,9 @@ export default function Messaging({ data }) {
 							onClick={() => {
 								setRoom("Laguna Beach");
 								handleRoom();
+								setAddress(
+									"Broadway St & Pacific Coast Hwy, Laguna Beach, CA 92651"
+								);
 							}}
 						>
 							<MessageChat image={Laguna} name='Laguna Beach' />
@@ -219,6 +227,9 @@ export default function Messaging({ data }) {
 							onClick={() => {
 								setRoom("Melrose Trading Post");
 								handleRoom();
+								setAddress(
+									"7850 Melrose Avenue, Los Angeles, California, 90046"
+								);
 							}}
 						>
 							<MessageChat
@@ -232,6 +243,9 @@ export default function Messaging({ data }) {
 							onClick={() => {
 								setRoom("LACMA");
 								handleRoom();
+								setAddress(
+									"5905 Wilshire Blvd, Los Angeles, CA 90036"
+								);
 							}}
 						>
 							<MessageChat image={Lacma} name='LACMA' />
@@ -242,6 +256,9 @@ export default function Messaging({ data }) {
 							onClick={() => {
 								setRoom("Aquarium of the Pacific");
 								handleRoom();
+								setAddress(
+									"100 Aquarium Way, Long Beach, CA 90802"
+								);
 							}}
 						>
 							<MessageChat
@@ -255,6 +272,9 @@ export default function Messaging({ data }) {
 							onClick={() => {
 								setRoom("Universal Studios");
 								handleRoom();
+								setAddress(
+									"100 Universal City Plaza, Universal City, CA 91608"
+								);
 							}}
 						>
 							<MessageChat
@@ -285,9 +305,9 @@ export default function Messaging({ data }) {
 									id='topContainer'
 									className='text-2xl mt-2 ml-3'
 								>
-									{room}&apos;s Chat Room
-									<div className='text-sm -mt-2 text-green-500'>
-										Online
+									{room} Chat
+									<div className='text-sm -mt-2 text-gray-400'>
+										{address}
 									</div>
 								</div>
 							</div>

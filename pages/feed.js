@@ -10,22 +10,22 @@ import Link from "next/link.js";
 import Image from "next/image.js";
 import Activities from "@/public/data/Activities";
 import { useEffect } from "react";
+import { useSession } from "next-auth/react";
 
 export default function Feed({ data }) {
 	const temp = JSON.parse(data);
-
+	const { data: session, status } = useSession();
+	console.log(session, status);
 	const [counter, setCounter] = useState(0);
 	const [showModal, setShowModal] = useState(false);
 	const [act1, setAct1] = useState({});
 	const [act2, setAct2] = useState({});
 	const [act3, setAct3] = useState({});
-	// const [activityChosen, setActivityChosen] = useState("");
+	const [activityChosen, setActivityChosen] = useState("");
 
-	/* const handleStateChange = newState => {
+	const handleStateChange = newState => {
 		setActivityChosen(newState);
-	};*/
-
-	// const [selectedName, setSelectedName] = useState("");
+	};
 
 	const increase = () => {
 		if (counter + 1 >= temp.length) {
@@ -37,7 +37,6 @@ export default function Feed({ data }) {
 
 	const handleCheck = () => {
 		setShowModal(true);
-		// setSelectedName(temp[counter]?.name);
 	};
 
 	const modalExit = () => {
@@ -49,9 +48,9 @@ export default function Feed({ data }) {
 		const one = temp[counter].activities[0];
 		const two = temp[counter].activities[1];
 		const three = temp[counter].activities[2];
-		setAct1(Activities.find(a => one === a.name.toUpperCase()));
-		setAct2(Activities.find(a => two === a.name.toUpperCase()));
-		setAct3(Activities.find(a => three === a.name.toUpperCase()));
+		setAct1(Activities.find(a => one == a.name.toUpperCase()));
+		setAct2(Activities.find(a => two == a.name.toUpperCase()));
+		setAct3(Activities.find(a => three == a.name.toUpperCase()));
 	}, [counter, temp]);
 
 	const activityImageSelect = activityChosen => {
@@ -80,8 +79,7 @@ export default function Feed({ data }) {
 						</div>
 						<div className='w-[26vw] ml-5'>
 							<ActivityCard
-								post={temp[counter]}
-								// setSelection={setSelection}
+								onStateChange={handleStateChange}
 								one={act1}
 								two={act2}
 								three={act3}
@@ -105,7 +103,7 @@ export default function Feed({ data }) {
 			{showModal ? (
 				<>
 					<div className='justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50'>
-						<div className='w-auto my-6  mx-auto max-w-3xl'>
+						<div className=' w-auto my-6  mx-auto max-w-3xl'>
 							<div className='border-0  rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
 								<div className='flex flex-col place-items-center p-6'>
 									<div className='text-2xl w-full flex justify-end'>
@@ -119,8 +117,8 @@ export default function Feed({ data }) {
 										</div>
 									</div>
 									<div className='text-sm text-novo-messagegray mb-4 mt-1 font-light uppercase'>
-										GO TO MESSAGES TO START CONVERSATION
-										WITH {temp[counter]?.name}
+										GO TO CHAT ROOMS TO JOIN THE ACTIVITY
+										CHAT
 									</div>
 									<div className='mx-24'>
 										<div className='relative w-96 flex justify-center items-center'>
@@ -143,9 +141,9 @@ export default function Feed({ data }) {
 										</div>
 									</div>
 									<div>
-										<Link href={"/messagingChat"}>
+										<Link href='/messagingChat'>
 											<button className='bg-novo-purple hover:bg-novo-darkpurple w-48 rounded-full text-white mt-8 px-3 py-0.5 mb-4 font-light text-l'>
-												Message
+												Go To Chat Rooms
 											</button>
 										</Link>
 									</div>
