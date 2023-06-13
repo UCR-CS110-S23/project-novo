@@ -21,7 +21,7 @@ const Activities = [
 		rating: "",
 		banner: "/lacma-banner.png",
 		square: "/lacma-square.png",
-		url: "https://www.lacma.com",
+		url: "https://www.lacma.org/",
 	},
 	{
 		id: "aquariumofthepacific",
@@ -33,19 +33,19 @@ const Activities = [
 		rating: "",
 		banner: "/aquarium-banner.png",
 		square: "/aquarium-square.png",
-		url: "www.aquariumofpacific.org",
+		url: "https://www.aquariumofpacific.org/",
 	},
 	{
 		id: "lagunabeach",
 		name: "Laguna Beach",
 		description:
 			"Nestled along the breathtaking coastline of Southern California, Laguna Beach beckons with its captivating charm and romantic allure, making it the perfect destination for an unforgettable date. With its pristine sandy beaches, glistening turquoise waters, and stunning sunsets, this coastal gem offers an idyllic backdrop for a romantic rendezvous. Stroll hand-in-hand along the scenic boardwalk, explore hidden coves, or indulge in a leisurely beachside picnic, immersing yourselves in the soothing sounds of crashing waves and the warm caress of a gentle sea breeze. Beyond the shoreline, the town's enchanting village awaits, boasting a vibrant arts scene, chic boutiques, and exquisite dining options. Lose yourselves in the captivating art galleries, enjoy a delectable culinary adventure, and savor the region's acclaimed wines. Whether you seek a serene beachside escape or an unforgettable evening of fine dining, Laguna Beach promises an enchanting experience that will leave you longing to return, and a date that will be etched in your hearts forever.",
-		address: "1313 Disneyland Dr, Anaheim, CA 92802",
+		address: "Broadway St & Pacific Coast Hwy, Laguna Beach, CA 92651",
 		reviews: "",
 		rating: "",
 		banner: "/laguna-banner.png",
 		square: "/laguna-square.png",
-		url: "www.lagunabeachcity.net",
+		url: "https://www.lagunabeachcity.net/",
 	},
 	{
 		id: "universalstudios",
@@ -57,7 +57,7 @@ const Activities = [
 		rating: "",
 		banner: "/universal-banner.png",
 		square: "/universal-square.png",
-		url: "www.universalstudioshollywood.com.",
+		url: "https://www.universalstudioshollywood.com/web/en/us",
 	},
 	{
 		id: "melrosetradingpost",
