@@ -96,7 +96,7 @@ export default function ActivityProfile({ data, posts }) {
 						</div>
 					</div>
 
-					<div className=' flex flex-col items-center col-start-2 col-end-7'>
+					<div className=' flex flex-col items-center col-start-2 col-end-7 mx-[5%]'>
 						<div className='flex flex-col items-center justify-center w-10/12'>
 							<div className='relative'>
 								<Image
@@ -174,7 +174,7 @@ export default function ActivityProfile({ data, posts }) {
 									))}
 								</div>
 							</div>
-							<div className='w-full mt-5 space-y-5 mb-10'>
+							<div className='w-full mt-5 space-y-5 mb-[8%]'>
 								<div className='text-2xl pb-2 w-full border-b'>
 									Write a Review
 								</div>
