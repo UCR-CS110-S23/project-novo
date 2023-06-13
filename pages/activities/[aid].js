@@ -199,7 +199,7 @@ export default function ActivityProfile({ data }) {
 									</div>
 									<button
 										onClick={handleSubmit}
-										className='bg-novo-purple hover:bg-novo-darkpurple rounded-full text-white px-3 py-0.5 font-light text-md right-0'
+										className='bg-novo-purple hover:bg-novo-hoverPurple transition-colors duration-300 rounded-full text-white px-3 py-0.5 font-light text-md right-0'
 									>
 										SUBMIT REVIEW
 									</button>

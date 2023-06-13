@@ -259,7 +259,7 @@ export default function EditProfile() {
 					{/* Submit Button */}
 					<div className='ml-72 flex justify-center py-10'>
 						<button
-							className='w-1/2 bg-novo-purple text-white rounded-full py-2 mt-6'
+							className='w-1/2 bg-novo-purple text-white rounded-full py-2 mt-6 hover:bg-novo-hoverPurple transition-colors duration-300'
 							onClick={handleUpdate}
 						>
 							SAVE CHANGES
