@@ -2,27 +2,29 @@ import Image from "next/image";
 import Review from "../../components/Review";
 import NavBar from "../../components/NavBar";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
-// import ActivitiesCart from "../../components/ActivitiesCart";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Activities from "@/public/data/Activities";
 import axios from "axios";
 import { getAllComments } from "@/lib/getComments";
 import { useSession } from "next-auth/react";
-// import { BsStar, BsStarFill } from "react-icons/bs";
+import { getAllPostData } from "@/lib/getFeed";
 
-export default function ActivityProfile({ data }) {
-	const { data: session, status } = useSession();
+export default function ActivityProfile({ data, posts }) {
+	const { data: session } = useSession();
+
+	// console.log("session: ", session);
+	// console.log("posts: ", posts);
+
 	const comments = JSON.parse(data);
-	// console.log("comments: ", comments);
-	console.log("SESSION: ", session, status);
-
+	const post = JSON.parse(posts);
 	const router = useRouter();
 	const [act, setAct] = useState({});
 	const [actID, setActID] = useState("");
 	const [text, setText] = useState("");
-	// const [name, setName] = useState("");
+
 	const [picture, setPicture] = useState("");
+
 	const [comment, setComments] = useState([]);
 	const [rating, setRating] = useState(0);
 	const [actRating, setActRating] = useState(0.0);
@@ -48,45 +50,44 @@ export default function ActivityProfile({ data }) {
 		setAct(Activities.filter(a => data === a.id)[0]);
 		setActID(data);
 		setComments(comments.filter(a => data === a.actID));
-		// calculateAverage();
 	}, [router.query]);
 
 	useEffect(() => {
 		calculateAverage();
 	}, [comment]);
 
-	console.log("RATING", actRating);
+	// console.log("PICTURE", picture);
 
-	// console.log("RATING: ", actRating);
-	// console.log("NAME ", session.user.name);
 	const handleSubmit = e => {
 		e.preventDefault();
-		// setName(session.user.name);
-		// setPicture(session.user.image);
+		setPicture(post.filter(a => a.email === session.user.email)[0].image);
 
-		const newReview = {
-			text,
-			rating,
-			actID,
-			name: session.user.name,
-			picture,
-		};
+		if (picture) {
+			const newReview = {
+				text,
+				rating,
+				actID,
+				name: session.user.name,
+				picture,
+				time: new Date().toLocaleString(),
+			};
 
-		axios
-			.post("/api/addReview", newReview)
-			.then(({ data }) => {
-				router.reload();
-				if (data.success) {
-					setText("");
-					setRating(0);
-					setAct({});
-					setName("");
-					setPicture("");
-				}
-			})
-			.catch(error => {
-				console.log("[Post-Error]", error);
-			});
+			axios
+				.post("/api/addReview", newReview)
+				.then(({ data }) => {
+					router.reload();
+					if (data.success) {
+						setText("");
+						setRating(0);
+						setAct({});
+						setName("");
+						setPicture("");
+					}
+				})
+				.catch(error => {
+					console.log("[Post-Error]", error);
+				});
+		}
 	};
 
 	return (
@@ -173,9 +174,9 @@ export default function ActivityProfile({ data }) {
 												text={entry.text}
 												rating={entry.rating}
 												name={entry.name}
+												time={entry.time}
+												picture={entry.picture}
 											/>
-											{/* {setPrevious(sum)}
-											{setSum(previous + entry.text)} */}
 										</>
 									))}
 								</div>
@@ -232,11 +233,15 @@ export default function ActivityProfile({ data }) {
 
 export async function getServerSideProps() {
 	const comments = await getAllComments();
+	const postData = await getAllPostData();
+
+	const posts = JSON.stringify(postData);
 	const data = JSON.stringify(comments);
 
 	return {
 		props: {
 			data,
+			posts,
 		},
 	};
 }

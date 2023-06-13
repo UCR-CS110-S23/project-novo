@@ -14,8 +14,8 @@ import { useEffect } from "react";
 
 export default function Feed({ data }) {
 	const temp = JSON.parse(data);
-	console.log("TEMP", temp);
-	console.log("DATA", data);
+
+	// console.log("DATA", data);
 
 	const [counter, setCounter] = useState(0);
 	// const [selection, setSelection] = useState("");
@@ -23,6 +23,8 @@ export default function Feed({ data }) {
 	const [act1, setAct1] = useState({});
 	const [act2, setAct2] = useState({});
 	const [act3, setAct3] = useState({});
+	console.log("COUNT", counter);
+	console.log("TOTAL", temp.length);
 
 	const increase = () => {
 		if (counter + 1 >= temp.length) {
