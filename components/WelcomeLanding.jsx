@@ -18,7 +18,7 @@ const WelcomeText = () => {
 			redirect: true,
 			email,
 			password,
-			callbackUrl: "/feed",
+			callbackUrl: "/security",
 		});
 	};
 
@@ -52,6 +52,7 @@ const WelcomeText = () => {
 					className='rounded-full bg-white/20 text-white placeholder-white py-3 pl-8 pr-10 w-80 focus:outline-none my-1'
 					type='text'
 					placeholder='EMAIL'
+					name='email'
 					value={email}
 					onChange={e => setEmail(e.target.value)}
 				/>
@@ -60,6 +61,7 @@ const WelcomeText = () => {
 					type='password'
 					placeholder='PASSWORD'
 					value={password}
+					name='password'
 					onChange={e => setPassword(e.target.value)}
 				/>
 				<button
