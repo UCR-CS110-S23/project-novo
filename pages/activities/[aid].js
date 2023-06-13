@@ -13,9 +13,6 @@ import { getAllPostData } from "@/lib/getFeed";
 export default function ActivityProfile({ data, posts }) {
 	const { data: session } = useSession();
 
-	// console.log("session: ", session);
-	// console.log("posts: ", posts);
-
 	const comments = JSON.parse(data);
 	const post = JSON.parse(posts);
 	const router = useRouter();
