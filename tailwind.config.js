@@ -34,6 +34,7 @@ module.exports = {
 					messagegray: "#858585",
 					dategray: "#CBCBCB",
 					profileWhite: "#D9D9D9",
+					hoverPurple: "#8763FE",
 				},
 			},
 			aspectRatio: {
