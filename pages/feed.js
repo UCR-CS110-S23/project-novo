@@ -14,11 +14,7 @@ import { useSession } from "next-auth/react";
 
 export default function Feed({ data }) {
 	const temp = JSON.parse(data);
-
 	const { data: session } = useSession();
-
-	// console.log("SESSION: ", session);
-	// const [act, setAct] = useState({});
 	const [feed, setFeed] = useState({});
 
 	useEffect(() => {
@@ -26,8 +22,6 @@ export default function Feed({ data }) {
 			setFeed(temp.filter(a => session.user.email !== a.email));
 		}
 	}, [session]);
-
-	console.log("FEED: ", feed);
 
 	const [counter, setCounter] = useState(0);
 	const [showModal, setShowModal] = useState(false);

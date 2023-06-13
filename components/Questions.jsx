@@ -47,6 +47,11 @@ const Questions = ({ counter }) => {
 	const [preference, setPreference] = useState("");
 	const [location, setLocation] = useState("");
 	const [file, setFile] = useState(null);
+	const [responses, setResponses] = useState({
+		maidenName: "",
+		teacherName: "",
+		movieName: "",
+	});
 
 	const [activities, setActivities] = useState([]);
 
@@ -96,6 +101,9 @@ const Questions = ({ counter }) => {
 			interests,
 			activities,
 			image,
+			maidenName: responses.maidenName,
+			teacherName: responses.teacherName,
+			movieName: responses.movieName,
 		};
 
 		try {
@@ -124,6 +132,11 @@ const Questions = ({ counter }) => {
 				setInterests(new Set());
 				setActivities([]);
 				setFile(null);
+				setResponses({
+					maidenName: "",
+					teacherName: "",
+					movieName: "",
+				});
 
 				console.log("user made successfully");
 				await signIn("credentials", {
@@ -197,6 +210,61 @@ const Questions = ({ counter }) => {
 				)}
 
 				{counter === 3 && (
+					<div className='flex justify-center flex-col items-center space-y-3 w-5/12 '>
+						<div className='text-novo-darkgray'>
+							MOTHER&apos;S MAIDEN NAME
+						</div>
+						<input
+							type='text'
+							className='bg-novo-gray w-full text-4xl py-4 px-3 text-center text-black focus:outline-none rounded-xl'
+							value={responses.maidenName}
+							onChange={e =>
+								setResponses({
+									...responses,
+									maidenName: e.target.value,
+								})
+							}
+						/>
+					</div>
+				)}
+
+				{counter === 4 && (
+					<div className='flex justify-center flex-col items-center space-y-3 w-5/12 '>
+						<div className='text-novo-darkgray'>
+							FIRST GRADE TEACHER&apos;S NAME
+						</div>
+						<input
+							type='text'
+							className='bg-novo-gray w-full text-4xl py-4 px-3 text-center text-black focus:outline-none rounded-xl'
+							value={responses.teacherName}
+							onChange={e =>
+								setResponses({
+									...responses,
+									teacherName: e.target.value,
+								})
+							}
+						/>
+					</div>
+				)}
+
+				{counter === 5 && (
+					<div className='flex justify-center flex-col items-center space-y-3 w-5/12 '>
+						<div className='text-novo-darkgray'>FAVORITE MOVIE</div>
+						<input
+							type='text'
+							className='bg-novo-gray w-full text-4xl py-4 px-3 text-center text-black focus:outline-none rounded-xl'
+							value={responses.movieName}
+							onChange={e =>
+								setResponses({
+									...responses,
+									movieName: e.target.value,
+								})
+							}
+						/>
+					</div>
+				)}
+
+				{counter === 6 && (
 					<>
 						<div className='flex justify-center flex-col items-center space-y-3 w-5/12 '>
 							<div className='text-novo-darkgray'>
@@ -212,7 +280,7 @@ const Questions = ({ counter }) => {
 					</>
 				)}
 
-				{counter === 4 && (
+				{counter === 7 && (
 					<>
 						<div className='flex justify-center flex-col items-center w-5/12 '>
 							<div className='text-novo-darkgray translate-y-0.5'>
@@ -259,7 +327,7 @@ const Questions = ({ counter }) => {
 						</div>
 					</>
 				)}
-				{counter === 5 && (
+				{counter === 8 && (
 					<>
 						<div className='flex justify-center flex-col items-center w-5/12 '>
 							<div className='text-novo-darkgray translate-y-0.5'>
@@ -300,7 +368,7 @@ const Questions = ({ counter }) => {
 						</div>
 					</>
 				)}
-				{counter === 6 && (
+				{counter === 9 && (
 					<>
 						<div className='flex justify-center flex-col items-center space-y-3 w-5/12 '>
 							<div className='text-novo-darkgray'>
@@ -315,7 +383,7 @@ const Questions = ({ counter }) => {
 						</div>
 					</>
 				)}
-				{counter === 7 && (
+				{counter === 10 && (
 					<>
 						<div className='flex justify-center flex-col items-center w-5/12 '>
 							<div className='text-novo-darkgray translate-y-0.5'>
@@ -356,7 +424,7 @@ const Questions = ({ counter }) => {
 						</div>
 					</>
 				)}
-				{counter === 8 && (
+				{counter === 11 && (
 					<>
 						<div className='flex justify-center flex-col items-center w-5/12 '>
 							<div className='text-novo-darkgray -translate-y-3.5 mb-[2%]'>
@@ -411,7 +479,7 @@ const Questions = ({ counter }) => {
 						</div>
 					</>
 				)}
-				{counter === 9 && (
+				{counter === 12 && (
 					<>
 						<div className='flex justify-center flex-col items-center space-y-3 w-5/12 '>
 							<div className='text-novo-darkgray'>
@@ -426,7 +494,7 @@ const Questions = ({ counter }) => {
 						</div>
 					</>
 				)}
-				{counter === 10 && (
+				{counter === 13 && (
 					<>
 						<div className='flex justify-center flex-col items-center space-y-3 w-5/12 '>
 							<div className='text-novo-darkgray'>
@@ -441,7 +509,7 @@ const Questions = ({ counter }) => {
 						</div>
 					</>
 				)}
-				{counter === 11 && (
+				{counter === 14 && (
 					<>
 						<div className='flex justify-center flex-col items-center space-y-10 w-5/12 '>
 							<div className='text-novo-darkgray'>
