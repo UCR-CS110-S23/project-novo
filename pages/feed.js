@@ -10,10 +10,12 @@ import Link from "next/link.js";
 import Image from "next/image.js";
 import Activities from "@/public/data/Activities";
 import { useEffect } from "react";
+import { useSession } from "next-auth/react";
 
 export default function Feed({ data }) {
 	const temp = JSON.parse(data);
-
+	const { data: session, status } = useSession();
+	console.log(session, status);
 	const [counter, setCounter] = useState(0);
 	// const [selection, setSelection] = useState("");
 	const [showModal, setShowModal] = useState(false);

@@ -25,12 +25,12 @@ const WelcomeText = () => {
 		});
 	};
 
-	const handleGoogle = async () => {
-		await signIn("google", {
-			redirect: true,
-			callbackUrl: "/feed",
-		});
-	};
+	// const handleGoogle = async () => {
+	// 	await signIn("google", {
+	// 		redirect: true,
+	// 		callbackUrl: "/feed",
+	// 	});
+	// };
 
 	return (
 		<div className='flex flex-row items-center justify-between mx-80 h-screen'>
@@ -55,6 +55,7 @@ const WelcomeText = () => {
 					className='rounded-full bg-white/20 text-white placeholder-white py-3 pl-8 pr-10 w-80 focus:outline-none my-1'
 					type='text'
 					placeholder='EMAIL'
+					name='email'
 					value={email}
 					onChange={e => setEmail(e.target.value)}
 				/>
@@ -63,6 +64,7 @@ const WelcomeText = () => {
 					type='password'
 					placeholder='PASSWORD'
 					value={password}
+					name='password'
 					onChange={e => setPassword(e.target.value)}
 				/>
 				<button
@@ -87,7 +89,7 @@ const WelcomeText = () => {
 					<hr className='flex-grow border-white border-t-2' />
 				</div>
 
-				<button onClick={handleGoogle}>
+				<button onClick={() => signIn("google")}>
 					<div className='flex flex-row justify-center items-center text-white px-4 py-2 w-80 rounded-full border-2 border-white transition-colors duration-300 hover:bg-white group'>
 						<FcGoogle size={30} />
 

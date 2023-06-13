@@ -7,10 +7,6 @@ import { isPasswordValid } from "@/lib/hash";
 
 export const authOptions = {
 	adapter: MongoDBAdapter(clientPromise),
-	// pages: {
-	// 	signIn: "/feed",
-	// 	newUser: "/profileCreation",
-	// },
 	providers: [
 		GoogleProvider({
 			clientId: process.env.GOOGLE_CLIENT_ID,
@@ -25,6 +21,9 @@ export const authOptions = {
 					.collection("users")
 					.findOne({ email: credentials.email });
 
+				console.log(
+					"I MAY BE CREDENTIALS BUT IT WAS ACTUALLY GOOGLE HAHA!"
+				);
 				// Checks if email exists
 				if (!user) {
 					console.log("Authentication: Email not found");
@@ -45,7 +44,6 @@ export const authOptions = {
 					uid: user._id,
 					name: user.name,
 					email: user.email,
-					// image: user.image,
 					age: user.age,
 					pronoun: user.pronoun,
 					gender: user.gender,
@@ -57,23 +55,22 @@ export const authOptions = {
 			},
 		}),
 	],
+
 	secret: process.env.JWT_SECRET,
 	session: {
 		strategy: "jwt",
 	},
 	callbacks: {
-		async signIn({ user, account }) {
+		async signIn({ account, profile }) {
+			// const { emailVerified } = profile;
+			console.log(account.provider);
 			if (account.provider === "google") {
-				user._id = account.providerAccountId;
-				user.name = {
-					first: String(profile.name.split(" ")[0]),
-					last: String(profile.name.split(" ")[1]),
-				};
-				user.provider = account.provider;
+				return true;
 			}
-
-			return true;
+			// console.log(emailVerified);
+			return false;
 		},
+
 		async jwt({ token, user, session, trigger }) {
 			if (user) {
 				token.user = user;
@@ -89,6 +86,10 @@ export const authOptions = {
 			session.user = token.user;
 			return session;
 		},
+	},
+	pages: {
+		signIn: "/feed",
+		// newUser: "/profileCreation",
 	},
 };
 
