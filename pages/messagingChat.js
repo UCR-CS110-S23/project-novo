@@ -189,11 +189,9 @@ export default function Messaging({ data }) {
 					<div className='text-3xl mt-11 ml-8'>Message</div>
 
 					{/* search bar */}
-					<input
-						type='search'
-						placeholder='Click on a chat room below to join!'
-						className='focus:outline-none placeholder:font-light text-center placeholder-[#858585] placeholder:font-regular pl-[5px] mt-10 ml-11 text-base w-96'
-					/>
+					<div className='font-light text-[#858585] pl-[5px] mt-10 ml-8 text-base'>
+						Click on a chat room below to join!
+					</div>
 
 					<div className='flex flex-col mt-4 border-t'>
 						{/* Disney */}
