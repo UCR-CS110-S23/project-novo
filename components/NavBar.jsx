@@ -21,21 +21,21 @@ function NavBar() {
 					<div className='flex flex-col justify-start w-10/12 space-y-2'>
 						<Link
 							href='/feed'
-							className='text-white flex w-full no-underline items-center py-2 px-4 space-x-2 font-light hover:bg-novo-hoverPurple hover:rounded-lg'
+							className='text-white flex w-full no-underline items-center py-2 px-4 space-x-2 font-light hover:bg-novo-hoverPurple hover:rounded-lg transition-colors duration-300'
 						>
 							<RiCompassDiscoverLine />
 							<div>Feed</div>
 						</Link>
 						<Link
 							href='/messagingChat'
-							className='text-white flex w-full no-underline items-center py-2 px-4 space-x-2 font-light mt-2 hover:bg-novo-hoverPurple hover:rounded-lg'
+							className='text-white flex w-full no-underline items-center py-2 px-4 space-x-2 font-light mt-2 hover:bg-novo-hoverPurple hover:rounded-lg transition-colors duration-300'
 						>
 							<FiMessageSquare />
 							<div>Chat Rooms</div>
 						</Link>
 						<Link
 							href='/activityFeed'
-							className='text-white flex w-full items-center  no-underline py-2 px-4 space-x-2 font-light mt-2 hover:bg-novo-hoverPurple hover:rounded-lg'
+							className='text-white flex w-full items-center  no-underline py-2 px-4 space-x-2 font-light mt-2 hover:bg-novo-hoverPurple hover:rounded-lg transition-colors duration-300'
 						>
 							<TbCircles />
 							<div>Activities</div>

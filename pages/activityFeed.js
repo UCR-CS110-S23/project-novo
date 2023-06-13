@@ -1,25 +1,13 @@
 import ActivityFeedCard from "../components/ActivityFeedCards";
 import NavBar from "../components/NavBar";
-// import Disney from "../public/disneyCard.jpg";
-// import ActivitiesCart from "../components/ActivitiesCart";
 import Link from "next/link";
 import Activities from "../public/data/Activities";
 import { getAllPostData } from "@/lib/getFeed";
 import { useSession } from "next-auth/react";
-// import { useEffect } from "react";
 
 export default function ActivityProfile() {
 	const { data: session, status } = useSession;
 	console.log("SESSION: ", session, status);
-
-	// useEffect(() => {
-	// 	const one = session.user.activities[0];
-	// 	const two = session.user.activities[1];
-	// 	const three = session.user.activities[2];
-	// 	setAct1(Activities.find(a => one == a.name.toUpperCase()));
-	// 	setAct2(Activities.find(a => two == a.name.toUpperCase()));
-	// 	setAct3(Activities.find(a => three == a.name.toUpperCase()));
-	// }, []);
 
 	return (
 		<>
@@ -53,9 +41,6 @@ export default function ActivityProfile() {
 						</div>
 					</div>
 				</div>
-				{/* <div className='col-start-6 border-l h-full'>
-					<ActivitiesCart />
-				</div> */}
 			</div>
 		</>
 	);

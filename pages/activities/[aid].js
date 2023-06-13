@@ -2,27 +2,25 @@ import Image from "next/image";
 import Review from "../../components/Review";
 import NavBar from "../../components/NavBar";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
-// import ActivitiesCart from "../../components/ActivitiesCart";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Activities from "@/public/data/Activities";
 import axios from "axios";
 import { getAllComments } from "@/lib/getComments";
 import { useSession } from "next-auth/react";
-// import { BsStar, BsStarFill } from "react-icons/bs";
+import { getAllPostData } from "@/lib/getFeed";
 
-export default function ActivityProfile({ data }) {
-	const { data: session, status } = useSession();
+export default function ActivityProfile({ data, posts }) {
+	const { data: session } = useSession();
+
 	const comments = JSON.parse(data);
-	// console.log("comments: ", comments);
-	console.log("SESSION: ", session, status);
-
+	const post = JSON.parse(posts);
 	const router = useRouter();
 	const [act, setAct] = useState({});
 	const [actID, setActID] = useState("");
 	const [text, setText] = useState("");
-	// const [name, setName] = useState("");
 	const [picture, setPicture] = useState("");
+
 	const [comment, setComments] = useState([]);
 	const [rating, setRating] = useState(0);
 	const [actRating, setActRating] = useState(0.0);
@@ -48,47 +46,44 @@ export default function ActivityProfile({ data }) {
 		setAct(Activities.filter(a => data === a.id)[0]);
 		setActID(data);
 		setComments(comments.filter(a => data === a.actID));
-		// calculateAverage();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [router.query]);
 
 	useEffect(() => {
 		calculateAverage();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [comment]);
 
-	console.log("RATING", actRating);
+	// console.log("PICTURE", picture);
 
-	// console.log("RATING: ", actRating);
-	// console.log("NAME ", session.user.name);
 	const handleSubmit = e => {
 		e.preventDefault();
-		// setName(session.user.name);
-		// setPicture(session.user.image);
+		setPicture(post.filter(a => a.email === session.user.email)[0].image);
 
-		const newReview = {
-			text,
-			rating,
-			actID,
-			name: session.user.name,
-			picture,
-		};
+		if (picture) {
+			const newReview = {
+				text,
+				rating,
+				actID,
+				name: session.user.name,
+				picture,
+				time: new Date().toLocaleString(),
+			};
 
-		axios
-			.post("/api/addReview", newReview)
-			.then(({ data }) => {
-				router.reload();
-				if (data.success) {
-					setText("");
-					setRating(0);
-					setAct({});
-					setName("");
-					setPicture("");
-				}
-			})
-			.catch(error => {
-				console.log("[Post-Error]", error);
-			});
+			axios
+				.post("/api/addReview", newReview)
+				.then(({ data }) => {
+					router.reload();
+					if (data.success) {
+						setText("");
+						setRating(0);
+						setAct({});
+						setName("");
+						setPicture("");
+					}
+				})
+				.catch(error => {
+					console.log("[Post-Error]", error);
+				});
+		}
 	};
 
 	return (
@@ -101,7 +96,7 @@ export default function ActivityProfile({ data }) {
 						</div>
 					</div>
 
-					<div className=' flex flex-col items-center col-start-2 col-end-7'>
+					<div className=' flex flex-col items-center col-start-2 col-end-7 mx-[5%]'>
 						<div className='flex flex-col items-center justify-center w-10/12'>
 							<div className='relative'>
 								<Image
@@ -116,9 +111,6 @@ export default function ActivityProfile({ data }) {
 									<div className='absolute uppercase bottom-6 left-0 bg-white rounded-r-full text-black text-2xl py-1 pr-4 pl-[5%]'>
 										{act?.name}
 									</div>
-									{/* <div className='absolute hover:bg-novo-purple hover:text-white bottom-6 right-[3%] bg-novo-lightpurple border-2 border-novo-purple text-novo-purple rounded-full px-3 py-0.5 text-xl'>
-										ADD ACTIVITY
-									</div> */}
 								</div>
 							</div>
 							<div className='flex flex-col justify-start pt-3 pl-5'>
@@ -129,7 +121,7 @@ export default function ActivityProfile({ data }) {
 										</div>
 										<a
 											className='text-sm font-light text-gray-500'
-											href='https://disneyland.disney.go.com'
+											href={act?.url}
 										>
 											{act?.url}
 										</a>
@@ -175,14 +167,14 @@ export default function ActivityProfile({ data }) {
 												text={entry.text}
 												rating={entry.rating}
 												name={entry.name}
+												time={entry.time}
+												picture={entry.picture}
 											/>
-											{/* {setPrevious(sum)}
-											{setSum(previous + entry.text)} */}
 										</>
 									))}
 								</div>
 							</div>
-							<div className='w-full mt-5 space-y-5 mb-10'>
+							<div className='w-full mt-5 space-y-5 mb-[8%]'>
 								<div className='text-2xl pb-2 w-full border-b'>
 									Write a Review
 								</div>
@@ -215,7 +207,7 @@ export default function ActivityProfile({ data }) {
 									</div>
 									<button
 										onClick={handleSubmit}
-										className='bg-novo-purple hover:bg-novo-darkpurple rounded-full text-white px-3 py-0.5 font-light text-md right-0'
+										className='bg-novo-purple hover:bg-novo-hoverPurple transition-colors duration-300 rounded-full text-white px-3 py-0.5 font-light text-md right-0'
 									>
 										SUBMIT REVIEW
 									</button>
@@ -223,9 +215,6 @@ export default function ActivityProfile({ data }) {
 							</div>
 						</div>
 					</div>
-					{/* <div className='col-start-6 border-l h-full'> */}
-					{/* <ActivitiesCart /> */}
-					{/* </div> */}
 				</div>
 			</>
 		)
@@ -234,11 +223,15 @@ export default function ActivityProfile({ data }) {
 
 export async function getServerSideProps() {
 	const comments = await getAllComments();
+	const postData = await getAllPostData();
+
+	const posts = JSON.stringify(postData);
 	const data = JSON.stringify(comments);
 
 	return {
 		props: {
 			data,
+			posts,
 		},
 	};
 }
