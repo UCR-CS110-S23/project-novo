@@ -1,12 +1,13 @@
 import { React } from "react";
 import Image from "next/image";
+import ProfilePic from "../public/ProfilePic.svg";
 
-const MessageResponse = ({ image, name, message, time }) => {
+const MessageResponse = ({ name, message, time }) => {
 	return (
 		<div className='flex relative mt-4 mr-4'>
 			<div className='pl-3'>
 				<Image
-					src={image}
+					src={ProfilePic}
 					alt='Landing'
 					className=' w-11 h-10 object-cover rounded-full'
 				/>

@@ -31,7 +31,7 @@ function NavBar() {
 							className='text-white flex w-full no-underline items-center py-2 px-4 space-x-2 font-light mt-2 hover:bg-novo-hoverPurple hover:rounded-lg transition-colors duration-300'
 						>
 							<FiMessageSquare />
-							<div>Messages</div>
+							<div>Chat Rooms</div>
 						</Link>
 						<Link
 							href='/activityFeed'
