@@ -16,6 +16,7 @@ import Melrose from "../public/melrose-square.png";
 import Lacma from "../public/lacma-square.png";
 import Aquarium from "../public/aquarium-square.png";
 import Universal from "../public/universal-square.png";
+import ScrollToBottom from "react-scroll-to-bottom";
 // import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
@@ -384,7 +385,10 @@ export default function Messaging() {
 							)}
 						</div>
 						{room === "Disneyland" && (
-							<div id='disneyContainer' className='mb-16'>
+							<ScrollToBottom
+								id='disneyContainer'
+								className='mb-16 h-screen overflow-y-auto'
+							>
 								{topic.map((entry, index) => {
 									if (entry.user !== user) {
 										return (
@@ -405,7 +409,7 @@ export default function Messaging() {
 										);
 									}
 								})}
-							</div>
+							</ScrollToBottom>
 						)}
 						{room === "Laguna Beach" && (
 							<div id='lagunaContainer' className='mb-16'>
