@@ -7,13 +7,9 @@ import { MdPersonOutline } from "react-icons/md";
 import { TbCircles } from "react-icons/tb";
 import { RxExit } from "react-icons/rx";
 import Link from "next/link";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 
 function NavBar() {
-	const { data: session, status } = useSession();
-
-	console.log(session, status);
-
 	return (
 		<>
 			<div className='flex flex-col justify-between w-full bg-novo-purple h-screen rounded-r-xl'>

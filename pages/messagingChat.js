@@ -1,5 +1,4 @@
 import NavBar from "../components/NavBar";
-import MessageGuy from "../public/messageGuy.jpg";
 import MessageChat from "@/components/MessageChat";
 import MessageResponse from "@/components/MessageResponse";
 import MyMessageResponse from "@/components/MyMessage";
@@ -54,17 +53,20 @@ export default function Messaging({ data }) {
 	const [room, setRoom] = useState("");
 	const [user, setUser] = useState(null);
 	const [topic, setTopic] = useState([]);
+	// let currentMessages = [];
+	// const [recentMessage, setrecentMessage] = useState(null);
 	const [pic, setPic] = useState({});
+	// const [enterRoom, setEnterRoom] = useState(false);
 
 	useEffect(() => {
 		const data = room;
 		setTopic(temp.filter(a => data === a.room));
-
 		setPic(roomProfilePics[data]);
-	});
+	}, [room, temp]);
 
 	const joinRoom = () => {
 		if (room !== "") {
+			setMessageContainer(null);
 			socket.emit("join_room", room);
 		}
 	};
@@ -72,10 +74,12 @@ export default function Messaging({ data }) {
 	const { data: session } = useSession();
 	useEffect(() => {
 		setUser(session?.user?.name);
-	});
+	}, [session]);
 
 	useEffect(() => {
 		setTopic([]);
+		console.log("switch room", messageContainer);
+		console.log("Room:", room);
 	}, [room]);
 
 	const sendMessage = () => {
@@ -90,12 +94,22 @@ export default function Messaging({ data }) {
 			mymessageElement
 		);
 		if (messageContainer) {
-			messageContainer.appendChild(mymessageElement);
+			console.log("before append", messageContainer);
+			messageContainer.appendChild(mymessageElement); // Append the container to the message container
+			console.log("after append", messageContainer);
+			// setrecentMessage(mymessageElement);
+			/* currentMessages.push(message);
+			console.log("Curr mess:",currentMessages);*/
+			// setEnterRoom(true)
 		}
 
 		socket.emit("send_message", { user, message, room, time: currentTime });
 		postMessage();
 	};
+
+	/* if (room == "Laguna Beach" && recentMessage) {
+		messageContainer.removeChild(recentMessage);
+	}*/
 
 	useEffect(() => {
 		const container = document.getElementById("messageContainer");
@@ -122,11 +136,6 @@ export default function Messaging({ data }) {
 			socket.off("user-disconnected");
 		};
 	}, [messageContainer]);
-
-	useEffect(() => {
-		const container = document.getElementById("messageContainer");
-		setMessageContainer(container);
-	}, []);
 
 	const postMessage = async () => {
 		const currentTime = new Date().toLocaleTimeString([], {
@@ -323,12 +332,14 @@ export default function Messaging({ data }) {
 							{topic.map((entry, index) => (
 								<MessageResponse
 									key={index}
-									image={MessageGuy}
 									name={entry.user}
 									message={entry.message}
-									time='11:00AM'
+									time={entry.time}
 								/>
 							))}
+							{/* {currentMessages.map((entry,index) => {
+								<MyMessageResponse key= {index} message={entry} time={"11:00AM"} />;
+							})}  */}
 						</div>
 					</div>
 					<div className='absolute fixed flex items-center inset-x-0 bottom-0 h-16 bg-white'>
