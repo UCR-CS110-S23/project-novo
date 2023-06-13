@@ -24,11 +24,12 @@ NOVO is a dating web application that is inspired by the mission to take on “n
 
 **Sign Up / Log-In:**
 
--   Users can login to their respective accounts.
+-   Users can login to their respective accounts. Once logged in, the user is prompted to answer a couple of security questions to verify their identity. 
 
 **Create and Update Profile:**
 
 -   When clicking on "SIGN UP HERE" on the home page, users will be prompted to fill out the following information such as: name, email, password, age, how they identify, preferred pronouns, location, who they want to see (men, women, both), interests, photo, bio, and activites they're interested in.
+-   Users will also be prompted to fill out their answers to a handful of security questions. These questions will be used to verify their identity when they logged in.
 -   Users can also update their profile information accordingly on the site.
 
 **Home Feed:**
@@ -39,7 +40,7 @@ NOVO is a dating web application that is inspired by the mission to take on “n
 
 **Chat Catalog:**
 
--   Features chats a user can participate in.
+-   Features chat rooms a user can participate in based on the activity they want to do.
 
 <b>Activities & Ratings / Comments on Activities:</b>
 
@@ -70,9 +71,9 @@ NOVO is a dating web application that is inspired by the mission to take on “n
 
 <img width="1781" alt="feed" src="https://github.com/UCR-CS110-S23/project-novo/assets/43308867/dec5c17f-6ce0-4b8e-bac8-d729722efd33">
 
-### Chat
+### Chat Rooms
 
-<img width="1791" alt="chat" src="https://github.com/UCR-CS110-S23/project-novo/assets/43308867/33f88188-9c0c-4a80-a006-46a2880ed2cc">
+<img width="1781" alt="chat" src="https://github.com/UCR-CS110-S23/project-novo/assets/43308867/9dabd1ce-9322-4e67-850b-21ad10c998c1">
 
 ### Activities
 
@@ -80,7 +81,9 @@ NOVO is a dating web application that is inspired by the mission to take on “n
 
 ### Ratings & Comments On Activities
 
-<img width="1782" alt="ratingsAndComments" src="https://github.com/UCR-CS110-S23/project-novo/assets/43308867/35ec16c4-ea1a-4ba7-9acf-0560b8363183">
+<img width="1780" alt="review1" src="https://github.com/UCR-CS110-S23/project-novo/assets/43308867/0710f086-f4c8-46ef-a8e5-fc884954545e">
+
+<img width="1779" alt="review2" src="https://github.com/UCR-CS110-S23/project-novo/assets/43308867/85981e2f-bae0-44b0-adb1-236ea16cea71">
 
 ## Getting Started With Our Project
 
