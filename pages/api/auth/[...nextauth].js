@@ -11,6 +11,7 @@ export const authOptions = {
 		GoogleProvider({
 			clientId: process.env.GOOGLE_CLIENT_ID,
 			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+			allowDangerousEmailAccountLinking: true,
 		}),
 
 		CredentialsProvider({
@@ -21,9 +22,6 @@ export const authOptions = {
 					.collection("users")
 					.findOne({ email: credentials.email });
 
-				console.log(
-					"I MAY BE CREDENTIALS BUT IT WAS ACTUALLY GOOGLE HAHA!"
-				);
 				// Checks if email exists
 				if (!user) {
 					console.log("Authentication: Email not found");
@@ -51,6 +49,9 @@ export const authOptions = {
 					interests: user.interests,
 					location: user.location,
 					preference: user.preference,
+					maidenName: user.maidenName,
+					teacherName: user.teacherName,
+					movieName: user.movieName,
 				};
 			},
 		}),
@@ -62,13 +63,15 @@ export const authOptions = {
 	},
 	callbacks: {
 		async signIn({ account, profile }) {
-			// const { emailVerified } = profile;
-			console.log(account.provider);
 			if (account.provider === "google") {
-				return true;
+				user._id = account.providerAccountId;
+				user.name = {
+					first: String(profile.name.split(" ")[0]),
+					last: String(profile.name.split(" ")[1]),
+				};
+				user.provider = account.provider;
 			}
-			// console.log(emailVerified);
-			return false;
+			return true;
 		},
 
 		async jwt({ token, user, session, trigger }) {
