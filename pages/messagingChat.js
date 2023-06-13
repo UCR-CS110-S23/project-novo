@@ -16,7 +16,7 @@ import Melrose from "../public/melrose-square.png";
 import Lacma from "../public/lacma-square.png";
 import Aquarium from "../public/aquarium-square.png";
 import Universal from "../public/universal-square.png";
-import ScrollToBottom from "react-scroll-to-bottom";
+// import ScrollToBottom from "react-scroll-to-bottom";
 // import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
@@ -129,13 +129,7 @@ export default function Messaging() {
 			mymessageElement
 		);
 		if (messageContainer) {
-			// console.log("before append", messageContainer);
 			messageContainer.appendChild(mymessageElement); // Append the container to the message container
-			// console.log("after append", messageContainer);
-			// setrecentMessage(mymessageElement);
-			/* currentMessages.push(message);
-			console.log("Curr mess:",currentMessages);*/
-			// setEnterRoom(true)
 			socket.emit("send_message", {
 				user,
 				message,
@@ -152,6 +146,25 @@ export default function Messaging() {
 
 	useEffect(() => {
 		socket.on("receive_message", data => {
+			if (room === "Disneyland") {
+				const dContainer = document.getElementById("disneyContainer");
+				setMessageContainer(dContainer);
+			} else if (room === "Laguna Beach") {
+				const lContainer = document.getElementById("lagunaContainer");
+				setMessageContainer(lContainer);
+			} else if (room === "Melrose Trading Post") {
+				const mContainer = document.getElementById("melroseContainer");
+				setMessageContainer(mContainer);
+			} else if (room === "LACMA") {
+				const lContainer = document.getElementById("lacmaContainer");
+				setMessageContainer(lContainer);
+			} else if (room === "Aquarium of the Pacific") {
+				const aContainer = document.getElementById("aquaContainer");
+				setMessageContainer(aContainer);
+			} else if (room === "Universal Studios") {
+				const uContainer = document.getElementById("uniContainer");
+				setMessageContainer(uContainer);
+			}
 			const messageElement = document.createElement("div");
 			ReactDOM.render(
 				<MessageResponse
@@ -385,7 +398,7 @@ export default function Messaging() {
 							)}
 						</div>
 						{room === "Disneyland" && (
-							<ScrollToBottom
+							<div
 								id='disneyContainer'
 								className='mb-16 h-screen overflow-y-auto'
 							>
@@ -409,7 +422,7 @@ export default function Messaging() {
 										);
 									}
 								})}
-							</ScrollToBottom>
+							</div>
 						)}
 						{room === "Laguna Beach" && (
 							<div id='lagunaContainer' className='mb-16'>
