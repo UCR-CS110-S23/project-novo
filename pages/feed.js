@@ -14,16 +14,15 @@ import { useEffect } from "react";
 export default function Feed({ data }) {
 	const temp = JSON.parse(data);
 
+	// console.log("DATA", data);
+
 	const [counter, setCounter] = useState(0);
 	const [showModal, setShowModal] = useState(false);
 	const [act1, setAct1] = useState({});
 	const [act2, setAct2] = useState({});
 	const [act3, setAct3] = useState({});
-	const [activityChosen, setActivityChosen] = useState("");
-
-	const handleStateChange = newState => {
-		setActivityChosen(newState);
-	};
+	console.log("COUNT", counter);
+	console.log("TOTAL", temp.length);
 
 	const increase = () => {
 		if (counter + 1 >= temp.length) {
