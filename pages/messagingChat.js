@@ -6,10 +6,10 @@ import ReactDOM from "react-dom";
 import Image from "next/image";
 import { FiCamera } from "react-icons/fi";
 import { FiPaperclip } from "react-icons/fi";
-import { getAllChats } from "../lib/getChat";
+// import { getAllChats } from "../lib/getChat";
 // import { BsPlusSquare } from "react-icons/bs";
 import { FiSend } from "react-icons/fi";
-
+import axios from "axios";
 import Disney from "../public/disneyland.png";
 import Laguna from "../public/laguna-square.png";
 import Melrose from "../public/melrose-square.png";
@@ -45,8 +45,8 @@ const roomProfilePics = {
 	},
 };
 
-export default function Messaging({ data }) {
-	const temp = JSON.parse(data);
+export default function Messaging() {
+	// const temp = JSON.parse(data);
 
 	const [message, setMessage] = useState("");
 	const [messageContainer, setMessageContainer] = useState(null);
@@ -55,6 +55,7 @@ export default function Messaging({ data }) {
 	const [topic, setTopic] = useState([]);
 	const [address, setAddress] = useState("");
 	const [counter, setCounter] = useState(0);
+	const [chats, setChats] = useState([]);
 	// let currentMessages = [];
 	// const [recentMessage, setrecentMessage] = useState(null);
 	const [pic, setPic] = useState({});
@@ -63,9 +64,9 @@ export default function Messaging({ data }) {
 
 	useEffect(() => {
 		const data = room;
-		setTopic(temp.filter(a => data === a.room));
+		setTopic(chats.filter(a => data === a.room));
 		setPic(roomProfilePics[data]);
-	}, [room, temp]);
+	}, [room, chats]);
 
 	const joinRoom = () => {
 		if (room !== "") {
@@ -83,6 +84,15 @@ export default function Messaging({ data }) {
 		setTopic([]);
 		console.log("switch room", messageContainer);
 		console.log("Room:", room);
+
+		axios
+			.get(`/api/getChat`)
+			.then(({ data }) => {
+				setChats(data);
+			})
+			.catch(error => {
+				console.error("Error:", error);
+			});
 	}, [room]);
 
 	const sendMessage = () => {
@@ -444,7 +454,7 @@ export default function Messaging({ data }) {
 		</>
 	);
 }
-
+/*
 export async function getServerSideProps() {
 	const postData = await getAllChats();
 	const data = JSON.stringify(postData);
@@ -453,4 +463,4 @@ export async function getServerSideProps() {
 			data,
 		},
 	};
-}
+}*/
