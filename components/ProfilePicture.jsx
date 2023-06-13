@@ -11,7 +11,7 @@ const ProfilePicture = () => {
 				<input
 					type='file'
 					accept='image/webp'
-					className='border border-[#858585] py-2 px-3 mt-2.5 text-[#858585] rounded-3xl text-xs'
+					className='border border-novo-messagegray py-2 px-3 mt-2.5 text-novo-messagegray rounded-3xl text-xs'
 				/>
 			</div>
 		</>

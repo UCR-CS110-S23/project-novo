@@ -17,7 +17,6 @@ export default function Feed({ data }) {
 	const { data: session, status } = useSession();
 	console.log(session, status);
 	const [counter, setCounter] = useState(0);
-	// const [selection, setSelection] = useState("");
 	const [showModal, setShowModal] = useState(false);
 	const [act1, setAct1] = useState({});
 	const [act2, setAct2] = useState({});
@@ -142,7 +141,7 @@ export default function Feed({ data }) {
 										</div>
 									</div>
 									<div>
-										<Link href='/messaging'>
+										<Link href='/messagingChat'>
 											<button className='bg-novo-purple hover:bg-novo-darkpurple w-48 rounded-full text-white mt-8 px-3 py-0.5 mb-4 font-light text-l'>
 												Message
 											</button>
