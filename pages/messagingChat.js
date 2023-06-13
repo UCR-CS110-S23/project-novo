@@ -82,6 +82,7 @@ export default function Messaging() {
 
 	useEffect(() => {
 		setTopic([]);
+		setCounter(0);
 		console.log("switch room", messageContainer);
 		console.log("Room:", room);
 
@@ -104,10 +105,21 @@ export default function Messaging() {
 		if (room === "Disneyland") {
 			const dContainer = document.getElementById("disneyContainer");
 			setMessageContainer(dContainer);
-		}
-		if (room === "Laguna Beach") {
+		} else if (room === "Laguna Beach") {
 			const lContainer = document.getElementById("lagunaContainer");
 			setMessageContainer(lContainer);
+		} else if (room === "Melrose Trading Post") {
+			const mContainer = document.getElementById("melroseContainer");
+			setMessageContainer(mContainer);
+		} else if (room === "LACMA") {
+			const lContainer = document.getElementById("lacmaContainer");
+			setMessageContainer(lContainer);
+		} else if (room === "Aquarium of the Pacific") {
+			const aContainer = document.getElementById("aquaContainer");
+			setMessageContainer(aContainer);
+		} else if (room === "Universal Studios") {
+			const uContainer = document.getElementById("uniContainer");
+			setMessageContainer(uContainer);
 		}
 
 		const mymessageElement = document.createElement("div");
@@ -397,6 +409,102 @@ export default function Messaging() {
 						)}
 						{room === "Laguna Beach" && (
 							<div id='lagunaContainer' className='mb-16'>
+								{topic.map((entry, index) => {
+									if (entry.user !== user) {
+										return (
+											<MessageResponse
+												key={index}
+												name={entry.user}
+												message={entry.message}
+												time={entry.time}
+											/>
+										);
+									} else {
+										return (
+											<MyMessageResponse
+												key={index}
+												message={entry.message}
+												time={entry.time}
+											/>
+										);
+									}
+								})}
+							</div>
+						)}
+						{room === "Melrose Trading Post" && (
+							<div id='melroseContainer' className='mb-16'>
+								{topic.map((entry, index) => {
+									if (entry.user !== user) {
+										return (
+											<MessageResponse
+												key={index}
+												name={entry.user}
+												message={entry.message}
+												time={entry.time}
+											/>
+										);
+									} else {
+										return (
+											<MyMessageResponse
+												key={index}
+												message={entry.message}
+												time={entry.time}
+											/>
+										);
+									}
+								})}
+							</div>
+						)}
+						{room === "LACMA" && (
+							<div id='lacmaContainer' className='mb-16'>
+								{topic.map((entry, index) => {
+									if (entry.user !== user) {
+										return (
+											<MessageResponse
+												key={index}
+												name={entry.user}
+												message={entry.message}
+												time={entry.time}
+											/>
+										);
+									} else {
+										return (
+											<MyMessageResponse
+												key={index}
+												message={entry.message}
+												time={entry.time}
+											/>
+										);
+									}
+								})}
+							</div>
+						)}
+						{room === "Aquarium of the Pacific" && (
+							<div id='aquaContainer' className='mb-16'>
+								{topic.map((entry, index) => {
+									if (entry.user !== user) {
+										return (
+											<MessageResponse
+												key={index}
+												name={entry.user}
+												message={entry.message}
+												time={entry.time}
+											/>
+										);
+									} else {
+										return (
+											<MyMessageResponse
+												key={index}
+												message={entry.message}
+												time={entry.time}
+											/>
+										);
+									}
+								})}
+							</div>
+						)}
+						{room === "Universal Studios" && (
+							<div id='uniContainer' className='mb-16'>
 								{topic.map((entry, index) => {
 									if (entry.user !== user) {
 										return (
