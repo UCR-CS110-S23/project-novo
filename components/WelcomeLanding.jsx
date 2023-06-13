@@ -4,7 +4,7 @@ import Image from "next/image";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
-import { FcGoogle } from "react-icons/fc";
+// import { FcGoogle } from "react-icons/fc";
 
 const WelcomeText = () => {
 	const [email, setEmail] = useState("");
@@ -22,12 +22,12 @@ const WelcomeText = () => {
 		});
 	};
 
-	const handleGoogle = async () => {
+	/* const handleGoogle = async () => {
 		await signIn("google", {
 			redirect: true,
 			callbackUrl: "/feed",
 		});
-	};
+	};*/
 
 	return (
 		<div className='flex flex-row items-center justify-between mx-80 h-screen'>
@@ -80,22 +80,6 @@ const WelcomeText = () => {
 						</span>
 					</div>
 				</button>
-				<div className='flex items-center my-3'>
-					<hr className='flex-grow border-white border-t-2' />
-					<div className='mx-4 text-white'>OR</div>
-					<hr className='flex-grow border-white border-t-2' />
-				</div>
-
-				<button onClick={handleGoogle}>
-					<div className='flex flex-row justify-center items-center text-white px-4 py-2 w-80 rounded-full border-2 border-white transition-colors duration-300 hover:bg-white group'>
-						<FcGoogle size={30} />
-
-						<span className='ml-2 group-hover:text-purple-500'>
-							SIGN IN WITH GOOGLE
-						</span>
-					</div>
-				</button>
-
 				<div>
 					<p className='text-white mt-4 text-sm'>
 						DON&apos;T HAVE AN ACCOUNT?{" "}
