@@ -115,7 +115,7 @@ export default function ActivityProfile({ data }) {
 										</div>
 										<a
 											className='text-sm font-light text-gray-500'
-											href='https://disneyland.disney.go.com'
+											href={act?.url}
 										>
 											{act?.url}
 										</a>
