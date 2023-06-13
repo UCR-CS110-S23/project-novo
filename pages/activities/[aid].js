@@ -8,13 +8,13 @@ import Activities from "@/public/data/Activities";
 import axios from "axios";
 import { getAllComments } from "@/lib/getComments";
 import { useSession } from "next-auth/react";
-import { getAllPostData } from "@/lib/getFeed";
 
 export default function ActivityProfile({ data, posts }) {
 	const { data: session } = useSession();
 
 	// console.log("session: ", session);
 	// console.log("posts: ", posts);
+
 
 	const comments = JSON.parse(data);
 	const post = JSON.parse(posts);
@@ -88,6 +88,7 @@ export default function ActivityProfile({ data, posts }) {
 					console.log("[Post-Error]", error);
 				});
 		}
+
 	};
 
 	return (
@@ -115,9 +116,6 @@ export default function ActivityProfile({ data, posts }) {
 									<div className='absolute uppercase bottom-6 left-0 bg-white rounded-r-full text-black text-2xl py-1 pr-4 pl-[5%]'>
 										{act?.name}
 									</div>
-									{/* <div className='absolute hover:bg-novo-purple hover:text-white bottom-6 right-[3%] bg-novo-lightpurple border-2 border-novo-purple text-novo-purple rounded-full px-3 py-0.5 text-xl'>
-										ADD ACTIVITY
-									</div> */}
 								</div>
 							</div>
 							<div className='flex flex-col justify-start pt-3 pl-5'>
@@ -128,7 +126,7 @@ export default function ActivityProfile({ data, posts }) {
 										</div>
 										<a
 											className='text-sm font-light text-gray-500'
-											href='https://disneyland.disney.go.com'
+											href={act?.url}
 										>
 											{act?.url}
 										</a>
@@ -222,9 +220,6 @@ export default function ActivityProfile({ data, posts }) {
 							</div>
 						</div>
 					</div>
-					{/* <div className='col-start-6 border-l h-full'> */}
-					{/* <ActivitiesCart /> */}
-					{/* </div> */}
 				</div>
 			</>
 		)

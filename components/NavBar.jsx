@@ -7,44 +7,35 @@ import { MdPersonOutline } from "react-icons/md";
 import { TbCircles } from "react-icons/tb";
 import { RxExit } from "react-icons/rx";
 import Link from "next/link";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 
 function NavBar() {
-	const { data: session, status } = useSession();
-
-	console.log(session, status);
-
 	return (
 		<>
 			<div className='flex flex-col justify-between w-full bg-novo-purple h-screen rounded-r-xl'>
 				<div className='flex flex-col items-center justify-start'>
 					<div className='w-5/12 m-[20%]'>
-						<Image
-							src={NOVO}
-							alt='Landing'
-							layout='responsive'
-							className=''
-						/>
+						<Image src={NOVO} alt='Landing' />
 					</div>
 
-					<div className='flex flex-col justify-start w-full space-y-2 '>
+					<div className='flex flex-col justify-start w-10/12 space-y-2'>
 						<Link
 							href='/feed'
-							className='text-white flex w-full no-underline items-center py-2 px-4   space-x-2 font-light'
+							className='text-white flex w-full no-underline items-center py-2 px-4 space-x-2 font-light hover:bg-novo-hoverPurple hover:rounded-lg'
 						>
 							<RiCompassDiscoverLine />
 							<div>Feed</div>
 						</Link>
 						<Link
-							href='/messaging'
-							className='text-white flex w-full no-underline items-center py-2 px-4 space-x-2 font-light'
+							href='/messagingChat'
+							className='text-white flex w-full no-underline items-center py-2 px-4 space-x-2 font-light mt-2 hover:bg-novo-hoverPurple hover:rounded-lg'
 						>
 							<FiMessageSquare />
 							<div>Messages</div>
 						</Link>
 						<Link
 							href='/activityFeed'
-							className='text-white flex w-full items-center  no-underline py-2 px-4    space-x-2 font-light'
+							className='text-white flex w-full items-center  no-underline py-2 px-4 space-x-2 font-light mt-2 hover:bg-novo-hoverPurple hover:rounded-lg'
 						>
 							<TbCircles />
 							<div>Activities</div>
