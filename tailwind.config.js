@@ -33,6 +33,7 @@ module.exports = {
 					darkgray: "#777777",
 					messagegray: "#858585",
 					dategray: "#CBCBCB",
+					profileWhite: "#D9D9D9",
 				},
 			},
 			aspectRatio: {
