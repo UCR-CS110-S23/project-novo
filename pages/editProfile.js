@@ -6,7 +6,6 @@ import { useSession, getSession } from "next-auth/react";
 import { useState } from "react";
 import axios from "axios";
 
-// colors updated
 export default function EditProfile() {
 	const { data: session } = useSession();
 

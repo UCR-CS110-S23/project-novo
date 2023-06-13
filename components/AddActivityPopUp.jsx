@@ -6,7 +6,7 @@ const AddActivityPopUp = () => {
 	return (
 		<>
 			<div className='relative flex justify-center items-center'>
-				<button className='border border-[#858585] rounded-3xl aspect-square w-80 h-40 relative flex flex-col items-center justify-center'>
+				<button className='border border-novo-messagegray rounded-3xl aspect-square w-80 h-40 relative flex flex-col items-center justify-center'>
 					<div className='flex justify-center flex-col items-center'>
 						<div className='w-3/12'>
 							<Image
@@ -15,7 +15,7 @@ const AddActivityPopUp = () => {
 								layout='responsive'
 							/>
 						</div>
-						<span className='items-center text-[#858585] text-sm font-light mt-2'>
+						<span className='items-center text-novo-messagegray text-sm font-light mt-2'>
 							Go to Activities Page to Add Activity
 						</span>
 					</div>

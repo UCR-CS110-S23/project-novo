@@ -44,7 +44,7 @@ const ActivityCard = ({ onStateChange, one, two, three }) => {
 					</div>
 				</label>
 
-				<label className='checked:border-novo-purple relative grid rows-2 h-fit rounded-3xl  hover:-translate-y-1 duration-300'>
+				<label className='checked:border-novo-purple relative grid rows-2 h-fit rounded-3xl hover:-translate-y-1 duration-300'>
 					<div className='relative w-11/12'>
 						{two.banner && (
 							<Image
@@ -73,7 +73,7 @@ const ActivityCard = ({ onStateChange, one, two, three }) => {
 					</div>
 				</label>
 
-				<label className='checked:border-novo-purple relative grid rows-2 h-fit rounded-3xl  hover:-translate-y-1 duration-300'>
+				<label className='checked:border-novo-purple relative grid rows-2 h-fit rounded-3xl hover:-translate-y-1 duration-300'>
 					<div className='relative w-11/12 '>
 						{three.banner && (
 							<Image

@@ -5,14 +5,11 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-// import { useRouter } from "next/router";
 
 const WelcomeText = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const isButtonDisabled = email === "" || password === "";
-
-	// const router = useRouter();
 
 	const handleSignIn = async e => {
 		e.preventDefault();
