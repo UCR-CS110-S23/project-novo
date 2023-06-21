@@ -17,6 +17,7 @@ NOVO is a dating web application that is inspired by the mission to take on “n
 
 ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
 ![Prettier](https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
 
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 
@@ -57,33 +58,33 @@ NOVO is a dating web application that is inspired by the mission to take on “n
 
 ### Landing Page
 
-<img width="1714" alt="homePage" src="https://github.com/UCR-CS110-S23/project-novo/assets/43308867/1710b6aa-0338-439e-8ce2-598c2b060609">
+![pikaHome](https://github.com/UCR-CS110-S23/project-novo/assets/43308867/232f9ade-405b-47b0-8ca0-a04aee795f40)
 
 ### Sign-Up
 
-<img width="1772" alt="signUp" src="https://github.com/UCR-CS110-S23/project-novo/assets/43308867/bb377851-89ce-4374-8ed8-10cfdb59864a">
+![pikaSignIn](https://github.com/UCR-CS110-S23/project-novo/assets/43308867/0f9ab9b5-03b3-4ffc-9361-da29bc3361e7)
 
 ### Edit Profile
 
-<img width="1784" alt="editProfile" src="https://github.com/UCR-CS110-S23/project-novo/assets/43308867/b0aab7ba-15c8-46c3-b9b2-894612a9408a">
+![pikaEditProfile](https://github.com/UCR-CS110-S23/project-novo/assets/43308867/e57102a3-5d94-4753-9782-ca9cae2c010b)
 
 ### Feed
 
-<img width="1781" alt="feed" src="https://github.com/UCR-CS110-S23/project-novo/assets/43308867/dec5c17f-6ce0-4b8e-bac8-d729722efd33">
+![pikaFeed](https://github.com/UCR-CS110-S23/project-novo/assets/43308867/986d2e07-864e-482d-9034-7164c326a23e)
 
 ### Chat Rooms
 
-<img width="1781" alt="chat" src="https://github.com/UCR-CS110-S23/project-novo/assets/43308867/9dabd1ce-9322-4e67-850b-21ad10c998c1">
+![pikaChat](https://github.com/UCR-CS110-S23/project-novo/assets/43308867/bfdf6b51-a07e-4eb8-a545-60ac4f2db340)
 
 ### Activities
 
-<img width="1779" alt="activitesPage" src="https://github.com/UCR-CS110-S23/project-novo/assets/43308867/708349a0-64cc-4b79-bc56-df9c6e37f124">
+![pikaActivities](https://github.com/UCR-CS110-S23/project-novo/assets/43308867/a8a98b35-08a8-45c1-9f53-013575f6dd29)
 
 ### Ratings & Comments On Activities
 
-<img width="1780" alt="review1" src="https://github.com/UCR-CS110-S23/project-novo/assets/43308867/0710f086-f4c8-46ef-a8e5-fc884954545e">
+![pikaReviews1](https://github.com/UCR-CS110-S23/project-novo/assets/43308867/f35328aa-57d0-4420-b319-7c7037d77160)
 
-<img width="1779" alt="review2" src="https://github.com/UCR-CS110-S23/project-novo/assets/43308867/85981e2f-bae0-44b0-adb1-236ea16cea71">
+![pikaReviews2](https://github.com/UCR-CS110-S23/project-novo/assets/43308867/66f8546a-69aa-4f44-a56c-060333722499)
 
 ## Getting Started With Our Project
 
