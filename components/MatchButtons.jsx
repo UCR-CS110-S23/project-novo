@@ -4,7 +4,7 @@ import { BsCheckLg } from "react-icons/bs";
 import { GrClose } from "react-icons/gr";
 import { RxCross2 } from "react-icons/rx";
 import Image from "next/image";
-import ActivitySelected from "../public/ActivitySelected.png";
+import ActivitySelected from "../public/ActivitySelected.webp";
 import Link from "next/link";
 
 const MatchButtons = () => {

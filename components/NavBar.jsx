@@ -1,6 +1,6 @@
 import { React } from "react";
 import Image from "next/image";
-import NOVO from "../public/NOVO.png";
+import NOVO from "../public/NOVO.webp";
 import { RiCompassDiscoverLine } from "react-icons/ri";
 import { FiMessageSquare } from "react-icons/fi";
 import { MdPersonOutline } from "react-icons/md";

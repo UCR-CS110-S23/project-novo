@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import AddSymbol from "../public/addSymbol.png";
+import AddSymbol from "../public/addSymbol.webp";
 
 const AddPicture = () => {
 	return (

@@ -1,5 +1,5 @@
 import React from "react";
-import Beach from "../public/beach.png";
+import Beach from "../public/beach.webp";
 import ActivityCartCard from "../components/ActivityCartCard";
 
 const ActivitiesCart = () => {
