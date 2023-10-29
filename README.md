@@ -25,7 +25,7 @@ NOVO is a dating web application that is inspired by the mission to take on “n
 
 **Sign Up / Log-In:**
 
--   Users can login to their respective accounts. Once logged in, the user is prompted to answer a couple of security questions to verify their identity. 
+-   Users can login to their respective accounts. Once logged in, the user is prompted to answer a couple of security questions to verify their identity.
 
 **Create and Update Profile:**
 

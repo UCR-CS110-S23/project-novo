@@ -1,5 +1,5 @@
 import { React } from "react";
-import NOVO from "../public/NOVO.png";
+import NOVO from "../public/NOVO.webp";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
 import Link from "next/link";

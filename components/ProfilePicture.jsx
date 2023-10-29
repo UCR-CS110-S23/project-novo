@@ -1,5 +1,5 @@
 import Image from "next/image";
-import UploadPhoto from "../public/uploadPhoto.png";
+import UploadPhoto from "../public/uploadPhoto.webp";
 
 const ProfilePicture = () => {
 	return (
