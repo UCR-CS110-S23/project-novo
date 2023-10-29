@@ -10,12 +10,12 @@ import { FiPaperclip } from "react-icons/fi";
 // import { BsPlusSquare } from "react-icons/bs";
 import { FiSend } from "react-icons/fi";
 import axios from "axios";
-import Disney from "../public/disneyland.png";
-import Laguna from "../public/laguna-square.png";
-import Melrose from "../public/melrose-square.png";
-import Lacma from "../public/lacma-square.png";
-import Aquarium from "../public/aquarium-square.png";
-import Universal from "../public/universal-square.png";
+import Disney from "../public/disneyland.webp";
+import Laguna from "../public/laguna-square.webp";
+import Melrose from "../public/melrose-square.webp";
+import Lacma from "../public/lacma-square.webp";
+import Aquarium from "../public/aquarium-square.webp";
+import Universal from "../public/universal-square.webp";
 // import ScrollToBottom from "react-scroll-to-bottom";
 // import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -26,21 +26,21 @@ const socket = io.connect("http://localhost:3001");
 
 // TO DO - FIX THE PICTURES
 const roomProfilePics = {
-	Disneyland: { src: "/DisneyChat.png", width: 200, height: 200 },
-	"Laguna Beach": { src: "/LagunaChat.png", width: 200, height: 200 },
+	Disneyland: { src: "/DisneyChat.webp", width: 200, height: 200 },
+	"Laguna Beach": { src: "/LagunaChat.webp", width: 200, height: 200 },
 	"Melrose Trading Post": {
-		src: "/Melrosechat.png",
+		src: "/Melrosechat.webp",
 		width: 200,
 		height: 200,
 	},
-	LACMA: { src: "/LacmaChat.png", width: 200, height: 200 },
+	LACMA: { src: "/LacmaChat.webp", width: 200, height: 200 },
 	"Aquarium of the Pacific": {
-		src: "/AquaChat.png",
+		src: "/AquaChat.webp",
 		width: 200,
 		height: 200,
 	},
 	"Universal Studios": {
-		src: "/UniversalChat.png",
+		src: "/UniversalChat.webp",
 		width: 200,
 		height: 200,
 	},
